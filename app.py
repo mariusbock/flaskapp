@@ -18,11 +18,11 @@ def update_models():
 
 
 """
-POST method predictOccupancy that returns the predicted occupancy using the latest trained model for the given data. 
+POST method predictOccupancy that returns the predicted occupancy using the latest trained model for the given parsed_data. 
 Needs to have a JSON attached in the body following the needed format.
 
 Returns:
-    Returns a JSON file containing the predicted occupancy for the given data
+    Returns a JSON file containing the predicted occupancy for the given parsed_data
 
 Raises:
     415 Unsupported Media Type if it is not a JSON in the body
