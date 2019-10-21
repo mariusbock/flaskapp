@@ -11,7 +11,7 @@ SETUP PYTHON DEVELOPMENT TOOLS
         We recommend using Anaconda since it is the most easiest for now (https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html#installing-packages).
         - Packages that you need to install include:
             -flask, apscheduler, falsk-restful and pandas
-            -the comands to install these packages are: "conda install flask","conda install -c conda-forge apscheduler","conda install flask-restful",
+            -the commands to install these packages are: "conda install flask","conda install -c conda-forge apscheduler","conda install flask-restful",
             "conda install pandas"
             -you will also need to install the packages in pycharm idea in order to import them(file->settings->project:flaskapp->project interpreter->here you click on '+' to install all the packages)
     3. Start the app by running the app.py file. The Flask server will be starting under http://127.0.0.1:5000/.
