@@ -5,6 +5,7 @@ import time
 from flask import make_response, jsonify, request, json
 from flask_restful import abort, Api
 from predictions import predict_occupancy
+import requests
 
 # Initialize the app
 app = flask.Flask(__name__)
@@ -77,6 +78,41 @@ def api_echo():
 
     elif request.method == 'DELETE':
         return "ECHO: DELETE"
+
+
+
+
+@app.route('/flask-ping-endpoint', methods = ['POST'])
+def processPing():
+    """REST Endpoint for testing connection between Java and Flask Server"""
+    """the request from Java Server processed and compared with other data retrieved by the Flask Server """
+    print("PING REQUEST FROM JAVA SERVER:\n")
+    print(request.get_json())
+    try:
+        received_data = request.get_json()
+        retrieved_data = retrievePingMockData()
+
+        if received_data.get('teamname') == retrieved_data.get('teamname'):
+            ok_response = {'message':'true', 'code': 'SUCCESS'}
+            print("PING REQUEST SUCCESFULL")
+            return make_response(jsonify(ok_response), 200)
+
+        else:
+            bad_response = {'message':'false', 'code': 'CONFLICT'}
+            print("PING REQUEST UNSUCCESFULL")
+            return make_response(jsonify(bad_response), 409)
+
+    except Exception as e:
+        print(e)
+
+def retrievePingMockData():
+    """Function that calls and retrieves data from Java Server"""
+    response = requests.get('http://localhost:8080/xtraffic-server/xtraffic-api/flaskresource/get-mock-data')
+    print("Retrieved: ")
+    print(response.json())
+    return response.json()
+
+
 
 
 sched = BackgroundScheduler(daemon=True)
