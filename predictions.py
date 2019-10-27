@@ -43,13 +43,11 @@ def preprocess_dataset(df):
 
 def feature_engineer_dataset(data):
     data['last_occupancy'] = data.groupby(['id'])['occupancy'].shift()
-    data['last_occupancy_diff'] = data.groupby(['id'])['last_occupancy'].diff()
+    #data['last_occupancy_diff'] = data.groupby(['id'])['last_occupancy'].diff()
     data['last-1_occupancy'] = data.groupby(['id'])['occupancy'].shift(2)
-    data['last-1_occupancy_diff'] = data.groupby(['id'])['last-1_occupancy'].diff()
+    #data['last-1_occupancy_diff'] = data.groupby(['id'])['last-1_occupancy'].diff()
     data['last-5_occupancy'] = data.groupby(['id'])['occupancy'].shift(5)
-    data['last-5_occupancy_diff'] = data.groupby(['id'])['last-5_occupancy'].diff()
-    data['last-10_occupancy'] = data.groupby(['id'])['occupancy'].shift(10)
-    data['last-10_occupancy_diff'] = data.groupby(['id'])['last-10_occupancy'].diff()
+    #data['last-5_occupancy_diff'] = data.groupby(['id'])['last-5_occupancy'].diff()
 
     data = data.dropna()
     print("\n Feature engineered dataset")
@@ -59,22 +57,31 @@ def feature_engineer_dataset(data):
 
 
 def predict_occupancy(data):
-    #  TODO: need preprocessing function for new incoming data to make it so that it fits the ML format. Either here or in backend. Probably here.
-    # Preprocess and feature engineer data to fit ML standards
-    preprocessed_data = feature_engineer_dataset(preprocess_dataset(data))
+    # TODO: need preprocessing function for new incoming data to make it so that it fits the ML format. Either here or in backend. Probably here.
+    # TODO: need better label encoding so that it is consistent here as well
 
     # Load the model from the file
     model = joblib.load('lib/models/occupancy_model.pkl')
+    processed_data = data.copy()
 
-    prediction = model.predict(preprocessed_data)
 
-    return prediction
+    prediction = np.expm1(model.predict(processed_data))
+
+    data["occupancy"] = prediction
+
+    return data
 
 
 def train_model_occupancy(data, labelEncode, algo):
     # This needs to be adjusted so that the DB is called instead of just loading a CSV
     preprocessed_data = pd.read_csv("static/train_data/preprocessed_data", sep=";", index_col=0)
-    feature_engineered_data = feature_engineer_dataset(preprocessed_data)
+    feature_engineered_data = feature_engineer_dataset(preprocessed_data).sort_values(["timestamp", "id"])
+
+    # This section is only used to create a test request, can be deleted at some point
+    # temp = feature_engineered_data[int(0.8 * (len(feature_engineered_data))):].reset_index().drop("index", axis=1)
+    # test_data = temp[temp.timestamp == temp['timestamp'].max()].drop(["cars", "occupancy"], axis=1)
+    # print(test_data)
+    # test_data.to_json("test_request.json", orient="records")
 
     # label encode categorical values
     if labelEncode:
@@ -82,9 +89,15 @@ def train_model_occupancy(data, labelEncode, algo):
         feature_engineered_data['id'] = le.fit_transform(feature_engineered_data['id'])
         feature_engineered_data['timestamp'] = le.fit_transform(feature_engineered_data['timestamp'])
 
+    print(feature_engineered_data["id"].value_counts())
+
     # creating the train and validation set
     train = feature_engineered_data[:int(0.8 * (len(feature_engineered_data)))].reset_index().drop("index", axis=1)
     valid = feature_engineered_data[int(0.8 * (len(feature_engineered_data))):].reset_index().drop("index", axis=1)
+
+    test_request = valid[valid.timestamp == valid['timestamp'].max()].drop(["cars", "occupancy"], axis=1)
+    print(test_request)
+    test_request.to_json("test_request.json", orient="records")
 
     X_train = train.drop(["cars", "occupancy"], axis=1)
     y_train = train["occupancy"]
@@ -93,7 +106,7 @@ def train_model_occupancy(data, labelEncode, algo):
 
     # fit the model
     if algo == "LGBM":
-        regr = LGBMRegressor(n_estimators=1000, learning_rate=0.01, )
+        regr = LGBMRegressor(n_estimators=1000, learning_rate=0.01)
         model = regr.fit(X_train, np.log1p(y_train))
     elif algo == "RF":
         regr = RandomForestRegressor(n_estimators=1000, n_jobs=-1, verbose=1)
@@ -102,8 +115,6 @@ def train_model_occupancy(data, labelEncode, algo):
     # make prediction on validation
     prediction = np.expm1(model.predict(X_valid))
 
-    compare = pd.DataFrame([prediction, y_valid])
-    print(compare)
     error = rmsle(y_valid, prediction)
     print('Error %.5f' % error)
 
@@ -123,3 +134,9 @@ if __name__ == '__main__':
 
     # preprocess_dataset(dynamic_data)
     train_model_occupancy(dynamic_data, labelEncode=True, algo="LGBM")
+
+    data = pd.read_json("test_request.json", orient="records")
+
+    print(data.head())
+
+    print(predict_occupancy(data))
