@@ -2,6 +2,7 @@ import pandas as pd
 import sys
 import numpy as np
 import pickle
+import datetime
 
 from itertools import product
 from lightgbm import LGBMRegressor
@@ -16,6 +17,28 @@ np.set_printoptions(threshold=sys.maxsize)
 
 
 # code inspiration: https://machinelearningmastery.com/how-to-develop-machine-learning-models-for-multivariate-multi-step-air-pollution-time-series-forecasting/
+
+
+def start_of_year_time_minutes(dt):
+    epoch = datetime.datetime.fromtimestamp(1567296000, tz=dt.tzinfo) #equivalent to 1.1.2019
+
+    return (dt - epoch).total_seconds()/60
+
+
+def label_encode(column, type):
+    encoded_column = pd.Series()
+    # TODO need some sort of list of all IDs (maybe Encoding file) -> First need to clarify issues with Christian
+    #roads = pd.read_json("static/parsed_data/roads.json", orient="records")
+    le = LabelEncoder()
+    if type == "timestamp":
+        encoded_column = column.apply(start_of_year_time_minutes)
+    if type == "road_id":
+        #road_list = roads["road_id"].sort_values()
+        le.fit(column.sort_values().unique())
+        encoded_column = le.transform(column)
+
+    return encoded_column
+
 
 def preprocess_dataset(df):
     """
@@ -43,11 +66,11 @@ def preprocess_dataset(df):
 
 def feature_engineer_dataset(data):
     data['last_occupancy'] = data.groupby(['id'])['occupancy'].shift()
-    #data['last_occupancy_diff'] = data.groupby(['id'])['last_occupancy'].diff()
+    # data['last_occupancy_diff'] = data.groupby(['id'])['last_occupancy'].diff()
     data['last-1_occupancy'] = data.groupby(['id'])['occupancy'].shift(2)
-    #data['last-1_occupancy_diff'] = data.groupby(['id'])['last-1_occupancy'].diff()
+    # data['last-1_occupancy_diff'] = data.groupby(['id'])['last-1_occupancy'].diff()
     data['last-5_occupancy'] = data.groupby(['id'])['occupancy'].shift(5)
-    #data['last-5_occupancy_diff'] = data.groupby(['id'])['last-5_occupancy'].diff()
+    # data['last-5_occupancy_diff'] = data.groupby(['id'])['last-5_occupancy'].diff()
 
     data = data.dropna()
     print("\n Feature engineered dataset")
@@ -63,7 +86,6 @@ def predict_occupancy(data):
     # Load the model from the file
     model = joblib.load('lib/models/occupancy_model.pkl')
     processed_data = data.copy()
-
 
     prediction = np.expm1(model.predict(processed_data))
 
@@ -83,11 +105,8 @@ def train_model_occupancy(data, labelEncode, algo):
     # print(test_data)
     # test_data.to_json("test_request.json", orient="records")
 
-    # label encode categorical values
-    if labelEncode:
-        le = LabelEncoder()
-        feature_engineered_data['id'] = le.fit_transform(feature_engineered_data['id'])
-        feature_engineered_data['timestamp'] = le.fit_transform(feature_engineered_data['timestamp'])
+    feature_engineered_data['id'] = label_encode(feature_engineered_data['id'], type="road_id")
+    feature_engineered_data['timestamp'] = label_encode(feature_engineered_data['timestamp'], type="timestamp")
 
     print(feature_engineered_data["id"].value_counts())
 
@@ -132,11 +151,19 @@ if __name__ == '__main__':
     dynamic_data = pd.read_csv("static/raw_data/2019_10_14_dynamic-traffic_dump.csv",
                                sep=";", header=0, parse_dates=["timestamp"])
 
+    #For test purposes
+    print("Testing timestamp labelEncoding:")
+    print(label_encode(dynamic_data["timestamp"], "timestamp"))
+    print("\n")
+    print("Testing id labelEncoding:")
+    print(label_encode(dynamic_data["id"], "road_id"))
+
+
     # preprocess_dataset(dynamic_data)
-    train_model_occupancy(dynamic_data, labelEncode=True, algo="LGBM")
+    #train_model_occupancy(dynamic_data, labelEncode=True, algo="LGBM")
 
-    data = pd.read_json("test_request.json", orient="records")
+    #data = pd.read_json("test_request.json", orient="records")
 
-    print(data.head())
+    #print(data.head())
 
-    print(predict_occupancy(data))
+    #print(predict_occupancy(data))
