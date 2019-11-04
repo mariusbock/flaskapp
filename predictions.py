@@ -31,8 +31,8 @@ def preprocess_dataset(df):
     df_imputed_values = pd.DataFrame()
 
     for road_id in road_ids:
-        temp = df_missing_values[df_missing_values.id == road_id]
-        temp.interpolate(method='linear', inplace=True, limit_direction="both")
+        temp = df_missing_values[df_missing_values.id == road_id].sort_values("timestamp")
+        temp[["occupancy", "cars"]].interpolate(method='linear', inplace=True, limit_direction="both")
         df_imputed_values = pd.concat([df_imputed_values, temp])
 
     # for now this is saved to a csv - later this will be saved to a no-relational DB
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     dynamic_data = pd.read_csv("static/raw_data/2019_10_14_dynamic-traffic_dump.csv",
                                sep=";", header=0, parse_dates=["timestamp"])
 
-    # preprocess_dataset(dynamic_data)
+    preprocess_dataset(dynamic_data)
     train_model_occupancy(dynamic_data, labelEncode=True, algo="LGBM")
 
     data = pd.read_json("test_request.json", orient="records")
