@@ -64,7 +64,6 @@ def predict_occupancy(data):
     model = joblib.load('lib/models/occupancy_model.pkl')
     processed_data = data.copy()
 
-
     prediction = np.expm1(model.predict(processed_data))
 
     data["occupancy"] = prediction

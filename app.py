@@ -1,14 +1,38 @@
 import flask
+import pandas as pd
 import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
-from flask import make_response, jsonify, request, json
+from flask import make_response, jsonify, request, json, Response
 from flask_restful import abort, Api
+from flask_sqlalchemy import SQLAlchemy
 from predictions import predict_occupancy
 import requests
 
 # Initialize the app
 app = flask.Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 api = Api(app)
+db = SQLAlchemy(app)
+
+
+class TrainData(db.Model):
+    __tablename__ = 'TrainData'
+    timestamp = db.Column(db.DateTime,
+                          primary_key=True)
+    id = db.Column(db.String,
+                   primary_key=True,
+                   nullable=False)
+    last_occupancy = db.Column(db.Float)
+    last_1_occupancy = db.Column(db.Float)
+    last_5_occupancy = db.Column(db.Float)
+    occupancy = db.Column(db.Float)
+
+    def __init__(self, timestamp=None, id=None, last_occupancy=None, last_1_occupancy=None,last_5_occupancy=None, occupancy=None):
+        self.data = (timestamp, id, last_occupancy, last_1_occupancy, last_5_occupancy, occupancy)
+
+    def __repr__(self):
+        return self.timestamp, self.id, self.last_occupancy, self.last_1_occupancy, self.last_5_occupancy, self.occupancy
 
 
 def update_models():
@@ -27,7 +51,8 @@ def api_predict_occupancy():
     """
     if request.headers['Content-Type'] == 'application/json':
 
-        data = request.json
+        data = pd.DataFrame(request.json)
+        print(data)
         # TODO: Exception Handling of when JSON does not follow correct format
         processed_data = predict_occupancy(data)
 
@@ -38,6 +63,38 @@ def api_predict_occupancy():
         return resp
     else:
         return "415 Unsupported Media Type"
+
+
+@app.route('/saveToDB', methods=['POST'])
+def save_to_db():
+    if request.headers['Content-Type'] == 'application/json':
+
+        data = pd.DataFrame(request.json)
+        print(data)
+
+        data.to_sql('TrainData', con=db.engine, index=False, if_exists="replace")
+
+        return "All train data saved to DB."
+    else:
+        return "415 Unsupported Media Type"
+
+
+@app.route('/getDataFromDB', methods=['GET'])
+def get_data_from_db():
+    data = pd.read_sql(sql=db.session.query(TrainData) \
+                       .with_entities(TrainData.timestamp,
+                                      TrainData.id,
+                                      TrainData.last_occupancy,
+                                      TrainData.last_1_occupancy,
+                                      TrainData.last_5_occupancy,
+                                      TrainData.occupancy).statement,
+                       con=db.session.bind)
+
+    resp = Response(response=data.to_json(orient='records'),
+                    status=200,
+                    mimetype="application/json")
+
+    return resp
 
 
 @app.route('/')
@@ -123,4 +180,4 @@ sched.add_job(update_models, 'interval', seconds=10)
 sched.start()
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True, host='0.0.0.0')
