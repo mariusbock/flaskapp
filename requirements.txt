@@ -1,8 +1,15 @@
-Flask==1.1.1
-Flask-RESTful==0.3.7
-numpy==1.15.4
-pandas==0.25.3
+numpy==1.16.3
+lxml==4.4.1
+Flask_Migrate==2.5.2
 lightgbm==2.2.1
-scikit-learn==0.20.0
+icalendar==4.0.3
+Flask_RESTful==0.3.7
 APScheduler==3.6.1
+Flask==1.1.1
+pandas==0.25.3
+pytz==2018.4
+csv_ical==2.0.0
 requests==2.20.0
+Flask_SQLAlchemy==2.4.1
+scikit_learn==0.21.3
+pytest == 5.2.4
