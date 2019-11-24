@@ -144,7 +144,6 @@ def update_models():
     """ Here would the call of the Backend API happen, needs to be implemented with Victor"""
     print("If this would work it would update models!")
 
-
 """
 Following code is the scheduler that executes the update model function periodically. Currently only skeleton with no
 function.
