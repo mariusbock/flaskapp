@@ -26,6 +26,7 @@ class Protocol():
         self.matchingRule = self.requestFromServer['matchingRule']
 
     def grab_missing_data(self):
+        # each interogation contains a table_name and a list of table columns
         for interogation in self.interrogationsList:
             table_name = getattr(interogation,'type')
             entriesFromServer = self.get_response_from_xData(table_name)
@@ -35,18 +36,21 @@ class Protocol():
                 if _t == table_name:
                     entriesFromDb = State(_t).count_entries_in_table()
                     i = 0
-                    #list_of_columns = getattr(interogation,'fields')
+                    #if number of columns from db not equal with number of tables from request
                     if _t.columns.size != interogation['fields'].size:
                         return False
                     else:
+                        #if column names from db not equal to column names from server request
                         for columnsFromDb in _t.columns:
                             if columnsFromDb != interogation['fields'][i]:
                                 return False
                             i = i + 1
+                    #if the number of entries from db not equal to number of entries from request
                     if entriesFromDb != entriesFromServer:
                         return False
                     return True
-            return False
+
+        return False
 
     def send_response_to_server(self):
         result = self.grab_missing_data
