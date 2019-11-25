@@ -20,7 +20,7 @@ def feature_engineer_dataset():
 
 
 def test_train_model_occupancy():
-    preprocessed_data = pd.read_csv('../../static/test_data/preprocessed_data.csv', parse_dates=["timestamp"])
+    preprocessed_data = pd.read_csv('static/test_data/preprocessed_data.csv', parse_dates=["timestamp"])
     response = train_model_occupancy(preprocessed_data)
 
     assert response == "Model is trained and saved as Pickle"

@@ -5,7 +5,7 @@ from project.models import TrainData
 from apscheduler.schedulers.background import BackgroundScheduler
 import pandas as pd
 import requests
-
+from project.protocol import Protocol
 from . import recipes_blueprint
 
 
@@ -144,11 +144,23 @@ def update_models():
     """ Here would the call of the Backend API happen, needs to be implemented with Victor"""
     print("If this would work it would update models!")
 
+@recipes_blueprint.route('/grab-missing-data', methods=['POST'])
+def grab_missing_data():
+    print("PROCESS REQUEST FROM JAVA SERVER:\n")
+    print(request.get_json())
 
+    response = request.get_json()
+    protocol = Protocol(response)
+    return protocol.send_response_to_server()
+    # listOfIterogations = []
+    # typeInterrogation = {"type": "status", "fields": ["id", "datetime", "occupancy", "vehicle_flow", "timestamp"],
+    #                      "rule": ""}
+    # listOfIterogations.append(typeInterrogation)
+    # requestFromServer = {"requestId": 1, "listOfInterogations": listOfIterogations, "matchingRule": {}}
 """
 Following code is the scheduler that executes the update model function periodically. Currently only skeleton with no
 function.
 """
 sched = BackgroundScheduler(daemon=True)
-sched.add_job(update_models, 'interval', seconds=10)
+sched.add_job(update_models, 'interval', seconds=100)
 sched.start()
