@@ -22,10 +22,10 @@ class Protocol():
 
         self.requestFromServer = requestFromServer
         self.requestId = self.requestFromServer['requestId']
-        self.interrogationsList = self.requestFromServer['listOfInterogations']
+        self.interrogationsList = self.requestFromServer['typeInterrogations']
         self.matchingRule = self.requestFromServer['matchingRule']
 
-    def grab_missing_data(self):
+    def check_missing_data(self):
         # each interogation contains a table_name and a list of table columns
         for interogation in self.interrogationsList:
             table_name = getattr(interogation,'type')
@@ -50,10 +50,11 @@ class Protocol():
                         return False
                     return True
 
-        return False
+        #return False
+        raise Exception("SMTH WENT WRONG")
 
     def send_response_to_server(self):
-        result = self.grab_missing_data
+        result = self.check_missing_data
         if result == True:
             ok_response = {'message': 'true', 'code': 'SUCCESS'}
             print("ALL DATA IS AVAILABLE")
@@ -61,6 +62,9 @@ class Protocol():
         else:
             bad_response = {'message': 'false', 'code': 'CONFLICT'}
             print("DATA IS MISSING")
+            #TODO call functions from state.py that refreshes tables and persists data
+
+
             return make_response(jsonify(bad_response), 409)
 
     def get_response_from_xData(self,table_name):

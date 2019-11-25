@@ -8,4 +8,4 @@ def test_grab_missing_data():
     typeInterrogation = {"type":"status","fields": ["id", "datetime", "occupancy", "vehicle_flow","timestamp"], "rule": ""}
     listOfIterogations.append(typeInterrogation)
     requestFromServer = {"requestId": 1,"listOfInterogations": listOfIterogations,"matchingRule": {}}
-    assert Protocol(requestFromServer).grab_missing_data == True
+    assert Protocol(requestFromServer).check_missing_data == True
