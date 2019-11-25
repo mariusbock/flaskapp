@@ -146,8 +146,11 @@ def update_models():
 
 @recipes_blueprint.route('/grab-missing-data', methods=['POST'])
 def grab_missing_data():
-    response = request.get("api from server")
-    protocol = Protocol(response.json())
+    print("PROCESS REQUEST FROM JAVA SERVER:\n")
+    print(request.get_json())
+
+    response = request.get_json()
+    protocol = Protocol(response)
     return protocol.send_response_to_server()
     # listOfIterogations = []
     # typeInterrogation = {"type": "status", "fields": ["id", "datetime", "occupancy", "vehicle_flow", "timestamp"],
@@ -159,5 +162,5 @@ Following code is the scheduler that executes the update model function periodic
 function.
 """
 sched = BackgroundScheduler(daemon=True)
-sched.add_job(update_models, 'interval', seconds=10)
+sched.add_job(update_models, 'interval', seconds=100)
 sched.start()
