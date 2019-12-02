@@ -7,8 +7,7 @@ from project.models import TrainData
 @pytest.fixture(scope='module')
 def new_traindata():
     trainrecord = TrainData(timestamp="2019-10-14 13:32:00+00:00", id="18371007[D40a]", last_occupancy=16.5,
-                            last_1_occupancy=6.6667,
-                            last_5_occupancy=14.5, occupancy=15.5)
+                            last_1_occupancy=6.6667, last_5_occupancy=14.5, occupancy=15.5)
     print(trainrecord)
     return trainrecord
 
