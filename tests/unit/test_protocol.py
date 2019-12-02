@@ -1,11 +1,14 @@
 """
-This file (test_protocol.py) contains all unit tests for the protocol.py file
+This file (test_protocol.py) contains all unit tests for the protocol_repository.py file
 """
-from project.protocol import *
-def test_grab_missing_data():
+from project.repository.protocol_repository import *
+from project.model.type_interrogation import *
+def test_check_missing_data():
 
-    listOfIterogations = []
-    typeInterrogation = {"type":"status","fields": ["id", "datetime", "occupancy", "vehicle_flow","timestamp"], "rule": ""}
-    listOfIterogations.append(typeInterrogation)
-    requestFromServer = {"requestId": 1,"listOfInterogations": listOfIterogations,"matchingRule": {}}
-    assert Protocol(requestFromServer).check_missing_data == True
+    typeInterogation = TypeInterrogation("occupancy",["id", "occupancy", "vehicle_flow", "timestamp"],{})
+    flasRequest = ("1",typeInterogation,{ "treshold":"0.05",
+               "timestamp":"30.11.2019",
+               "records":"1"})
+    protocol = Protocol(flasRequest)
+    protocolRepo = ProtocolRepository(protocol)
+    assert protocolRepo.check_missing_data() == True
