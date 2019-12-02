@@ -1,0 +1,9 @@
+{
+	"requestId":"1",
+	"typeInterrogations":[{"type":"status","fields":["id","occupancy","vehicle_flow","timestamp"],"rule":""}],
+	"matchingRule":{
+		"treshold":"0.05",
+		"timestamp":"1.12.2019",
+		"records":"1"
+	}
+}
