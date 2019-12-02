@@ -5,10 +5,10 @@ from project.models import TrainData
 from apscheduler.schedulers.background import BackgroundScheduler
 import pandas as pd
 import requests
-from project.protocol import Protocol
+from project.model.type_interrogation import *
 from . import recipes_blueprint
-
-
+from project.controller.protocol_cotroller import *
+from project.controller.table_controller import *
 @recipes_blueprint.route('/')
 def index():
     return render_template("recipes/index.html")
@@ -147,16 +147,42 @@ def update_models():
 @recipes_blueprint.route('/grab-missing-data', methods=['POST'])
 def grab_missing_data():
     print("PROCESS REQUEST FROM JAVA SERVER:\n")
-    print(request.get_json())
+    protocolController = ProtocolController()
+    return protocolController.grab_missing_data()
 
-    response = request.get_json()
-    protocol = Protocol(response)
-    return protocol.send_response_to_server()
-    # listOfIterogations = []
-    # typeInterrogation = {"type": "status", "fields": ["id", "datetime", "occupancy", "vehicle_flow", "timestamp"],
-    #                      "rule": ""}
-    # listOfIterogations.append(typeInterrogation)
-    # requestFromServer = {"requestId": 1, "listOfInterogations": listOfIterogations, "matchingRule": {}}
+@recipes_blueprint.route('/save-table', methods=['POST'])
+def save_table_to_db():
+    data = pd.DataFrame({"type":[request.json]})
+    tableController = TableController()
+    if request.headers['Content-Type'] == 'application/json':
+        tableController.save_to_db(data)
+        return "Table saved into the Db."
+    else:
+        return "415 Unsupported Media Type"
+
+@recipes_blueprint.route('/get-table', methods=['GET'])
+def get_table_from_db():
+    tableController = TableController()
+    return tableController.get_data_from_db()
+
+
+@recipes_blueprint.route('/insert-values', methods=['POST'])
+def insert_into_table():
+    data = pd.DataFrame(request.json)
+    tableController = TableController()
+    if request.headers['Content-Type'] == 'application/json':
+        tableController.insert_to_db(data)
+        return "Values inserted into the table."
+    else:
+        return "415 Unsupported Media Type"
+# @recipes_blueprint.route('/grab-missing-data', methods=['POST'])
+# def grab_missing_data():
+#     print("PROCESS REQUEST FROM JAVA SERVER:\n")
+#     print(request.get_json())
+#
+#     response = request.get_json()
+#     protocol = Protocol(response)
+#     return protocol.send_response_to_server()
 """
 Following code is the scheduler that executes the update model function periodically. Currently only skeleton with no
 function.
