@@ -133,7 +133,7 @@ def retrievePingMockData():
     Function that calls and retrieves data from Java Server
     :return: returns response data as JSON
     """
-    response = requests.get('http://134.155.108.114:8080/xtraffic-server/xtraffic-api/flaskresource/get-mock-data')
+    response = requests.get('http://backend:8080/xtraffic-server/xtraffic-api/flaskresource/get-mock-data')
     print("Retrieved: ")
     print(response.json())
     return response.json()
