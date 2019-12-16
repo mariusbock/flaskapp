@@ -1,12 +1,11 @@
-FROM python:3.6-alpine
+FROM python:latest
 
 WORKDIR /flask-app
 
 COPY requirements.txt requirements.txt
-RUN python -m venv venv
-RUN venv/bin/pip install -r requirements.txt
+RUN pip install -r requirements.txt
 
-COPY flaskapp project
+COPY . .
 
 ENTRYPOINT ["python"]
-CMD ["__init__.py"]
+CMD ["run.py"]
