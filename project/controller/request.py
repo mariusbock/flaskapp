@@ -22,7 +22,6 @@ class Request(Base):
         self.raw_data = raw_data
         self.meta_data = meta_data
         self.request_status = "INITIALIZED"
-
         save_request_to_db(self)
 
     def serialize(self):
@@ -34,6 +33,7 @@ def save_request_to_db(request):
     Session = sessionmaker(bind=db.engine)
     session = Session()
     session.add(request)
+    session.commit()
 
 def get_request_by_id(request_id):
     if not db.engine.dialect.has_table(db.engine, "requests"):  # If table don't exist, Create.

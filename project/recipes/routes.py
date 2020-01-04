@@ -88,18 +88,18 @@ def process_request():
 
 @recipes_blueprint.route('/check-request-status/<request_id>', methods=['GET'])
 def get_request_status(request_id):
-    # request_entity = get_request_by_id(request_id)
+    request_entity = get_request_by_id(request_id)
     mock_response = {}
     mock_response['requestId'] = request_id
     mock_response['clientId'] = "mock client id"
     mock_response['status'] = "mock status"
 
-    # response = {}
-    # response['requestId'] = request_entity.request_id
-    # response['clientId'] = request_entity.client_id
-    # response['status'] = request_entity.request_status
+    response = {}
+    response['requestId'] = request_entity.request_id
+    response['clientId'] = request_entity.client_id
+    response['status'] = request_entity.request_status
 
-    json_data = json.dumps(mock_response)
+    json_data = json.dumps(response)
 
 
 
