@@ -10,6 +10,9 @@ from . import recipes_blueprint
 from project.controller.protocol_cotroller import *
 from project.controller.table_controller import *
 from project.controller.request import Request,get_request_by_id
+from project.celery import celery_wrappers
+from flask import url_for
+
 @recipes_blueprint.route('/')
 def index():
     return render_template("recipes/index.html")
@@ -104,3 +107,46 @@ def get_request_status(request_id):
 
 
     return make_response(json_data, 200)
+
+@recipes_blueprint.route('/test-celery', methods=['GET'])
+def test_celery():
+    response = {}
+    response['status'] = celery_wrappers.test_bg_job()
+    json_response = json.dumps(response)
+    return make_response(json_response, 200)
+
+
+@recipes_blueprint.route('/test-celery-complex', methods=['GET'])
+def longtask():
+    print("TEST CELERY COMPLEX")
+    task = celery_wrappers.test_complex_bg_job.apply_async()
+    return jsonify({'taskid':task.id}), 202, {'Location': url_for('recipes.taskstatus',
+                                                  task_id=task.id)}
+
+
+@recipes_blueprint.route('/status/<task_id>')
+def taskstatus(task_id):
+    task = celery_wrappers.test_complex_bg_job.AsyncResult(task_id)
+    if task.state == 'PENDING':
+        # job did not start yet
+        response = {
+            'state': task.state,
+            'current': 0,
+            'status': 'Pending...'
+        }
+    elif task.state != 'FAILURE':
+        response = {
+            'state': task.state,
+            'current': task.info.get('current', 0),
+            'status': task.info.get('status', '')
+        }
+        if 'result' in task.info:
+            response['result'] = task.info['result']
+    else:
+        # something went wrong in the background job
+        response = {
+            'state': task.state,
+            'current': 1,
+            'status': str(task.info),  # this is the exception raised
+        }
+    return jsonify(response)

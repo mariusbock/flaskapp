@@ -10,6 +10,7 @@ from . import recipes_blueprint
 from project.controller.protocol_cotroller import *
 from project.controller.table_controller import *
 from project.controller.request import Request
+from project.celery import celery_wrappers
 
 @recipes_blueprint.route('/predictOccupancy', methods=['POST'])
 def api_predict_occupancy():
@@ -112,9 +113,13 @@ def insert_into_table():
     else:
         return "415 Unsupported Media Type"
 
+@recipes_blueprint.route('/test-celery', methods=['GET'])
+def test_celery():
+    celery_wrappers.test_bg_job()
+
 # @recipes_blueprint.route('/grab-missing-data', methods=['POST'])
 # def grab_missing_data():
-#     print("PROCESS REQUEST FROM JAVA SERVER:\n")
+#     print("PROCESS REQUEST FROM JAVA SERVER:\n")tes
 #     print(request.get_json())
 #
 #     response = request.get_json()
