@@ -119,7 +119,7 @@ def test_celery():
 @recipes_blueprint.route('/test-celery-complex', methods=['GET'])
 def longtask():
     print("TEST CELERY COMPLEX")
-    task = celery_wrappers.test_complex_bg_job.apply_async()
+    task = celery_wrappers.test_complex_bg_job.apply_async(thread=False)
     return jsonify({'taskid':task.id}), 202, {'Location': url_for('recipes.taskstatus',
                                                   task_id=task.id)}
 
