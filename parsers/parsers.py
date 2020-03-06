@@ -2,7 +2,6 @@ import pandas as pd
 import xml.etree.ElementTree as et
 from pytz import timezone
 from datetime import timedelta
-from csv_ical import Convert
 
 pd.set_option('display.expand_frame_repr', False)
 
@@ -31,7 +30,7 @@ def parseStaticTraffic(filename):
     root = xtree.getroot()
 
     roads = pd.DataFrame(columns=['road_id', 'road_name', 'type', 'numberOfLanes'])
-    points = pd.DataFrame(columns=['point_id', 'longitude', 'latitude'])
+    points = pd.DataFrame(columns=['road_id', 'point_id', 'longitude', 'latitude'])
     road_points = pd.DataFrame(columns=['point_id', 'road_id'])
 
     for elem in root.iter('{http://datex2.eu/schema/2/2_0}measurementSiteRecord'):
@@ -55,7 +54,7 @@ def parseStaticTraffic(filename):
         start_longitude = start_point.find(
             '{http://datex2.eu/schema/2/2_0}pointCoordinates/{http://datex2.eu/schema/2/2_0}longitude').text
 
-        points = points.append({'point_id': start_id, 'latitude': start_latitude, 'longitude': start_longitude},
+        points = points.append({'road_id': road_id, 'point_id': start_id, 'latitude': start_latitude, 'longitude': start_longitude},
                                ignore_index=True)
         road_points = road_points.append({'road_id': road_id, 'point_id': start_id}, ignore_index=True)
 
@@ -67,7 +66,7 @@ def parseStaticTraffic(filename):
             longitude = loc_elem.find(
                 '{http://datex2.eu/schema/2/2_0}referent/{http://datex2.eu/schema/2/2_0}pointCoordinates/{http://datex2.eu/schema/2/2_0}longitude').text
 
-            points = points.append({'point_id': point_id, 'latitude': latitude, 'longitude': longitude},
+            points = points.append({'road_id': road_id, 'point_id': point_id, 'latitude': latitude, 'longitude': longitude},
                                    ignore_index=True)
             road_points = road_points.append({'road_id': road_id, 'point_id': point_id}, ignore_index=True)
 
@@ -78,7 +77,7 @@ def parseStaticTraffic(filename):
         end_longitude = end_point.find(
             '{http://datex2.eu/schema/2/2_0}pointCoordinates/{http://datex2.eu/schema/2/2_0}longitude').text
 
-        points = points.append({'point_id': end_id, 'latitude': end_latitude, 'longitude': end_longitude},
+        points = points.append({'road_id': road_id, 'point_id': end_id, 'latitude': end_latitude, 'longitude': end_longitude},
                                ignore_index=True)
         road_points = road_points.append({'road_id': road_id, 'point_id': end_id}, ignore_index=True)
 
@@ -94,44 +93,75 @@ def parse_roaddata():
     points.to_json("../../static/parsed_data/points.json", orient='records')
     road_status.to_json("../../static/parsed_data/road_status.json", orient='records')
 
-def parse_dates(messe_path, holiday_h_path, holiday_g_path):
 
-    school_break_hessen = pd.read_csv("../../static/raw_data/ferien_hessen_2019.csv", parse_dates=['Start Time', 'End Time'])
-    holiday_hessen = pd.read_csv("../../static/raw_data/gesetzliche_feiertage_hessen_2019.csv", parse_dates=['Start Time', 'End Time'])
-    holiday_germany = pd.read_csv("../../static/raw_data/gesetzliche_feiertage_deutschland_2019.csv", parse_dates=['Start Time', 'End Time'])
-    messe = pd.read_csv("../../static/raw_data/MesseTermine_2019.csv", parse_dates=['Start Time', 'End Time'])
-    holiday_germany_nothessen = pd.merge(holiday_hessen, holiday_germany, how='right', on=["Summary","UID","Description","Location","Start Time","End Time","URL"])
+def parse_dates(messe_path, holiday_s_path, holiday_c_path, school_holiday_path):
+    school_break_state = pd.read_csv(school_holiday_path, parse_dates=['Start Time', 'End Time'])
+    holiday_state = pd.read_csv(holiday_s_path, parse_dates=['Start Time', 'End Time'])
+    holiday_country = pd.read_csv(holiday_c_path, parse_dates=['Start Time', 'End Time'])
+    messe = pd.read_csv(messe_path, parse_dates=['Start Time', 'End Time'])
 
-    school_break_hessen["Type"] = "school_holiday"
-    holiday_hessen["Type"] = "hessen_holiday"
+    school_break_state["Validity_Type"] = "state"
+    holiday_state["Validity_Type"] = "state"
+    messe["Validity_Type"] = "city"
+    holiday_country["Validity_Type"] = "country"
+
+    school_break_state["Valid_For"] = "Hessen"
+    holiday_state["Valid_For"] = "Hessen"
+    messe["Valid_For"] = "Frankfurt am Main"
+    holiday_country["Valid_For"] = "Deutschland"
+
+    school_break_state["Type"] = "school_holiday"
+    holiday_state["Type"] = "state_holiday"
     messe["Type"] = "messe"
-    holiday_germany_nothessen["Type"] = "germany_holiday"
+    holiday_country["Type"] = "state_holiday"
 
-    school_break_hessen['Start Time'] = school_break_hessen['Start Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
-    holiday_hessen['Start Time'] = holiday_hessen['Start Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
+    school_break_state['Start Time'] = school_break_state['Start Time'].apply(
+        lambda x: x.replace(tzinfo=timezone("UTC")))
+    holiday_state['Start Time'] = holiday_state['Start Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
     messe['Start Time'] = messe['Start Time'].apply(lambda x: pd.to_datetime(x).tz_convert("UTC")) + timedelta(hours=2)
-    holiday_germany_nothessen['Start Time'] = holiday_germany_nothessen['Start Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
+    holiday_country['Start Time'] = holiday_country['Start Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
 
-    school_break_hessen['End Time'] = school_break_hessen['End Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
-    holiday_hessen['End Time'] = holiday_hessen['End Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
+    school_break_state['End Time'] = school_break_state['End Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
+    holiday_state['End Time'] = holiday_state['End Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
     messe['End Time'] = messe['End Time'].apply(lambda x: pd.to_datetime(x).tz_convert("UTC")) + timedelta(hours=2)
-    holiday_germany_nothessen['End Time'] = holiday_germany_nothessen['End Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
+    holiday_country['End Time'] = holiday_country['End Time'].apply(lambda x: x.replace(tzinfo=timezone("UTC")))
 
     result_table = pd.DataFrame()
-    result_table["name"] = pd.concat([school_break_hessen["Summary"],holiday_hessen["Summary"],holiday_germany_nothessen["Summary"],messe["Summary"]])
-    result_table["type"] = pd.concat([school_break_hessen["Type"],holiday_hessen["Type"],holiday_germany_nothessen["Type"],messe["Type"]])
-    result_table["start_date"] = pd.concat([school_break_hessen["Start Time"],holiday_hessen["Start Time"],holiday_germany_nothessen["Start Time"],messe["Start Time"]])
-    result_table["end_date"] = pd.concat([school_break_hessen["End Time"],holiday_hessen["End Time"],holiday_germany_nothessen["End Time"],messe["End Time"]])
-
-    #result_table['start_date'] = result_table['start_date'].apply(lambda x: pd.to_datetime(x).tz_convert("UTC"))
-    #result_table['end_date'] = result_table['end_date'].apply(lambda x: pd.to_datetime(x).tz_localize("UTC"))
+    result_table["name"] = pd.concat(
+        [school_break_state["Summary"], holiday_state["Summary"], holiday_country["Summary"], messe["Summary"]])
+    result_table["type"] = pd.concat(
+        [school_break_state["Type"], holiday_state["Type"], holiday_country["Type"], messe["Type"]])
+    result_table["validity_type"] = pd.concat(
+        [school_break_state["Validity_Type"], holiday_state["Validity_Type"], holiday_country["Validity_Type"],
+         messe["Validity_Type"]])
+    result_table["valid_for"] = pd.concat(
+        [school_break_state["Valid_For"], holiday_state["Valid_For"], holiday_country["Valid_For"],
+         messe["Valid_For"]])
+    result_table["start_date"] = pd.concat(
+        [school_break_state["Start Time"], holiday_state["Start Time"], holiday_country["Start Time"],
+         messe["Start Time"]])
+    result_table["end_date"] = pd.concat(
+        [school_break_state["End Time"], holiday_state["End Time"], holiday_country["End Time"], messe["End Time"]])
 
     return result_table
 
 
 if __name__ == '__main__':
-    dates = parse_dates(messe_path="../../static/raw_data/ferien_hessen_2019.csv",
-                holiday_h_path="../../static/raw_data/ferien_hessen_2019.csv",
-                holiday_g_path="../../static/raw_data/ferien_hessen_2019.csv")
+    '''
+    dates = parse_dates(messe_path="parser_test_data/MesseTermine-2019.csv",
+                        holiday_s_path="parser_test_data/gesetzliche_feiertage_hessen_2019.csv",
+                        holiday_c_path="parser_test_data/gesetzliche_feiertage_deutschland_2019.csv",
+                        school_holiday_path="parser_test_data/ferien_hessen_2019.csv")
+    dates = dates.append(parse_dates(messe_path="parser_test_data/MesseTermine-2020.csv",
+                                holiday_s_path="parser_test_data/gesetzliche_feiertage_hessen_2020.csv",
+                                holiday_c_path="parser_test_data/gesetzliche_feiertage_deutschland_2020.csv",
+                                school_holiday_path="parser_test_data/ferien_hessen_2020.csv"))
+    dates.to_csv("parsed_data/events.csv", index=None)
+    '''
 
-    dates.to_csv("../../static/parsed_data/events.csv", index=None)
+    roads, road_points, points = parseStaticTraffic("raw_data/static_road_data.xml")
+
+    roads.to_csv("parsed_data/roads.csv", index=None, sep=";", na_rep="NaN")
+    road_points.to_csv("parsed_data/road_points.csv", index=None, sep=";", na_rep="NaN")
+    points.to_csv("parsed_data/points.csv", index=None, sep=";", na_rep="NaN")
+

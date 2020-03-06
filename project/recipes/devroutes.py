@@ -1,15 +1,7 @@
-from project import db
-from flask import make_response, jsonify, request, Response, render_template
 from project.predictions import predict_occupancy
 from project.models import TrainData
-from apscheduler.schedulers.background import BackgroundScheduler
-import pandas as pd
-import requests
-from project.model.type_interrogation import *
-from . import recipes_blueprint
 from project.controller.protocol_cotroller import *
 from project.controller.table_controller import *
-from project.controller.request import Request
 from project.celery import celery_wrappers
 
 @recipes_blueprint.route('/predictOccupancy', methods=['POST'])
@@ -125,10 +117,3 @@ def test_celery():
 #     response = request.get_json()
 #     protocol = Protocol(response)
 #     return protocol.send_response_to_server()
-# """
-# Following code is the scheduler that executes the update model function periodically. Currently only skeleton with no
-# function.
-# """
-# sched = BackgroundScheduler(daemon=True)
-# sched.add_job(update_models, 'interval', seconds=100)
-# sched.start()

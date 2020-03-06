@@ -1,0 +1,1019 @@
+road_id;road_name;type;numberOfLanes
+18371006[D30b];Anschlussstelle Frankfurt am Main-Friedberger Land;car;1
+18371007[D40a];Anschlussstelle Frankfurt am Main-Friedberger Land;car;1
+18370006[D12a (KFZ12)];Friedberger Landstraße;car;1
+18372008[D8 (KFZ5)];Friedberger Landstraße;car;1
+18370004[D6 (KFZ6)];Friedberger Landstraße;car;1
+483492732[A661/18FRS-97];Anschlussstelle Frankfurt am Main-Nieder-Eschenbac;car;1
+18370007[D12b (KFZ12)];Friedberger Landstraße;car;1
+17402004[D4 (KFZ2)];Triftstraße;car;1
+18384004[D20b (KFZ2)];Konrad-Adenauer-Straße;car;1
+17407002[D2 (KFZ1)];Adolf-Miersch-Straße;car;1
+18384001[D10a (KFZ1)];Friedberger Landstraße;car;1
+17387003[D3];Mainfeldstraße;car;1
+220172420[T242 FR West];Gerbermühlstraße;car;1
+17382003[D3 (2)];Gutleutstraße;car;1
+17387001[D1];Niederräder Ufer;car;1
+18372004[D4 (KFZ3)];Friedberger Landstraße;car;1
+15430004[D3];Hohenstaufenstraße;car;1
+18367008[D30a (KFZ3)];Rat-Beil-Straße;car;1
+15430007[D6];Hohenstaufenstraße;car;1
+18237006[D6];Borsigallee;car;1
+18383001[D10a (KFZ1)];Konrad-Adenauer-Straße;car;1
+17790002[D2 (KFZ2)];Theodor-Stern-Kai;car;1
+18303015[D15 (5)];Bremer Straße;car;1
+18967003[D3];Schweizer Straße;car;1
+18890014[D8 (KFZ8)];Friedberger Landstraße;car;1
+17398001[D1];Bruchfeldstraße;car;1
+18864009[D4b (KFZ4)];Kurt-Schumacher-Straße;car;1
+18864018[D44 (OV44)];Kurt-Schumacher-Straße;car;1
+18384008[D3c (KFZ3)];Bleichstraße;car;1
+17399008[D8];Rennbahnstraße;car;1
+18887019[D80b (KFZ8)];Eckenheimer Landstraße;car;1
+18179008[D40a (Video)];Walter-Kolb-Straße;car;1
+17390005[D3a];Lyoner Straße;car;1
+17390004[D3];Lyoner Straße;car;1
+18828004[D4 (KFZ2)];Kurt-Schumacher-Straße;car;1
+17404001[D1 (1)];Triftstraße;car;1
+18369012[D8a (KFZ8)];Dortelweiler Straße;car;1
+18436009[D4a];Marbachweg;car;1
+17388001[DET 1 (1)];Niederräder Ufer;car;1
+17451003[D3 (1)];Lyoner Straße;car;1
+17390003[D2];Schwanheimer Ufer;car;1
+17387002[D2];Niederräder Ufer;car;1
+18367005[D3b (KFZ3)];Rat-Beil-Straße;car;1
+18890011[D7a (KFZ7)];Friedberger Landstraße;car;1
+18369010[D5 (KFZ5)];Friedberger Landstraße;car;1
+18864001[D10a (KFZ1)];Battonnstraße;car;1
+18367007[D3d (KFZ3)];Rat-Beil-Straße;car;1
+18864010[D5 (KFZ5)];Battonnstraße;car;1
+18372007[D7 (KFZ4)];Friedberger Landstraße;car;1
+17451002[D2 (1)];Lyoner Straße;car;1
+17399005[D5];Triftstraße;car;1
+17451006[D6 (4)];Lyoner Straße;car;1
+18890006[D20c (KFZ2)];Rothschildallee;car;1
+18371003[D20a];Friedberger Landstraße;car;1
+18179001[D10 (Video)];Sachsenhäuser Ufer;car;1
+18864004[D20b (KFZ2)];Battonnstraße;car;1
+17375031[D7];Stresemannallee;car;1
+18392001[D1 (KFZ1)];Gutleutstraße;car;1
+17388002[DET 2 (2)];Haardtwaldstraße;car;1
+18885007[D7 (KFZ5)];Miquelallee;car;1
+17390002[D1a];Schwanheimer Ufer;car;1
+18457006[D6 (KFZ3)];Walter-Kolb-Straße;car;1
+15436002[D2];Taunusstraße;car;1
+17451004[D4 (2)];Goldsteinstraße;car;1
+17451005[D5 (4)];Lyoner Straße;car;1
+17390006[D4];Schwanheimer Ufer;car;1
+18384015[D7b (KFZ7)];Bleichstraße;car;1
+15433016[D24];Düsseldorfer Straße;car;1
+15433017[D25];Düsseldorfer Straße;car;1
+18828002[D2 (KFZ1)];Kurt-Schumacher-Straße;car;1
+18864002[D10b (KFZ1)];Battonnstraße;car;1
+18864011[D50 (KFZ5)];Battonnstraße;car;1
+17399004[D4];Triftstraße;car;1
+220162580[T258 FR Ost];Gerbermühlstraße;car;1
+17451001[D1 (1)];Lyoner Straße;car;1
+220162570[T257 FR Ost];Gerbermühlstraße;car;1
+17451007[D7 (5)];Goldsteinstraße;car;1
+220172410[T241 FR West];Gerbermühlstraße;car;1
+18178006[D30a];Kurt-Schumacher-Straße;car;1
+18888004[D4 (KFZ2)];Nibelungenallee;car;1
+18384017[D11a (KFZ11)];Bleichstraße;car;1
+18888002[D2 (KFZ1)];Rat-Beil-Straße;car;1
+18384003[D20a (KFZ2)];Konrad-Adenauer-Straße;car;1
+18885009[D9 (KFZ3)];Miquelallee;car;1
+18179006[D30a (Video)];Alte Brücke (Main);car;1
+18367009[D30b (KFZ3)];Rat-Beil-Straße;car;1
+18864012[D7 (KFZ7)];Kurt-Schumacher-Straße;car;1
+18885008[D8 (KFZ5)];Miquelallee;car;1
+19110011[D20b (KFZ2)];Friedberger Landstraße;car;1
+18361006[D4 (KFZ4)];Merianstraße;car;1
+17377003[D3];Gartenstraße;car;1
+17790005[D5 (KFZ5)];Theodor-Stern-Kai;car;1
+18299001[D1 (KFZ1)];Hansaallee;car;1
+18178001[D1];Kurt-Schumacher-Straße;car;1
+18178008[D40a (Video)];Alte Brücke (Main);car;1
+18299006[D6 (KFZ2)];Eschersheimer Landstraße;car;1
+18299005[D5 (KFZ2)];Eschersheimer Landstraße;car;1
+17378005[D5];Stresemannallee;car;1
+18383003[D20a (KFZ2)];Konrad-Adenauer-Straße;car;1
+18384002[D10b (KFZ1)];Friedberger Landstraße;car;1
+18458001[D1 (KFZ1)];Walter-Kolb-Straße;car;1
+17397004[D4];Schwarzwaldstraße;car;1
+18885011[D11 (KFZ6)];Hansaallee;car;1
+18890008[D30b (KFZ3)];Friedberger Landstraße;car;1
+18350010[D10 (KFZ7)];Eschenheimer Tor;car;1
+18299002[D2 (KFZ3)];Eschersheimer Landstraße;car;1
+18299003[D3 (KFZ3)];Eschersheimer Landstraße;car;1
+18384010[D30b (KFZ3)];Bleichstraße;car;1
+17386021[gs21];Im Mainfeld;car;1
+18372002[D2 (KFZ1)];Friedberger Landstraße;car;1
+18885010[D10 (KFZ3)];Miquelallee;car;1
+19110010[D20a (KFZ2)];Friedberger Landstraße;car;1
+18371004[D20b];Friedberger Landstraße;car;1
+18178007[D30b];Kurt-Schumacher-Straße;car;1
+18304025[D25];Eschersheimer Landstraße;car;1
+18458002[D2 (KFZ1)];Walter-Kolb-Straße;car;1
+18302003[D3 (KFZ3)];Eschersheimer Landstraße;car;1
+14029001[D10a (KFZ1)];Eschenheimer Anlage;car;1
+14029003[D10c (KFZ1)];Eschenheimer Anlage;car;1
+15433001[D1];Düsseldorfer Straße;car;1
+18304026[D19Schleif];Adickesallee;car;1
+17402006[D6 (KFZ4)];Triftstraße;car;1
+18178009[D40b (Video)];Alte Brücke (Main);car;1
+17400006[D6];Deutschordenstraße;car;1
+18523003[D10c (KFZ1)];Hanauer Landstraße;car;1
+18885013[D13 (KFZ2)];Hansaallee;car;1
+15436005[D5];Am Hauptbahnhof;car;1
+15436004[D4];Am Hauptbahnhof;car;1
+18887013[D40 (KFZ4)];Eckenheimer Landstraße;car;1
+14029007[D4b (KFZ4)];Petersstraße;car;1
+18300005[D5 (KFZ3)];Wolfsgangstraße;car;1
+14029004[D40a (KFZ4)];Petersstraße;car;1
+14029006[D4a (KFZ4)];Petersstraße;car;1
+14029010[D6 (KFZ6)];Eschenheimer Anlage;car;1
+18889007[D5.3];Nibelungenallee;car;1
+18885012[D12 (KFZ6)];Hansaallee;car;1
+18304024[D24];Eschersheimer Landstraße;car;1
+18523013[D5 (KFZ5)];Hanauer Landstraße;car;1
+18523001[D10a (KFZ1)];Hanauer Landstraße;car;1
+18304015[D15];Eschersheimer Landstraße;car;1
+18178002[D4 (Video)];Alte Brücke (Main);car;1
+18368009[D7a (KFZ7)];Gießener Straße;car;1
+18889006[D5.2];Nibelungenallee;car;1
+18298008[D8];Eschersheimer Landstraße;car;1
+18888005[D5 (KFZ2)];Nibelungenallee;car;1
+18298009[D9];Eschersheimer Landstraße;car;1
+18828003[D3 (KFZ2)];Kurt-Schumacher-Straße;car;1
+18945001[D1 (KFZ1)];Walter-Kolb-Straße;car;1
+18458003[D3 (KFZ2)];Gartenstraße;car;1
+18828006[D6 (KFZ4)];Börneplatz;car;1
+18304027[D20Schleif];Adickesallee;car;1
+18367003[D20 (KFZ2)];Friedberger Landstraße;car;1
+18371005[D30a];Anschlussstelle Frankfurt am Main-Friedberger Land;car;1
+15050002[D10b (KFZ1)];B521;car;1
+15050003[D3 (KFZ3)];Friedberger Landstraße;car;1
+18298006[D6];Eschersheimer Landstraße;car;1
+18889005[D5.1];Nibelungenallee;car;1
+18889004[D4];Nibelungenallee;car;1
+18384018[D11b (KFZ11)];Bleichstraße;car;1
+18298007[D7];Eschersheimer Landstraße;car;1
+18368011[D70a (KFZ7)];Gießener Straße;car;1
+18304028[D21Schleif];Adickesallee;car;1
+18178005[D20];Schöne Aussicht;car;1
+18349003[D3 (1)];Eschersheimer Landstraße;car;1
+18330001[D10a (KFZ1)];Eschenheimer Anlage;car;1
+17371002[D2 (KFZ3)];Isenburger Schneise;car;1
+17370030[D6];Isenburger Schneise;car;1
+18360001[D1 (KFZ1/FU21)];Friedberger Landstraße;car;2
+15426003[D3];Westendstraße;car;1
+18302002[D2 (KFZ1)];Eschersheimer Landstraße;car;1
+17790012[D12 (KFZ7)];Theodor-Stern-Kai;car;1
+18889003[D3];Nibelungenallee;car;1
+15430080[D38];Friedrich-Ebert-Anlage;car;1
+17378011[D11];Schaumainkai (Museumsufer);car;1
+18384014[D7a (KFZ7)];Bleichstraße;car;1
+15430076[D34];Friedrich-Ebert-Anlage;car;1
+18889002[D2];Nibelungenallee;car;1
+15430079[D37];Friedrich-Ebert-Anlage;car;1
+17414001[D1];Stresemannallee;car;1
+17790015[D15 (KFZ9)];Theodor-Stern-Kai;car;1
+17400008[D8];Niederräder Landstraße;car;1
+17386018[gs18];Niederräder Ufer;car;1
+15426004[D4];Westendstraße;car;1
+18349005[D5 (7)];Eschenheimer Anlage;car;1
+15426005[D5];Westendstraße;car;1
+17407005[D5 (KFZ3)];Melibocusstraße;car;1
+17382006[D6 (4)];Stuttgarter Straße;car;1
+17370027[D3];Isenburger Schneise;car;1
+15430020[D19];Friedrich-Ebert-Anlage;car;1
+15429004[D4];Platz der Einheit;car;1
+15430077[D35];Friedrich-Ebert-Anlage;car;1
+15430012[D11];Friedrich-Ebert-Anlage;car;1
+15430078[D36];Friedrich-Ebert-Anlage;car;1
+17372004[D4];Niederräder Landstraße;car;1
+18887006[D20 (KFZ2)];Nibelungenallee;car;1
+15430018[D17];Friedrich-Ebert-Anlage;car;1
+15430019[D18];Friedrich-Ebert-Anlage;car;1
+18349001[D1 (1)];Eschersheimer Landstraße;car;1
+18364004[D20a (KFZ2)];Friedberger Landstraße;car;1
+18309002[D2 (KFZ1)];Eschersheimer Landstraße;car;1
+17371001[D1 (KFZ3)];Isenburger Schneise;car;1
+18349002[D2 (1)];Eschersheimer Landstraße;car;1
+17402002[D2 (KFZ1)];Triftstraße;car;1
+18889001[D1];Nibelungenallee;car;1
+18330005[D2 (KFZ2)];Eckenheimer Landstraße;car;1
+15430069[D27];Friedrich-Ebert-Anlage;car;1
+15430006[D5];Hohenstaufenstraße;car;1
+15430070[D28];Friedrich-Ebert-Anlage;car;1
+15430073[D31];Friedrich-Ebert-Anlage;car;1
+17400009[D9];Niederräder Landstraße;car;1
+18894006[D6 (4)];Heidestraße;car;1
+18895004[D4 (2)];Habsburgerallee;car;1
+15430075[D33];Friedrich-Ebert-Anlage;car;1
+17378008[D8];Schaumainkai (Museumsufer);car;1
+18983004[D4];Taunusstraße;car;1
+18303003[D3 (1)];Eschersheimer Landstraße;car;1
+15430071[D29];Friedrich-Ebert-Anlage;car;1
+17372003[D3];Kennedyallee;car;1
+15431027[D3 (KFZ2)];Erlenstraße;car;1
+15426002[D2];Westendstraße;car;1
+17375036[D12];Kennedyallee;car;1
+15430068[D26];Friedrich-Ebert-Anlage;car;1
+15430011[D10];Friedrich-Ebert-Anlage;car;1
+15430067[D25];Friedrich-Ebert-Anlage;car;1
+15422009[D9];Ludwig-Erhard-Anlage;car;1
+15430072[D30];Friedrich-Ebert-Anlage;car;1
+17371003[D3 (KFZ3)];Isenburger Schneise;car;1
+15430074[D32];Friedrich-Ebert-Anlage;car;1
+18349008[D8 (7)];Eschenheimer Anlage;car;1
+19902030[D6];109768;car;1
+19902026[D2];109764;car;1
+18895003[D3 (3)];Habsburgerallee;car;1
+18349007[D7 (7)];Eschenheimer Anlage;car;1
+19902027[D3];109768;car;1
+18894004[D4 (2)];Höhenstraße;car;1
+18895002[D2 (1)];Höhenstraße;car;1
+18894005[D5 (3)];Heidestraße;car;1
+17790013[D13 (KFZ8)];Theodor-Stern-Kai;car;1
+18888009[D7.3 (KFZ3)];Nibelungenallee;car;1
+18349006[D6 (7)];Eschenheimer Anlage;car;1
+19902028[D4];109768;car;1
+18314002[D20 (KFZ2)];Eschersheimer Landstraße;car;1
+18894002[D2 ( 1)];Höhenstraße;car;1
+17386004[D4 (4)];Mainfeldstraße;car;1
+18368012[D70b (KFZ7)];Gießener Straße;car;1
+19072004[D2a (2)];Gießener Straße;car;1
+18894003[D3 (2)];Höhenstraße;car;1
+18895001[D1 (1)];Höhenstraße;car;1
+17372002[D2];Kennedyallee;car;1
+17372006[D6];Kennedyallee;car;1
+18436002[D10b];Gießener Straße;car;1
+17372005[D5];Niederräder Landstraße;car;1
+15424005[D5];Hamburger Allee;car;1
+18360002[D2 (KFZ2/FU22)];Friedberger Landstraße;car;2
+17370028[D4];Isenburger Schneise;car;1
+17372007[D7];Kennedyallee;car;1
+18349011[D11 (8)];Eschenheimer Tor;car;1
+15436007[D7];Poststraße;car;1
+17399007[D7];Rennbahnstraße;car;1
+18297004[D4 (3)];Eschersheimer Landstraße;car;1
+18887003[D10b (KFZ1)];Adickesallee;car;1
+18303006[D6 (3)];Cronstettenstraße;car;1
+18301004[D4 (3)];Eschersheimer Landstraße;car;1
+18893008[D200];Burgstraße;car;1
+18888006[D6 (KFZ2)];Nibelungenallee;car;1
+18888003[D3 (KFZ2)];Nibelungenallee;car;1
+17790016[D16 (KFZ10)];Theodor-Stern-Kai;car;1
+18370001[D1a (KFZ1)];Friedberger Landstraße;car;1
+17790003[D3 (KFZ2)];Theodor-Stern-Kai;car;1
+15425028[D4];Senckenberganlage;car;1
+19072002[D1a (1)];Gießener Straße;car;1
+18370002[D1b (KFZ1)];Friedberger Landstraße;car;1
+18370003[D3 (KFZ3)];Homburger Landstraße;car;1
+19072003[D2 (2)];Gießener Straße;car;1
+18349010[D10 (6)];Eschenheimer Tor;car;1
+18368008[D60 (KFZ6)];Friedberger Landstraße;car;1
+18890007[D30a (KFZ3)];Friedberger Landstraße;car;1
+17404004[D4 (2)];Adolf-Miersch-Straße;car;1
+17378004[D4];Stresemannallee;car;1
+17402005[D5 (KFZ3)];Schwarzwaldstraße;car;1
+17408003[D3 (KFZ2)];Lyoner Straße;car;1
+18349009[D9 (7)];Eschenheimer Anlage;car;1
+18371008[D40b];Anschlussstelle Frankfurt am Main-Friedberger Land;car;1
+18893004[D4 (2)];Rothschildallee;car;1
+18457007[D7 (KFZ4)];Elisabethenstraße;car;1
+18350020[D20 (KFZ5)];Eschenheimer Tor;car;1
+15429003[D3];Friedrich-Ebert-Anlage;car;1
+19043001[D1 (KFZ1)];Windmühlstraße;car;1
+17400004[D4];Rennbahnstraße;car;1
+17406003[D3 (2)];Adolf-Miersch-Straße;car;1
+18893005[D5 (3)];Burgstraße;car;1
+18391002[D2 (KFZ2)];Windmühlstraße;car;1
+18894001[D1 ( 1)];Höhenstraße;car;1
+18300001[D1 (KFZ1)];Eschersheimer Landstraße;car;1
+18367006[D3c (KFZ3)];Rat-Beil-Straße;car;1
+18303009[D9 (4)];Eschersheimer Landstraße;car;1
+18367004[D3a (KFZ3)];Rat-Beil-Straße;car;1
+17400001[D1];Bruchfeldstraße;car;1
+18302006[D6 (KFZ2)];Holzhausenstraße;car;1
+18303008[D8 (4)];Eschersheimer Landstraße;car;1
+18383007[D5 (KFZ5)];Vilbeler Straße;car;1
+18297007[D7 (2)];Querstraße;car;1
+18897003[D3 (1)];Habsburgerallee;car;1
+17384001[D1];Gartenstraße;car;1
+17382001[D1 (1)];Gutleutstraße;car;1
+18368001[D10a (KFZ1)];Friedberger Landstraße;car;1
+18820001[D1 (KFZ)];Weserstraße;car;1
+18893003[D3 (2)];Rothschildallee;car;1
+18368006[D30 (KFZ3,11)];Gießener Straße;car;1
+15430066[D24];Friedrich-Ebert-Anlage;car;1
+18371012[D42];Friedberger Landstraße;car;1
+18301002[D2 (1)];Eschersheimer Landstraße;car;1
+18309006[D6 (KFZ4)];Fritz-Tarnow-Straße;car;1
+17407003[D3 (KFZ2)];Adolf-Miersch-Straße;car;1
+18897014[D14 (1)];Habsburgerallee;car;1
+18312007[D11];Hügelstraße;car;1
+15430010[D9];Friedrich-Ebert-Anlage;car;1
+19043002[D2 (KFZ3)];Windmühlstraße;car;1
+18312005[D14];Eschersheimer Landstraße;car;1
+17378006[D6];Stresemannallee;car;1
+18303013[D13 (5)];Bremer Straße;car;1
+18897018[D18 (5)];Wittelsbacherallee;car;1
+18893001[D1 (1)];Höhenstraße;car;1
+18983003[D3];Taunusstraße;car;1
+18315009[D9 (KFZ2)];Eschersheimer Landstraße;car;1
+18897019[D19 (5)];Wittelsbacherallee;car;1
+15436001[D1];Taunusstraße;car;1
+18890015[D80 (KFZ8)];Friedberger Landstraße;car;1
+18893002[D2 (1)];Höhenstraße;car;1
+18436001[D10a];Gießener Straße;car;1
+18304002[D2];Miquelallee;car;1
+18457004[D4 (KFZ2)];Walter-Kolb-Straße;car;1
+18304001[D1];Miquelallee;car;1
+18318004[D4 (KFZ)];Am Weißen Stein;car;1
+17378010[D10];Schaumainkai (Museumsufer);car;1
+17404006[D6 (4)];Gerauer Straße;car;1
+18350005[D5 (KFZ6)];Große Eschenheimer Straße;car;1
+18350003[D3 (KFZ10)];Stiftstraße;car;1
+18303004[D4 (2)];Cronstettenstraße;car;1
+17406001[D1 (1)];Adolf-Miersch-Straße;car;1
+18892004[D4 (2)];Rothschildallee;car;1
+18897017[D17 (5)];Wittelsbacherallee;car;1
+18892005[D5 (2)];Rothschildallee;car;1
+18457003[D3 (KFZ2)];Elisabethenstraße;car;1
+18350012[D12 (KFZ8)];Eschenheimer Tor;car;1
+18318003[D3 (KFZ)];Am Weißen Stein;car;1
+17399001[D1];Rennbahnstraße;car;1
+18311002[D2 (KFZ2)];Eschersheimer Landstraße;car;2
+18303001[D1 (6)];Eschersheimer Landstraße;car;1
+17399003[D3];Rennbahnstraße;car;1
+17382009[D9 (3)];Gutleutstraße;car;1
+18318002[D2 (KFZ)];Eschersheimer Landstraße;car;1
+17404002[D2 (1)];Triftstraße;car;1
+18369006[D4a (KFZ4)];Dortelweiler Straße;car;1
+17399002[D2];Rennbahnstraße;car;1
+17377002[D2];Gartenstraße;car;1
+17427001[D1];Deutschordenstraße;car;1
+18350018[D18 (KFZ4)];Eschenheimer Tor;car;1
+17408001[D1 (KFZ1)];Adolf-Miersch-Straße;car;1
+17378007[D7];Stresemannallee;car;1
+18237007[D7];Borsigallee;car;1
+18897015[D15 (4)];Habsburgerallee;car;2
+18892003[D3 (1)];Rothschildallee;car;1
+18897016[D16 (4)];Habsburgerallee;car;1
+17390008[D5a];Schwanheimer Ufer;car;1
+17390007[D5];Schwanheimer Ufer;car;1
+18369011[D50 (KFZ5)];Friedberger Landstraße;car;1
+18309005[D5 (KFZ3)];Fritz-Tarnow-Straße;car;1
+18983005[D5];Taunusstraße;car;1
+17406002[D2 (1)];Adolf-Miersch-Straße;car;1
+17398002[D2];Frauenhofstraße;car;1
+18392002[D2 (KFZ1)];Gutleutstraße;car;1
+15427003[D3];Ludwig-Erhard-Anlage;car;1
+15429001[D1];Friedrich-Ebert-Anlage;car;1
+18361002[D10b (KFZ1)];Friedberger Landstraße;car;1
+15424001[D1];Ludwig-Erhard-Anlage;car;1
+17390001[D1];Schwanheimer Ufer;car;1
+18211001[D10a (KFZ1)];Friedberger Anlage;car;1
+18897012[D12 (1)];Habsburgerallee;car;1
+17392002[D2];Goldsteinstraße;car;1
+18967005[D5];Schweizer Straße;car;1
+18897013[D13 (1)];Habsburgerallee;car;1
+18211003[D10c (KFZ1)];Friedberger Anlage;car;1
+18330004[D10d (KFZ1)];Eschenheimer Anlage;car;1
+18892002[D2 (1)];Rothschildallee;car;1
+18436017[D60a];Gießener Straße;car;1
+17427004[D4];Deutschordenstraße;car;1
+19110001[D10a (KFZ1)];Friedberger Landstraße;car;1
+17378009[D9];Schaumainkai (Museumsufer);car;1
+17400003[D3];Rennbahnstraße;car;1
+18369003[D20c (KFZ2)];Friedberger Landstraße;car;1
+17375037[D13];Kennedyallee;car;1
+17406004[D4 (2)];Adolf-Miersch-Straße;car;1
+18303010[D10 (4)];Eschersheimer Landstraße;car;1
+17370026[D2];Mörfelder Landstraße;car;1
+17394001[D1];Bruchfeldstraße;car;1
+18300004[D4 (KFZ2)];Eschersheimer Landstraße;car;1
+17407001[D1 (KFZ1)];Adolf-Miersch-Straße;car;1
+17790001[D1 (KFZ1)];Theodor-Stern-Kai;car;1
+18897011[D11 (5)];Wittelsbacherallee;car;1
+18888001[D1 (KFZ1)];Rat-Beil-Straße;car;1
+18257002[D10b];Bleichstraße;car;1
+17405003[D3 (2)];Adolf-Miersch-Straße;car;1
+18372011[D11 (KFZ5)];Friedberger Landstraße;car;1
+18257004[D10d];Bleichstraße;car;1
+19902025[D1];109764;car;1
+18983002[D2];Moselstraße;car;1
+17402001[D1 (KFZ1)];Triftstraße;car;1
+19902029[D5];109768;car;1
+17399010[D10];Rennbahnstraße;car;1
+18369014[D80 (KFZ8)];Dortelweiler Straße;car;1
+17399006[D6];Rennbahnstraße;car;1
+17403004[D4 (KFZ2)];Triftstraße;car;1
+18384019[D110 (KFZ11)];Bleichstraße;car;1
+18897009[D9 (5)];Wittelsbacherallee;car;1
+18257006[D4];Alte Gasse;car;1
+15422003[D3];Theodor-Heuss-Allee;car;1
+18897010[D10 (5)];Wittelsbacherallee;car;1
+18257007[D7];Petersstraße;car;1
+15422002[D2];Theodor-Heuss-Allee;car;1
+15422004[D4];Theodor-Heuss-Allee;car;1
+18361003[D20a (KFZ2)];Friedberger Landstraße;car;1
+18369025[D110c (KFZ11)];Friedberger Landstraße;car;1
+18330006[D32 (KFZ2)];Eckenheimer Landstraße;car;1
+18369007[D4b (KFZ4)];Dortelweiler Straße;car;1
+18371009[D6];Friedberger Landstraße;car;1
+18890005[D20b (KFZ2)];Rothschildallee;car;1
+18257012[D11c];Bleichstraße;car;1
+18897007[D7 (4)];Habsburgerallee;car;1
+18897008[D8 (7)];Habsburgerallee;car;1
+18257003[D10c];Bleichstraße;car;1
+18436018[D60b];Gießener Straße;car;1
+18369002[D20b (KFZ2)];Friedberger Landstraße;car;1
+18367002[D10b (KFZ1)];Friedberger Landstraße;car;1
+18369013[D8b (KFZ8)];Dortelweiler Straße;car;1
+17402003[D3 (KFZ2)];Triftstraße;car;1
+17404005[D5 (3)];Gerauer Straße;car;1
+15427004[D4];Ludwig-Erhard-Anlage;car;1
+18301001[D1 (1)];Eschersheimer Landstraße;car;1
+15425027[D3];Ludwig-Erhard-Anlage;car;1
+17370025[D1];Mörfelder Landstraße;car;1
+17405002[D2 (1)];Adolf-Miersch-Straße;car;1
+399126816[A648/13FKO-65];Wiesbadener Straße;car;1
+220101020[MQ1_MH5a: IRD2, HFS, FR Ost];Theodor-Heuss-Allee;car;1
+220201020[MQ1_PLSA6: IRD2, UEFS, FR Ost];Anschlussstelle Frankfurt am Main-Miquelallee;car;1
+220301020[MQ1_R10: IRD2, UEFS, FR Ost];Adickesallee;car;1
+220401010[MQ1_R15: IRD1, HFS, FR Ost];Nibelungenallee;car;1
+18897006[D6 (4)];Habsburgerallee;car;1
+220401020[MQ1_R15: IRD2, UEFS, FR Ost];Nibelungenallee;car;1
+18857033[D33 (KFZ3)];Theodor-Heuss-Allee;car;1
+18857032[D32 (KFZ3)];Theodor-Heuss-Allee;car;1
+18318006[D6 (KFZ)];Kurhessenstraße;car;2
+18257011[D11b];Bleichstraße;car;1
+17790004[D4 (KFZ4)];Theodor-Stern-Kai;car;1
+17394002[D2];Melibocusstraße;car;1
+18391001[D1 (KFZ3)];Moselstraße;car;1
+18318005[D5 (KFZ)];Kurhessenstraße;car;2
+18372020[D20 (KFZ6)];Friedberger Landstraße;car;1
+15430003[D2];Hohenstaufenstraße;car;1
+399126817[A648/13FKO-66];Wiesbadener Straße;car;1
+18257010[D11a];Bleichstraße;car;1
+220101030[MQ1_MH5a: IRD3, UEFS, FR Ost];Theodor-Heuss-Allee;car;1
+18257005[D3];Petersstraße;car;1
+18257001[D10a];Bleichstraße;car;1
+220301010[MQ1_R10: IRD1, HFS, FR Ost];Adickesallee;car;1
+483492713[A661/5FS-105];Anschlussstelle Frankfurt am Main-Friedberger Land;car;1
+220201010[MQ1_PLSA6: IRD1, HFS, FR Ost];Anschlussstelle Frankfurt am Main-Miquelallee;car;1
+399126819[A648/12FKO-2];Wiesbadener Straße;car;1
+399126818[A648/12FKO-1];Wiesbadener Straße;car;1
+220101010[MQ1_MH5a: IRD1, RE_einb.FS, FR Ost];Theodor-Heuss-Allee;car;1
+18457001[D1 (KFZ1)];Dreikönigsstraße;car;1
+17790006[D6 (KFZ4)];Theodor-Stern-Kai;car;1
+18890009[D40a (KFZ4)];Friedberger Landstraße;car;1
+17399009[D9];Rennbahnstraße;car;1
+18297003[D3 (3)];Eschersheimer Landstraße;car;1
+18237004[D4];Borsigallee;car;1
+18237003[D3];Am Hessen-Center;car;1
+18367010[D30c (KFZ3)];Rat-Beil-Straße;car;1
+18361004[D20b (KFZ2)];Friedberger Landstraße;car;1
+483492757[A648/5FKO];Westkreuz Frankfurt;car;1
+483492758[A5/Q66BGS];Westkreuz Frankfurt;car;1
+18367001[D10a (KFZ1)];Friedberger Landstraße;car;1
+18890010[D40b (KFZ4)];Friedberger Landstraße;car;1
+17375035[D11];Kennedyallee;car;1
+17368006[D6];Mörfelder Landstraße;car;1
+18384007[D3b (KFZ3)];Bleichstraße;car;1
+17368001[D1];Flughafenstraße;car;1
+17368003[D3];Mörfelder Landstraße;car;1
+18366001[D10a (KFZ1)];Friedberger Landstraße;car;1
+18890013[D70 (KFZ7)];Friedberger Landstraße;car;1
+17392003[D3];Hahnstraße;car;1
+483492754[A661/12OFN-1];Anschlussstelle Frankfurt am Main-Ost;car;1
+18368007[D6 (KFZ6)];Friedberger Landstraße;car;1
+18887009[D20c (KFZ2)];Adickesallee;car;1
+17368002[D2];Flughafenstraße;car;1
+17368005[D5];Mörfelder Landstraße;car;1
+17368004[D4];Mörfelder Landstraße;car;1
+18890003[D10c (KFZ1)];Nibelungenallee;car;1
+18369023[D110a (KFZ11)];Friedberger Landstraße;car;1
+18864005[D20c (KFZ2)];Battonnstraße;car;1
+18368005[D3 (KFZ3)];Gießener Straße;car;1
+15436017[D17];Karlstraße;car;1
+18369001[D20a (KFZ2)];Friedberger Landstraße;car;1
+15436016[D16];Karlstraße;car;1
+17375030[D6];Kennedyallee;car;1
+18369008[D40a (KFZ4)];Dortelweiler Straße;car;1
+18179003[D20 (Video)];Deutschherrnufer;car;1
+18890017[D140b (KFZ14)];Friedberger Landstraße;car;1
+18371011[D41];Friedberger Landstraße;car;1
+18368003[D20a (KFZ2)];Friedberger Landstraße;car;1
+17389006[gs6];Schwanheimer Ufer;car;1
+19078015[gs15];Niederräder Ufer;car;1
+17389007[gs7];Schwanheimer Ufer;car;1
+19078012[gs12];Niederräder Ufer;car;1
+17389004[gs4];Niederräder Ufer;car;1
+18887012[D30a (VD30a)];Eckenheimer Landstraße;car;1
+18179007[D40 (Video)];Walter-Kolb-Straße;car;1
+19078011[gs11];Niederräder Ufer;car;1
+19078013[gs13];Niederräder Ufer;car;1
+19078010[gs10];Niederräder Ufer;car;1
+17389005[gs5];Niederräder Ufer;car;1
+18179002[D10a (Video)];Sachsenhäuser Ufer;car;1
+18888007[D7.1 (KFZ3)];Nibelungenallee;car;1
+18864006[D40a (KFZ3)];Kurt-Schumacher-Straße;car;1
+15425026[D2];Ludwig-Erhard-Anlage;car;1
+18887011[D30 (VD30)];Eckenheimer Landstraße;car;1
+18371002[D10b];Friedberger Landstraße;car;1
+18297006[D6 (2)];Querstraße;car;1
+19078014[gs14];Niederräder Ufer;car;1
+18369009[D40b (KFZ4)];Dortelweiler Straße;car;1
+18372001[D1 (KFZ1)];Friedberger Landstraße;car;1
+18890001[D10a (KFZ1)];Nibelungenallee;car;1
+17375028[D4];Stresemannallee;car;1
+17375025[D1];Stresemannallee;car;1
+15424004[D4];Ludwig-Erhard-Anlage;car;1
+18366013[D110b (KFZ11)];Friedberger Landstraße;car;1
+18179004[D20a (Video)];Deutschherrnufer;car;1
+18828001[D1 (KFZ1)];Kurt-Schumacher-Straße;car;1
+18179005[D30 (Video)];Alte Brücke (Main);car;1
+18366012[D110a (KFZ11)];Friedberger Landstraße;car;1
+17388004[DET 4 (4)];Niederräder Ufer;car;1
+17375027[D3];Stresemannallee;car;1
+18350014[D14 (KFZ3)];Hochstraße;car;1
+14029002[D10b (KFZ1)];Eschenheimer Anlage;car;1
+18350021[D21 (KFZ5)];Eschenheimer Tor;car;1
+17353003[D3 (1)];Am Oberforsthaus;car;1
+15429015[D15];Friedrich-Ebert-Anlage;car;1
+18350013[D13 (KFZ3)];Hochstraße;car;1
+18350022[D22 (KFZ10)];Stiftstraße;car;1
+15424003[D3];Ludwig-Erhard-Anlage;car;1
+18300002[D2 (KFZ1)];Eschersheimer Landstraße;car;1
+15429016[D16];Friedrich-Ebert-Anlage;car;1
+15427015[D15];Senckenberganlage;car;1
+18350007[D7 (KFZ9)];Große Eschenheimer Straße;car;1
+18384012[D50a (KFZ5)];Friedberger Landstraße;car;1
+18350011[D11 (KFZ8)];Eschenheimer Tor;car;1
+18828005[D5 (KFZ3)];Kurt-Schumacher-Straße;car;1
+18369024[D110b (KFZ11)];Friedberger Landstraße;car;1
+18864007[D40b (KFZ3)];Kurt-Schumacher-Straße;car;1
+18350016[D16 (KFZ3)];Hochstraße;car;1
+18384009[D30a (KFZ3)];Bleichstraße;car;1
+18300003[D3 (KFZ2)];Eschersheimer Landstraße;car;1
+15427014[D14];Senckenberganlage;car;1
+15427006[D6];Ludwig-Erhard-Anlage;car;1
+17353002[D2 (1)];Am Oberforsthaus;car;1
+18458006[D6 (KFZ4)];Walter-Kolb-Straße;car;1
+15430005[D4];Hohenstaufenstraße;car;1
+18349016[D16 (3)];Eschenheimer Anlage;car;1
+18890012[D7b (KFZ7)];Friedberger Landstraße;car;1
+15427010[D10];Senckenberganlage;car;1
+15427011[D11];Senckenberganlage;car;1
+17375034[D10];Kennedyallee;car;1
+483492759[A661/7FN-1];1269;car;1
+15427012[D12];Senckenberganlage;car;1
+17375033[D9];Kennedyallee;car;1
+15427013[D13];Senckenberganlage;car;1
+15429014[D14];Friedrich-Ebert-Anlage;car;1
+17397002[D2];Bruchfeldstraße;car;1
+483492762[A661/7FS-2];1260;car;1
+18346001[D1 (KFZ1)];Schaumainkai (Museumsufer);car;1
+18940002[D2 (KFZ2)];Schaumainkai (Museumsufer);car;1
+18346002[D2 (KFZ1)];Schaumainkai (Museumsufer);car;1
+18940001[D1 (KFZ1)];Schaumainkai (Museumsufer);car;1
+15442004[D1];Baseler Straße;car;1
+19002006[D6 (KFZ4)];Schaumainkai (Museumsufer);car;1
+15442007[D4];Baseler Straße;car;1
+19002002[D2 (KFZ1)];Schweizer Straße;car;1
+19002001[D1 (KFZ1)];Schweizer Straße;car;1
+18885002[D2 (KFZ1)];Miquelallee;car;1
+17386019[gs19];Mainfeldstraße;car;1
+19002007[D7 (KFZ4)];Schaumainkai (Museumsufer);car;1
+18349017[D17 (3)];Eschenheimer Anlage;car;1
+19002003[D3 (KFZ2)];Schaumainkai (Museumsufer);car;1
+18948002[D2 (KFZ4)];Schaumainkai (Museumsufer);car;1
+18864008[D4a (KFZ4)];Kurt-Schumacher-Straße;car;1
+17382008[D8 (3)];Gutleutstraße;car;1
+18349014[D14 (3)];Eschenheimer Anlage;car;1
+15442005[D2];Baseler Straße;car;1
+17375029[D5];Kennedyallee;car;1
+18302001[D1 (KFZ1)];Eschersheimer Landstraße;car;1
+18886005[D5];Bertramstraße;car;1
+15442006[D3];Baseler Straße;car;1
+18886004[D4];Adickesallee;car;1
+18887016[D40c (KFZ4)];Eckenheimer Landstraße;car;1
+15442008[D5];Baseler Straße;car;1
+18349015[D15 (3)];Eschenheimer Anlage;car;1
+18885001[D1 (KFZ1)];Miquelallee;car;1
+18349019[D19 5.1.2];Eschenheimer Tor;car;1
+18178004[D10b (Video)];Mainkai;car;1
+18886003[D3];Adickesallee;car;1
+483492763[A661/7FS-3];1260;car;1
+18312009[D4];Hügelstraße;car;1
+18312008[D10];Hügelstraße;car;1
+18436007[D30];Marbachweg;car;1
+18886002[D2];Adickesallee;car;1
+18457002[D2 (KFZ1)];Walter-Kolb-Straße;car;1
+18312012[D3];Hügelstraße;car;1
+18887020[D80c (KFZ8)];Eckenheimer Landstraße;car;1
+18312011[D6];Eschersheimer Landstraße;car;1
+18864003[D20a (KFZ2)];Battonnstraße;car;1
+18885004[D4 (KFZ4)];Hansaallee;car;1
+18887018[D80a (KFZ8)];Eckenheimer Landstraße;car;1
+483492760[A661/7FN-2];1269;car;1
+18886001[D1];Adickesallee;car;1
+18888008[D7.2 (KFZ3)];Nibelungenallee;car;1
+483492761[A661/7FS-1];1260;car;1
+15436015[D15];Am Hauptbahnhof;car;1
+18349018[D18 5.2.2];Eschenheimer Tor;car;1
+15436013[D13];Am Hauptbahnhof;car;1
+18885003[D3 (KFZ1)];Miquelallee;car;1
+18304005[D5];Eschersheimer Landstraße;car;1
+18457010[D10 (KFZ6)];Walter-Kolb-Straße;car;1
+483492756[A661/3FN-1];Anschlussstelle Frankfurt am Main-Friedberger Land;car;1
+18350015[D15 (KFZ3)];Hochstraße;car;1
+483492755[A661/12OFN-2];Anschlussstelle Frankfurt am Main-Ost;car;1
+483492753[A5/Q71AGS-1];Abfahrt BAB5 Bürostadt Niederrad;car;1
+18384011[D30c (KFZ3)];Bleichstraße;car;1
+18457008[D8 (KFZ4)];Elisabethenstraße;car;1
+18364003[D6 (KFZ6)];Friedberger Landstraße;car;1
+483492764[A661/7FS-4];1260;car;1
+18945005[D5 (KFZ3)];Schifferstraße;car;1
+15422001[D1];Theodor-Heuss-Allee;car;1
+15425030[D6];Senckenberganlage;car;1
+18885006[D6 (KFZ4)];Hansaallee;car;1
+18304003[D3];Eschersheimer Landstraße;car;1
+19113004[D20b (KFZ2)];Gerbermühlstraße;car;1
+19113006[D3a (KFZ3)];Osthafenbrücke;car;1
+19113002[D10b (KFZ1)];Gerbermühlstraße;car;1
+19113003[D20a (KFZ2)];Gerbermühlstraße;car;1
+19113007[D3b (KFZ3)];Osthafenbrücke;car;1
+19113010[D50 (KFZ5)];Gerbermühlstraße;car;1
+19113001[D10a (KFZ1)];Gerbermühlstraße;car;1
+18891015[D201];Rothschildallee;car;1
+18383002[D10b (KFZ1)];Konrad-Adenauer-Straße;car;1
+14029009[D60 (KFZ6)];Eschenheimer Anlage;car;1
+18312014[D1];Eschersheimer Landstraße;car;1
+18312013[D2];Eschersheimer Landstraße;car;1
+14029005[D40b (KFZ4)];Petersstraße;car;1
+18436005[D3];Marbachweg;car;1
+17386020[gs20];Niederräder Ufer;car;1
+18945004[D4 (KFZ2)];Walter-Kolb-Straße;car;1
+18885005[D5 (KFZ4)];Hansaallee;car;1
+18304004[D4];Eschersheimer Landstraße;car;1
+18315008[D8 (KFZ1)];Eschersheimer Landstraße;car;1
+18304008[D8];Adickesallee;car;1
+18828009[D9 (KFZ3)];Kurt-Schumacher-Straße;car;1
+18211002[D10b (KFZ1)];Friedberger Anlage;car;1
+18317001[D1 (KFZ1)];Eschersheimer Landstraße;car;1
+18891014[D200];Rothschildallee;car;1
+18532005[D5 (KFZ4)];Hanauer Landstraße;car;1
+18887017[D80 (KFZ8)];Eckenheimer Landstraße;car;1
+18891013[D13 (6)];Rohrbachstraße;car;1
+17386003[D3 (3)];Niederräder Ufer;car;1
+18317002[D2 (KFZ2)];Eschersheimer Landstraße;car;1
+17386001[D1 (1)];Niederräder Ufer;car;1
+18304009[D9];Eschersheimer Landstraße;car;1
+17386002[D2 (2)];Im Mainfeld;car;1
+18887001[D10 (KFZ1)];Adickesallee;car;1
+18828008[D8 (KFZ4)];Börneplatz;car;1
+18304006[D6];Eschersheimer Landstraße;car;1
+18458004[D4 (KFZ2)];Gartenstraße;car;1
+18458005[D5 (KFZ3)];Oppenheimer Straße;car;1
+18316007[D4b];Am Lindenbaum;car;1
+18316008[D40];Am Lindenbaum;car;1
+18532002[D2 (KFZ2)];Hanauer Landstraße;car;1
+18891012[D12 (6)];Rohrbachstraße;car;1
+18436014[D80];Marbachweg;car;1
+17389002[D2];Schwanheimer Ufer;car;1
+18304007[D7];Adickesallee;car;1
+18178003[D10a (Video)];Mainkai;car;1
+17389001[D1];Niederräder Ufer;car;1
+18945006[D6 (KFZ3)];Schifferstraße;car;1
+18523009[D4b (KFZ4)];Honsellstraße;car;1
+18523011[D40 (KFZ4)];Honsellstraße;car;1
+18523005[D2 (KFZ2)];Hanauer Landstraße;car;1
+18436004[D20b];Gießener Straße;car;1
+18304012[D12];Eschersheimer Landstraße;car;1
+15436014[D14];Am Hauptbahnhof;car;1
+15428002[D2];Friedrich-Ebert-Anlage;car;1
+18310001[D1 (KFZ1)];Eschersheimer Landstraße;car;2
+18302007[D7 (KFZ2)];Holzhausenstraße;car;1
+18316005[D30];Kleinschmidtstraße;car;1
+18891011[D11 (3)];Rohrbachstraße;car;1
+18304011[D11];Eschersheimer Landstraße;car;1
+18361005[D3 (KFZ3)];Scheffelstraße;car;1
+18532004[D4 (KFZ4)];Hanauer Landstraße;car;1
+18316006[D4a];Am Lindenbaum;car;1
+18891010[D10 (3)];Rohrbachstraße;car;1
+18350002[D2 (KFZ1)];Große Eschenheimer Straße;car;1
+15428001[D1];Friedrich-Ebert-Anlage;car;1
+18523008[D4a (KFZ4)];Honsellstraße;car;1
+15428003[D3];Friedrich-Ebert-Anlage;car;1
+18523010[D4c (KFZ4)];Honsellstraße;car;1
+15431025[D1 (KFZ1)];Friedrich-Ebert-Anlage;car;1
+18523006[D3a (KFZ3)];Ferdinand-Happ-Straße;car;1
+18523002[D10b (KFZ1)];Hanauer Landstraße;car;1
+15431026[D2 (KFZ1)];Friedrich-Ebert-Anlage;car;1
+18383004[D20b (KFZ2)];Konrad-Adenauer-Straße;car;1
+15050001[D10a (KFZ1)];B521;car;1
+18523007[D3b (KFZ3)];Ferdinand-Happ-Straße;car;1
+18523004[D9 (KFZ1)];Hanauer Landstraße;car;1
+18364005[D20b (KFZ2)];Friedberger Landstraße;car;1
+18312001[D7];Eschersheimer Landstraße;car;1
+18304010[D10];Eschersheimer Landstraße;car;1
+18312002[D8];Hügelstraße;car;1
+18312003[D9];Hügelstraße;car;1
+18890002[D10b (KFZ1)];Nibelungenallee;car;1
+483492744[A648/11FKO-9];AS Frankfurt a Main Rebstock;car;1
+18309003[D3 (KFZ2)];Eschersheimer Landstraße;car;1
+18316004[D3b];Kleinschmidtstraße;car;1
+483492748[A66/10FRO-3];A66;car;1
+18316003[D3a];Kleinschmidtstraße;car;1
+483492752[A66/14FRW-105];Anschlussstelle Frankfurt am Main-Ludwig-Landmanns;car;1
+18532003[D3 (KFZ3)];Cassellastraße;car;1
+18891009[D9 (8)];Rothschildallee;car;1
+483492734[A661/3OS-105];Anschlussstelle Frankfurt am Main-Ost;car;1
+18891008[D8 (8)];Rothschildallee;car;1
+18897005[D5 (2)];Wittelsbacherallee;car;1
+18887005[D10d (KFZ1)];Adickesallee;car;1
+18304016[D16];Eschersheimer Landstraße;car;1
+18365020[D20a (Video)];Glauburgstraße;car;1
+18365023[D30b (Video)];Friedberger Landstraße;car;1
+17394004[D4];Melibocusstraße;car;1
+17378002[D2];Friedensbrücke;car;1
+17427003[D3];Sandhofstraße;car;1
+18330007[D3 (KFZ3)];Scheffelstraße;car;1
+18897004[D4 (2)];Wittelsbacherallee;car;1
+483492736[A661/23FRS-98];Anschlussstelle Frankfurt am Main-Eckenheim;car;1
+17403002[D2 (KFZ1)];Triftstraße;car;1
+17375032[D8];Stresemannallee;car;1
+483492737[A5/23FKN-65];Abfahrt Messe Frankfurt am Main;car;1
+15427005[D5];Ludwig-Erhard-Anlage;car;1
+18891006[D6 (2)];Rothschildallee;car;1
+17400005[D5];Rennbahnstraße;car;1
+18457005[D5 (KFZ3)];Walter-Kolb-Straße;car;1
+483492741[B44/104FSN-34];Mörfelder Landstraße;car;1
+17397003[D3];Schwarzwaldstraße;car;1
+18384005[D20c (KFZ2)];Konrad-Adenauer-Straße;car;1
+18308001[D1 (KFZ1)];Eschersheimer Landstraße;car;2
+18237008[D8];Borsigallee;car;1
+18897002[D2 (1)];Habsburgerallee;car;1
+483492746[A66/10FRO-1];A66;car;1
+18457009[D9 (KFZ5)];Elisabethenstraße;car;1
+483492738[A5/23FKN-66];Abfahrt Messe Frankfurt am Main;car;1
+18384013[D50b (KFZ5)];Friedberger Landstraße;car;1
+17382007[D7 (4)];Stuttgarter Straße;car;1
+18302005[D5 (KFZ4)];Holzhausenstraße;car;1
+483492751[A66/11FRO-65];Anschlussstelle Frankfurt am Main-Ludwig-Landmanns;car;1
+18891007[D7 (2)];Rothschildallee;car;1
+18365022[D30a (Video)];Friedberger Landstraße;car;1
+18304013[D13];Miquelallee;car;1
+18365018[D10a (Video)];Friedberger Landstraße;car;1
+18304014[D14];Miquelallee;car;1
+18532001[D1 (KFZ2)];Hanauer Landstraße;car;1
+18361001[D10a (KFZ1)];Friedberger Landstraße;car;1
+18368002[D10b (KFZ1)];Friedberger Landstraße;car;1
+17382010[D10 (3)];Gutleutstraße;car;1
+17382004[D4 (2)];Gutleutstraße;car;1
+18897001[D1 (1)];Habsburgerallee;car;1
+18350001[D1 (KFZ1)];Große Eschenheimer Straße;car;1
+18371010[D600];Friedberger Landstraße;car;1
+483492743[A648/10FKO-66];Anschlussstelle Frankfurt am Main-Rebstock;car;1
+15427001[D1];Ludwig-Erhard-Anlage;car;1
+17378003[D3];Stresemannallee;car;1
+18891004[D4 (4)];Rohrbachstraße;car;1
+18383005[D3 (KFZ3)];Vilbeler Straße;car;1
+483492733[A661/2OS-97];Anschlussstelle Frankfurt am Main-Ost;car;1
+18384006[D3a (KFZ3)];Bleichstraße;car;1
+483492745[A648/11FKO-10];AS Frankfurt a Main Rebstock;car;1
+17375026[D2];Stresemannallee;car;1
+18896012[D12 (41)];Habsburgerallee;car;1
+483492742[A648/10FKO-65];Anschlussstelle Frankfurt am Main-Rebstock;car;1
+18887007[D20a (KFZ2)];Nibelungenallee;car;1
+483492749[A66/15FRO-81];Anschlussstelle Frankfurt am Main-Ludwig-Landmanns;car;1
+18311001[D1 (KFZ1)];Eschersheimer Landstraße;car;2
+18303002[D2 (1)];Eschersheimer Landstraße;car;1
+483492750[A66/13FRO-129];Anschlussstelle Frankfurt am Main-Ludwig-Landmanns;car;1
+17408004[D4 (KFZ2)];Lyoner Straße;car;1
+18891005[D5 (2)];Rothschildallee;car;1
+483492747[A66/10FRO-2];A66;car;1
+17380004[D1];Baseler Platz;car;1
+17380006[D3];Baseler Platz;car;1
+17380005[D2];Baseler Platz;car;1
+17380007[D4];Baseler Platz;car;1
+18457011[D11 (KFZ9)];Elisabethenstraße;car;1
+18945002[D2 (KFZ1)];Walter-Kolb-Straße;car;1
+18304023[D23];Eschersheimer Landstraße;car;1
+18365019[D10b (Video)];Friedberger Landstraße;car;1
+18308002[D2 (KFZ2)];Eschersheimer Landstraße;car;2
+18318001[D1 (KFZ)];Eschersheimer Landstraße;car;1
+18304022[D22];Eschersheimer Landstraße;car;1
+17391001[D1];Schwanheimer Ufer;car;1
+17391005[D5];Schwanheimer Ufer;car;1
+17391007[D7];Schwanheimer Ufer;car;1
+15428004[D4];Wilhelm-Hauff-Straße;car;1
+18896010[D10 (5)];Arnsburger Straße;car;1
+17391003[D3];Anschlussstelle Frankfurt am Main-Niederrad;car;1
+18301005[D5 (2)];Fürstenbergerstraße;car;1
+18887010[D20d (KFZ2)];Adickesallee;car;1
+18301003[D3 (3)];Eschersheimer Landstraße;car;1
+18891003[D3 (4)];Rohrbachstraße;car;1
+18297002[D2 (1)];Eschersheimer Landstraße;car;1
+18365025[D40b (Video)];Rohrbachstraße;car;1
+18896011[D11 (2)];Habsburgerallee;car;1
+15436003[D3];Taunusstraße;car;1
+17392004[D4];Goldsteinstraße;car;1
+17391009[D9];Anschlussstelle Frankfurt am Main-Niederrad;car;1
+17391010[D10];Anschlussstelle Frankfurt am Main-Niederrad;car;1
+17391004[D4];Anschlussstelle Frankfurt am Main-Niederrad;car;1
+17391008[D8];Schwanheimer Ufer;car;1
+18365021[D20b (Video)];Glauburgstraße;car;1
+18304018[D18];Eschersheimer Landstraße;car;1
+18365024[D40a (Video)];Rohrbachstraße;car;1
+18309004[D4 (KFZ2)];Eschersheimer Landstraße;car;1
+18310002[D2 (KFZ2)];Eschersheimer Landstraße;car;2
+18309001[D1 (KFZ1)];Eschersheimer Landstraße;car;1
+18314003[D30 (KFZ3)];Am Schwalbenschwanz;car;1
+18237002[D2];Am Hessen-Center;car;1
+18304017[D17];Eschersheimer Landstraße;car;1
+18303014[D14 (5)];Bremer Straße;car;1
+18350019[D19 (KFZ5)];Eschenheimer Tor;car;1
+18896007[D7 (4)];Sandweg;car;2
+17394003[D3];Bruchfeldstraße;car;1
+398331143[A661/31OFN-2];Babenhäuser Landstraße;car;1
+398331142[A661/31OFN-1];Babenhäuser Landstraße;car;1
+483492735[A661/23FRS-97];Anschlussstelle Frankfurt am Main-Eckenheim;car;1
+15425029[D5];Senckenberganlage;car;1
+18891001[D1 (1)];Rohrbachstraße;car;1
+483492739[A5/28FKN-65];Anschlussstelle Frankfurt am Main-Niederrad;car;1
+18317003[D3 (KFZ2)];Eschersheimer Landstraße;car;1
+483492740[B44/104FSN-33];Mörfelder Landstraße;car;1
+18820003[D3 (KFZ)];Weserstraße;car;1
+18887002[D10a (KFZ1)];Adickesallee;car;1
+18896009[D9 (4)];Sandweg;car;2
+17391006[D6];Schwanheimer Ufer;car;1
+17391002[D2];Schwanheimer Ufer;car;1
+17397001[D1];Bruchfeldstraße;car;1
+18891002[D2 (1)];Rohrbachstraße;car;1
+18436011[D8];Marbachweg;car;1
+17388003[DET 3 (3)];Niederräder Ufer;car;1
+18298002[D2];Fichardstraße;car;1
+18887014[D40a (KFZ4)];Eckenheimer Landstraße;car;1
+17375038[D14];Stresemannallee;car;1
+15428005[D5];Wilhelm-Hauff-Straße;car;1
+210501020[MQ1_VBS_WWW4: IRD 2, 1.UEFS, FR Ost];Otto-Fleck-Schneise;car;1
+18945003[D3 (KFZ2)];Walter-Kolb-Straße;car;1
+18366014[D120 (KFZ12)];Friedberger Landstraße;car;1
+18366003[D20 (KFZ2)];Friedberger Landstraße;car;1
+18364002[D2 (KFZ1)];Friedberger Landstraße;car;1
+17398003[D3];Bruchfeldstraße;car;1
+210101010[MQ1_SM3: IRD 1, Re-Einb.FS, FR Ost];Schwanheimer Ufer;car;1
+17407004[D4 (KFZ2)];Adolf-Miersch-Straße;car;1
+210101030[MQ1_SM3: IRD 3, 1. UEFS, FR Ost];Schwanheimer Ufer;car;1
+210501010[MQ1_VBS_WWW4: IRD 1, HFS, FR Ost];Otto-Fleck-Schneise;car;1
+17378001[D1];Friedensbrücke;car;1
+17403001[D1 (KFZ1)];Triftstraße;car;1
+210502010[MQ2_VBS_WWW4: IRD 3, HFS, FR West];Otto-Fleck-Schneise;car;1
+17353004[D4 (2)];Am Oberforsthaus;car;1
+15430016[D15];Friedrich-Ebert-Anlage;car;1
+18896006[D6 (3)];Habsburgerallee;car;1
+17790018[D18 (KFZ11)];Theodor-Stern-Kai;car;1
+17427005[D5];Deutschordenstraße;car;1
+17385004[D4];Niederräder Ufer;car;1
+17385005[D5];Niederräder Ufer;car;1
+15430015[D14];Friedrich-Ebert-Anlage;car;1
+210101020[MQ1_SM3: IRD 2, HFS, FR Ost];Schwanheimer Ufer;car;1
+210302010[MQ2_VBS_WWW1: IRD 2, HFS, FR West];Otto-Fleck-Schneise;car;1
+17377005[D5];Stresemannallee;car;1
+18197002[D4];Straßburger Straße;car;1
+18436012[D40a];Marbachweg;car;1
+17392001[D1];Hahnstraße;car;1
+18303011[D11 (7)];Eschersheimer Landstraße;car;1
+17405001[D1 (1)];Adolf-Miersch-Straße;car;1
+18364001[D1 (KFZ1)];Friedberger Landstraße;car;1
+18298001[D1];Eschersheimer Landstraße;car;1
+15425025[D1];Ludwig-Erhard-Anlage;car;1
+18197004[D5a];Abfahrt BAB5 Bürostadt Niederrad;car;1
+17405004[D4 (2)];Adolf-Miersch-Straße;car;1
+18197003[D5];Abfahrt BAB5 Bürostadt Niederrad;car;1
+18314001[D10 (KFZ1)];Eschersheimer Landstraße;car;1
+18237005[D5];Borsigallee;car;1
+17377004[D4];Gartenstraße;car;1
+15430017[D16];Friedrich-Ebert-Anlage;car;1
+18297005[D5 (2)];Querstraße;car;1
+17377007[D7];Stresemannallee;car;1
+210301010[MQ1_VBS_WWW1: IRD 1, HFS, FR Ost];Otto-Fleck-Schneise;car;1
+17377008[D8];Stresemannallee;car;1
+18896003[D3 (2)];Habsburgerallee;car;1
+17377006[D6];Stresemannallee;car;1
+18197014[D5b];Abfahrt BAB5 Bürostadt Niederrad;car;1
+18350004[D4 (KFZ6)];Große Eschenheimer Straße;car;1
+18896005[D5 (3)];Habsburgerallee;car;1
+17453006[D2d (KFZ2)];Lyoner Straße;car;1
+18436008[D70];Marbachweg;car;1
+17453001[D1a (KFZ1)];Lyoner Straße;car;1
+18372010[D10 (KFZ5)];Friedberger Landstraße;car;1
+17453002[D2 (KFZ2)];Lyoner Straße;car;1
+17453007[D3 (KFZ3)];Straßburger Straße;car;1
+15427002[D2];Ludwig-Erhard-Anlage;car;1
+17453005[D2c (KFZ2)];Lyoner Straße;car;1
+15424002[D2];Ludwig-Erhard-Anlage;car;1
+17453003[D2a (KFZ2)];Lyoner Straße;car;1
+15424007[D7];Hamburger Allee;car;1
+210402010[MQ2_F3: IRD 2, HFS, FR West];Niederräder Landstraße;car;1
+17372008[D8];Kennedyallee;car;1
+210801010[MQ1_KVBS19: IRD 1, HFS, FR Ost];Isenburger Schneise;car;1
+17372009[D9];Kennedyallee;car;1
+210802010[MQ1_KVBS19: IRD 2, HFS, FR West];Isenburger Schneise;car;1
+18983001[D1];Moselstraße;car;1
+15438002[D2 (KFZ4)];Mannheimer Straße;car;1
+210602010[MQ2_MLN: IRD 2, HFS, FR West];Mörfelder Landstraße;car;1
+18896001[D1 (1)];Habsburgerallee;car;1
+17400011[D11];Schwanheimer Straße;car;1
+210401010[MQ1_F3: IRD 1, HFS, FR Ost];Niederräder Landstraße;car;1
+210601010[MQ1_MLN: IRD 1, HFS, FR Ost];Mörfelder Landstraße;car;1
+18896002[D2 (1)];Habsburgerallee;car;1
+18330002[D10b (KFZ1)];Eschenheimer Anlage;car;1
+17453012[D5a (KFZ5)];Lyoner Straße;car;1
+17453010[D3c (KFZ3)];Straßburger Straße;car;1
+17453009[D3b (KFZ3)];Straßburger Straße;car;1
+18366002[D10b (KFZ1)];Friedberger Landstraße;car;1
+17453011[D4a (KFZ4)];Straßburger Straße;car;1
+17453008[D3a (KFZ3)];Straßburger Straße;car;1
+18887008[D20b (KFZ2)];Nibelungenallee;car;1
+17427002[D2];Deutschordenstraße;car;1
+17404003[D3 (2)];Adolf-Miersch-Straße;car;1
+18299004[D4 (KFZ4)];Eschersheimer Landstraße;car;1
+17400002[D2];Bruchfeldstraße;car;1
+17400010[D10];Niederräder Landstraße;car;1
+18820002[D2 (KFZ)];Weserstraße;car;1
+17398004[D4];Frauenhofstraße;car;1
+17790007[D7 (KFZ6)];Uniklinik Frankfurt am Main;car;1
+17400007[D7];Niederräder Landstraße;car;1
+18392004[D4 (KFZ2)];Wiesenhüttenstraße;car;1
+18895007[D200];Höhenstraße;car;1
+17353006[D6 (2)];Am Oberforsthaus;car;1
+17790028[D7a (KFZ6)];Uniklinik Frankfurt am Main;car;1
+18392003[D3 (KFZ2)];Wiesenhüttenstraße;car;1
+17790025[D25 (KFZ15)];Uniklinik Frankfurt am Main;car;1
+17353005[D5 (2)];Am Oberforsthaus;car;1
+483492705[A661/6FS-97];Anschlussstelle Frankfurt am Main-Friedberger Land;car;1
+18372009[D9 (KFZ5)];Friedberger Landstraße;car;1
+19002005[D5 (KFZ3)];Untermainbrücke;car;1
+15430008[D7];Hohenstaufenstraße;car;1
+18316002[D20];Eschersheimer Landstraße;car;1
+17790024[D24 (KFZ12)];Theodor-Stern-Kai;car;1
+18316001[D10];Eschersheimer Landstraße;car;1
+18368004[D20b (KFZ2)];Friedberger Landstraße;car;1
+18895005[D5 (2)];Habsburgerallee;car;1
+18895006[D6 (3)];Habsburgerallee;car;1
+18372005[D5 (KFZ3)];Friedberger Landstraße;car;1
+18372003[D3 (KFZ2)];Friedberger Landstraße;car;1
+18372006[D6 (KFZ4)];Friedberger Landstraße;car;1
+17450003[D3];Holzhecke;car;1
+18350008[D8 (KFZ9)];Große Eschenheimer Straße;car;1
+18350017[D17 (KFZ4)];Eschenheimer Tor;car;1
+18371001[D10a];Friedberger Landstraße;car;1
+18302004[D4 (KFZ3)];Eschersheimer Landstraße;car;1
+18237001[D1];Am Hessen-Center;car;1
+18890004[D20a (KFZ2)];Rothschildallee;car;1
+18890016[D140a (KFZ14)];Friedberger Landstraße;car;1
+18368010[D7b (KFZ7)];Gießener Straße;car;1
+18197001[D3];Straßburger Straße;car;1
+18197015[D5c];Abfahrt BAB5 Bürostadt Niederrad;car;1
+15436008[D8];Am Hauptbahnhof;car;1
+17382002[D2 (1)];Gutleutstraße;car;1
+17353001[D1 (1)];Am Oberforsthaus;car;1
+15429002[D2];Friedrich-Ebert-Anlage;car;1
+15436006[D6];Poststraße;car;1
+17382005[D5 (2)];Gutleutstraße;car;1
+15422008[D8];Ludwig-Erhard-Anlage;car;1
+15426001[D1];Westendstraße;car;1
+15422007[D7];Ludwig-Erhard-Anlage;car;1
+15429005[D5];Platz der Einheit;car;1
+17400012[D12];Schwanheimer Straße;car;1
+15424006[D6];Hamburger Allee;car;1
+15430009[D8];Friedrich-Ebert-Anlage;car;1
+17370029[D5];Isenburger Schneise;car;1
+15438001[D1 (KFZ4)];Mannheimer Straße;car;1
+18384016[D7c (KFZ7)];Bleichstraße;car;1
+18828007[D7 (KFZ4)];Börneplatz;car;1
+18887015[D40b (KFZ4)];Eckenheimer Landstraße;car;1
+17372001[D1];Niederräder Landstraße;car;1
+18436006[D7];Marbachweg;car;1
+18297001[D1 (1)];Eschersheimer Landstraße;car;1
+19110002[D10b (KFZ1)];Friedberger Landstraße;car;1
+18300006[D6 (KFZ3)];Wolfsgangstraße;car;1
+17403003[D3 (KFZ2)];Triftstraße;car;1
+18350006[D6 (KFZ9)];Große Eschenheimer Straße;car;1
+18392005[D5 (KFZ3)];Wiesenhüttenplatz;car;1
+17408002[D2 (KFZ1)];Adolf-Miersch-Straße;car;1
+18346003[D3 (KFZ2)];Schaumainkai (Museumsufer);car;1
+18350009[D9 (KFZ7)];Eschenheimer Tor;car;1
+18948001[D1 (KFZ1)];Schaumainkai (Museumsufer);car;1
+18887004[D10c (KFZ1)];Adickesallee;car;1
+18940003[D3 (KFZ3)];Schaumainkai (Museumsufer);car;1
+18330003[D10c (KFZ1)];Eschenheimer Anlage;car;1
+19002004[D4 (KFZ3)];Untermainbrücke;car;1

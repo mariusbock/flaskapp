@@ -5,7 +5,6 @@ from project import db
 from flask import make_response, jsonify, request, Response, render_template
 from sqlalchemy.types import Integer, Text, String, DateTime
 from project.model.status import *
-from static.test_data import *
 import json
 import numpy
 #class which contains all relevant info(functions and data) regarding tables

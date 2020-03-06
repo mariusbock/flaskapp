@@ -7,4 +7,4 @@ from project.celery import celery
 app = create_app('flask.cfg', celery=celery)
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1')
+    app.run(host="0.0.0.0", debug=True)

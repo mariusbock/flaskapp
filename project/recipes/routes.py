@@ -1,21 +1,16 @@
-from project import db
-from flask import make_response, jsonify, request, Response, render_template
-from project.predictions import predict_occupancy
-from project.models import TrainData
-from apscheduler.schedulers.background import BackgroundScheduler
-import pandas as pd
+
 import requests
-from project.model.type_interrogation import *
-from . import recipes_blueprint
-from project.controller.protocol_cotroller import *
 from project.controller.table_controller import *
-from project.controller.request import Request,get_request_by_id
+from project.controller.request import Request, get_request_by_id
 from project.celery import celery_wrappers
+from project.recipes import recipes_blueprint
 from flask import url_for
+
 
 @recipes_blueprint.route('/')
 def index():
     return render_template("recipes/index.html")
+
 
 @recipes_blueprint.errorhandler(404)
 def not_found(error=None):
@@ -27,6 +22,7 @@ def not_found(error=None):
     resp.status_code = 404
 
     return resp
+
 
 @recipes_blueprint.route('/flask-ping-endpoint', methods=['POST'])
 def processPing():
@@ -42,7 +38,7 @@ def processPing():
         Function that calls and retrieves data from Java Server
         :return: returns response data as JSON
         """
-        response = requests.get('http://127.0.0.1:8080/xtraffic-server/xtraffic-api/flaskresource/get-mock-data')
+        response = requests.get('http://backend:8080/xtraffic-server/xtraffic-api/flaskresource/get-mock-data')
         print("Retrieved: ")
         print(response.json())
         return response.json()
@@ -54,12 +50,22 @@ def processPing():
         retrieved_data = retrievePingMockData()
 
         if received_data.get('teamname') == retrieved_data.get('teamname'):
-            ok_response = {'message': 'true', 'code': 'SUCCESS'}
+            ok_response = {'message': 'true',
+                           'code': 'SUCCESS',
+                           'Access-Control-Allow-Origin': '*',
+                           'Access-Control-Allow-Credentials': '*',
+                           'Access-Control-Allow-Headers':'*',
+                           'Access-Control-Allow-Methods':'*'}
             print("PING REQUEST SUCCESFULL")
             return make_response(jsonify(ok_response), 200)
 
         else:
-            bad_response = {'message': 'false', 'code': 'CONFLICT'}
+            bad_response = {'message': 'false',
+                            'code': 'CONFLICT',
+                            'Access-Control-Allow-Origin': '*',
+                           'Access-Control-Allow-Credentials': '*',
+                           'Access-Control-Allow-Headers':'*',
+                           'Access-Control-Allow-Methods':'*'}
             print("PING REQUEST UNSUCCESFULL")
             return make_response(jsonify(bad_response), 409)
 

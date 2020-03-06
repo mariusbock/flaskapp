@@ -1,13 +1,15 @@
 from flask import Flask
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
-import os
+from flask_cors import CORS
 
 db = SQLAlchemy()
 api = Api()
 
+
 def create_app(config_filename=None, **kwargs):
     app = Flask(__name__, instance_relative_config=True)
+    CORS(app)
     app.config.from_pyfile(config_filename)
     initialize_extensions(app)
     register_blueprints(app)

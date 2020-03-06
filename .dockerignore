@@ -1,0 +1,4 @@
+static
+parsers
+.pytest_cache
+tests
