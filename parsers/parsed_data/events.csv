@@ -1,88 +1,88 @@
-name;start_date;end_date;type;valid_for;validity_type
-Osterferien;2019-04-14 00:00:00+00:00;2019-04-28 00:00:00+00:00;school_holiday;Hessen;state
-Sommerferien;2019-07-01 00:00:00+00:00;2019-08-10 00:00:00+00:00;school_holiday;Hessen;state
-Herbstferien;2019-09-30 00:00:00+00:00;2019-10-13 00:00:00+00:00;school_holiday;Hessen;state
-Weihnachtsferien;2019-12-23 00:00:00+00:00;2020-01-12 00:00:00+00:00;school_holiday;Hessen;state
-Neujahr;2019-01-01 00:00:00+00:00;2019-01-02 00:00:00+00:00;state_holiday;Hessen;state
-Karfreitag;2019-04-19 00:00:00+00:00;2019-04-20 00:00:00+00:00;state_holiday;Hessen;state
-Ostermontag;2019-04-22 00:00:00+00:00;2019-04-23 00:00:00+00:00;state_holiday;Hessen;state
-Tag der Arbeit;2019-05-01 00:00:00+00:00;2019-05-02 00:00:00+00:00;state_holiday;Hessen;state
-Christi Himmelfahrt;2019-05-30 00:00:00+00:00;2019-05-31 00:00:00+00:00;state_holiday;Hessen;state
-Pfingstmontag;2019-06-10 00:00:00+00:00;2019-06-11 00:00:00+00:00;state_holiday;Hessen;state
-Fronleichnam;2019-06-20 00:00:00+00:00;2019-06-21 00:00:00+00:00;state_holiday;Hessen;state
-Tag der Deutschen Einheit;2019-10-03 00:00:00+00:00;2019-10-04 00:00:00+00:00;state_holiday;Hessen;state
-1. Weihnachtstag;2019-12-25 00:00:00+00:00;2019-12-26 00:00:00+00:00;state_holiday;Hessen;state
-2. Weihnachtstag;2019-12-26 00:00:00+00:00;2019-12-27 00:00:00+00:00;state_holiday;Hessen;state
-Neujahr;2019-01-01 00:00:00+00:00;2019-01-02 00:00:00+00:00;state_holiday;Deutschland;country
-Heilige Drei Könige;2019-01-06 00:00:00+00:00;2019-01-07 00:00:00+00:00;state_holiday;Deutschland;country
-Internationaler Frauentag;2019-03-08 00:00:00+00:00;2019-03-09 00:00:00+00:00;state_holiday;Deutschland;country
-Karfreitag;2019-04-19 00:00:00+00:00;2019-04-20 00:00:00+00:00;state_holiday;Deutschland;country
-Ostersonntag;2019-04-21 00:00:00+00:00;2019-04-22 00:00:00+00:00;state_holiday;Deutschland;country
-Ostermontag;2019-04-22 00:00:00+00:00;2019-04-23 00:00:00+00:00;state_holiday;Deutschland;country
-Tag der Arbeit;2019-05-01 00:00:00+00:00;2019-05-02 00:00:00+00:00;state_holiday;Deutschland;country
-Christi Himmelfahrt;2019-05-30 00:00:00+00:00;2019-05-31 00:00:00+00:00;state_holiday;Deutschland;country
-Pfingstsonntag;2019-06-09 00:00:00+00:00;2019-06-10 00:00:00+00:00;state_holiday;Deutschland;country
-Pfingstmontag;2019-06-10 00:00:00+00:00;2019-06-11 00:00:00+00:00;state_holiday;Deutschland;country
-Fronleichnam;2019-06-20 00:00:00+00:00;2019-06-21 00:00:00+00:00;state_holiday;Deutschland;country
-Augsburger Friedensfest;2019-08-08 00:00:00+00:00;2019-08-09 00:00:00+00:00;state_holiday;Deutschland;country
-Mariä Himmelfahrt;2019-08-15 00:00:00+00:00;2019-08-16 00:00:00+00:00;state_holiday;Deutschland;country
-Tag der Deutschen Einheit;2019-10-03 00:00:00+00:00;2019-10-04 00:00:00+00:00;state_holiday;Deutschland;country
-Reformationstag;2019-10-31 00:00:00+00:00;2019-11-01 00:00:00+00:00;state_holiday;Deutschland;country
-Allerheiligen;2019-11-01 00:00:00+00:00;2019-11-02 00:00:00+00:00;state_holiday;Deutschland;country
-Buß- und Bettag;2019-11-20 00:00:00+00:00;2019-11-21 00:00:00+00:00;state_holiday;Deutschland;country
-1. Weihnachtstag;2019-12-25 00:00:00+00:00;2019-12-26 00:00:00+00:00;state_holiday;Deutschland;country
-2. Weihnachtstag;2019-12-26 00:00:00+00:00;2019-12-27 00:00:00+00:00;state_holiday;Deutschland;country
-Heimtextil;2019-01-08 08:00:00+00:00;2019-01-11 17:00:00+00:00;messe;Frankfurt am Main;city
-TrauDich! Frankfurt 2019;2019-01-19 08:00:00+00:00;2019-01-20 17:00:00+00:00;messe;Frankfurt am Main;city
-Christmasworld;2019-01-25 08:00:00+00:00;2019-01-29 17:00:00+00:00;messe;Frankfurt am Main;city
-Ambiente;2019-02-08 08:00:00+00:00;2019-02-12 17:00:00+00:00;messe;Frankfurt am Main;city
-BASTA 2019 in Frankfurt;2019-02-25 08:00:00+00:00;2019-03-01 17:00:00+00:00;messe;Frankfurt am Main;city
-Deutscher Schmerz- und Palliativtag 2019;2019-03-07 08:00:00+00:00;2019-03-09 17:00:00+00:00;messe;Frankfurt am Main;city
-ISH;2019-03-11 08:00:00+00:00;2019-03-15 17:00:00+00:00;messe;Frankfurt am Main;city
-Shisha Messe 2019 in Frankfurt;2019-04-26 07:00:00+00:00;2019-04-28 16:00:00+00:00;messe;Frankfurt am Main;city
-Techtextil 2019 in Frankfurt;2019-05-14 07:00:00+00:00;2019-05-17 16:00:00+00:00;messe;Frankfurt am Main;city
-IMEX 2019;2019-05-21 07:00:00+00:00;2019-05-23 16:00:00+00:00;messe;Frankfurt am Main;city
-VELOFrankfurt 2019;2019-06-15 07:00:00+00:00;2019-06-16 16:00:00+00:00;messe;Frankfurt am Main;city
-INservFM 2019 in Frankfurt;2019-06-25 07:00:00+00:00;2019-06-26 16:00:00+00:00;messe;Frankfurt am Main;city
-Tendence 2019 in Frankfurt;2019-06-29 07:00:00+00:00;2019-07-02 16:00:00+00:00;messe;Frankfurt am Main;city
-JuBi – Die JugendBildungsmesse in Frankfurt am Main;2019-08-24 07:00:00+00:00;2019-08-24 16:00:00+00:00;messe;Frankfurt am Main;city
-Frankfurter Buchmesse;2019-10-16 07:00:00+00:00;2019-10-20 16:00:00+00:00;messe;Frankfurt am Main;city
-Osterferien;2020-04-06 00:00:00+00:00;2020-04-19 00:00:00+00:00;school_holiday;Hessen;state
-Sommerferien;2020-07-06 00:00:00+00:00;2020-08-15 00:00:00+00:00;school_holiday;Hessen;state
-Herbstferien;2020-10-05 00:00:00+00:00;2020-10-18 00:00:00+00:00;school_holiday;Hessen;state
-Weihnachtsferien;2020-12-21 00:00:00+00:00;2021-01-10 00:00:00+00:00;school_holiday;Hessen;state
-Neujahr;2020-01-01 00:00:00+00:00;2020-01-02 00:00:00+00:00;state_holiday;Hessen;state
-Karfreitag;2020-04-10 00:00:00+00:00;2020-04-11 00:00:00+00:00;state_holiday;Hessen;state
-Ostermontag;2020-04-13 00:00:00+00:00;2020-04-14 00:00:00+00:00;state_holiday;Hessen;state
-Tag der Arbeit;2020-05-01 00:00:00+00:00;2020-05-02 00:00:00+00:00;state_holiday;Hessen;state
-Christi Himmelfahrt;2020-05-21 00:00:00+00:00;2020-05-22 00:00:00+00:00;state_holiday;Hessen;state
-Pfingstmontag;2020-06-01 00:00:00+00:00;2020-06-02 00:00:00+00:00;state_holiday;Hessen;state
-Fronleichnam;2020-06-11 00:00:00+00:00;2020-06-12 00:00:00+00:00;state_holiday;Hessen;state
-Tag der Deutschen Einheit;2020-10-03 00:00:00+00:00;2020-10-04 00:00:00+00:00;state_holiday;Hessen;state
-1. Weihnachtstag;2020-12-25 00:00:00+00:00;2020-12-26 00:00:00+00:00;state_holiday;Hessen;state
-2. Weihnachtstag;2020-12-26 00:00:00+00:00;2020-12-27 00:00:00+00:00;state_holiday;Hessen;state
-Neujahr;2020-01-01 00:00:00+00:00;2020-01-02 00:00:00+00:00;state_holiday;Deutschland;country
-Heilige Drei Könige;2020-01-06 00:00:00+00:00;2020-01-07 00:00:00+00:00;state_holiday;Deutschland;country
-Internationaler Frauentag;2020-03-08 00:00:00+00:00;2020-03-09 00:00:00+00:00;state_holiday;Deutschland;country
-Karfreitag;2020-04-10 00:00:00+00:00;2020-04-11 00:00:00+00:00;state_holiday;Deutschland;country
-Ostersonntag;2020-04-12 00:00:00+00:00;2020-04-13 00:00:00+00:00;state_holiday;Deutschland;country
-Ostermontag;2020-04-13 00:00:00+00:00;2020-04-14 00:00:00+00:00;state_holiday;Deutschland;country
-Tag der Arbeit;2020-05-01 00:00:00+00:00;2020-05-02 00:00:00+00:00;state_holiday;Deutschland;country
-Tag der Befreiung;2020-05-08 00:00:00+00:00;2020-05-09 00:00:00+00:00;state_holiday;Deutschland;country
-Christi Himmelfahrt;2020-05-21 00:00:00+00:00;2020-05-22 00:00:00+00:00;state_holiday;Deutschland;country
-Pfingstsonntag;2020-05-31 00:00:00+00:00;2020-06-01 00:00:00+00:00;state_holiday;Deutschland;country
-Pfingstmontag;2020-06-01 00:00:00+00:00;2020-06-02 00:00:00+00:00;state_holiday;Deutschland;country
-Fronleichnam;2020-06-11 00:00:00+00:00;2020-06-12 00:00:00+00:00;state_holiday;Deutschland;country
-Augsburger Friedensfest;2020-08-08 00:00:00+00:00;2020-08-09 00:00:00+00:00;state_holiday;Deutschland;country
-Mariä Himmelfahrt;2020-08-15 00:00:00+00:00;2020-08-16 00:00:00+00:00;state_holiday;Deutschland;country
-Tag der Deutschen Einheit;2020-10-03 00:00:00+00:00;2020-10-04 00:00:00+00:00;state_holiday;Deutschland;country
-Reformationstag;2020-10-31 00:00:00+00:00;2020-11-01 00:00:00+00:00;state_holiday;Deutschland;country
-Allerheiligen;2020-11-01 00:00:00+00:00;2020-11-02 00:00:00+00:00;state_holiday;Deutschland;country
-Buß- und Bettag;2020-11-18 00:00:00+00:00;2020-11-19 00:00:00+00:00;state_holiday;Deutschland;country
-1. Weihnachtstag;2020-12-25 00:00:00+00:00;2020-12-26 00:00:00+00:00;state_holiday;Deutschland;country
-2. Weihnachtstag;2020-12-26 00:00:00+00:00;2020-12-27 00:00:00+00:00;state_holiday;Deutschland;country
-gpec 2020;2020-02-18 08:00:00+00:00;2020-02-20 17:00:00+00:00;messe;Frankfurt am Main;city
-Shisha Messe 2020;2020-04-17 07:00:00+00:00;2020-04-19 16:00:00+00:00;messe;Frankfurt am Main;city
-Optatec 2020;2020-05-12 07:00:00+00:00;2020-05-14 16:00:00+00:00;messe;Frankfurt am Main;city
-VELOFrankfurt 2020;2020-06-20 07:00:00+00:00;2020-06-21 16:00:00+00:00;messe;Frankfurt am Main;city
-Texcare 2020;2020-06-20 07:00:00+00:00;2020-06-24 16:00:00+00:00;messe;Frankfurt am Main;city
+name,type,validity_type,valid_for,start_date,end_date
+Osterferien,school_holiday,state,Hessen,2019-04-14 00:00:00+00:00,2019-04-28 00:00:00+00:00
+Sommerferien,school_holiday,state,Hessen,2019-07-01 00:00:00+00:00,2019-08-10 00:00:00+00:00
+Herbstferien,school_holiday,state,Hessen,2019-09-30 00:00:00+00:00,2019-10-13 00:00:00+00:00
+Weihnachtsferien,school_holiday,state,Hessen,2019-12-23 00:00:00+00:00,2020-01-12 00:00:00+00:00
+Neujahr,state_holiday,state,Hessen,2019-01-01 00:00:00+00:00,2019-01-02 00:00:00+00:00
+Karfreitag,state_holiday,state,Hessen,2019-04-19 00:00:00+00:00,2019-04-20 00:00:00+00:00
+Ostermontag,state_holiday,state,Hessen,2019-04-22 00:00:00+00:00,2019-04-23 00:00:00+00:00
+Tag der Arbeit,state_holiday,state,Hessen,2019-05-01 00:00:00+00:00,2019-05-02 00:00:00+00:00
+Christi Himmelfahrt,state_holiday,state,Hessen,2019-05-30 00:00:00+00:00,2019-05-31 00:00:00+00:00
+Pfingstmontag,state_holiday,state,Hessen,2019-06-10 00:00:00+00:00,2019-06-11 00:00:00+00:00
+Fronleichnam,state_holiday,state,Hessen,2019-06-20 00:00:00+00:00,2019-06-21 00:00:00+00:00
+Tag der Deutschen Einheit,state_holiday,state,Hessen,2019-10-03 00:00:00+00:00,2019-10-04 00:00:00+00:00
+1. Weihnachtstag,state_holiday,state,Hessen,2019-12-25 00:00:00+00:00,2019-12-26 00:00:00+00:00
+2. Weihnachtstag,state_holiday,state,Hessen,2019-12-26 00:00:00+00:00,2019-12-27 00:00:00+00:00
+Neujahr,state_holiday,country,Deutschland,2019-01-01 00:00:00+00:00,2019-01-02 00:00:00+00:00
+Heilige Drei Könige,state_holiday,country,Deutschland,2019-01-06 00:00:00+00:00,2019-01-07 00:00:00+00:00
+Internationaler Frauentag,state_holiday,country,Deutschland,2019-03-08 00:00:00+00:00,2019-03-09 00:00:00+00:00
+Karfreitag,state_holiday,country,Deutschland,2019-04-19 00:00:00+00:00,2019-04-20 00:00:00+00:00
+Ostersonntag,state_holiday,country,Deutschland,2019-04-21 00:00:00+00:00,2019-04-22 00:00:00+00:00
+Ostermontag,state_holiday,country,Deutschland,2019-04-22 00:00:00+00:00,2019-04-23 00:00:00+00:00
+Tag der Arbeit,state_holiday,country,Deutschland,2019-05-01 00:00:00+00:00,2019-05-02 00:00:00+00:00
+Christi Himmelfahrt,state_holiday,country,Deutschland,2019-05-30 00:00:00+00:00,2019-05-31 00:00:00+00:00
+Pfingstsonntag,state_holiday,country,Deutschland,2019-06-09 00:00:00+00:00,2019-06-10 00:00:00+00:00
+Pfingstmontag,state_holiday,country,Deutschland,2019-06-10 00:00:00+00:00,2019-06-11 00:00:00+00:00
+Fronleichnam,state_holiday,country,Deutschland,2019-06-20 00:00:00+00:00,2019-06-21 00:00:00+00:00
+Augsburger Friedensfest,state_holiday,country,Deutschland,2019-08-08 00:00:00+00:00,2019-08-09 00:00:00+00:00
+Mariä Himmelfahrt,state_holiday,country,Deutschland,2019-08-15 00:00:00+00:00,2019-08-16 00:00:00+00:00
+Tag der Deutschen Einheit,state_holiday,country,Deutschland,2019-10-03 00:00:00+00:00,2019-10-04 00:00:00+00:00
+Reformationstag,state_holiday,country,Deutschland,2019-10-31 00:00:00+00:00,2019-11-01 00:00:00+00:00
+Allerheiligen,state_holiday,country,Deutschland,2019-11-01 00:00:00+00:00,2019-11-02 00:00:00+00:00
+Buß- und Bettag,state_holiday,country,Deutschland,2019-11-20 00:00:00+00:00,2019-11-21 00:00:00+00:00
+1. Weihnachtstag,state_holiday,country,Deutschland,2019-12-25 00:00:00+00:00,2019-12-26 00:00:00+00:00
+2. Weihnachtstag,state_holiday,country,Deutschland,2019-12-26 00:00:00+00:00,2019-12-27 00:00:00+00:00
+Heimtextil,messe,city,Frankfurt am Main,2019-01-08 08:00:00+00:00,2019-01-11 17:00:00+00:00
+TrauDich! Frankfurt 2019,messe,city,Frankfurt am Main,2019-01-19 08:00:00+00:00,2019-01-20 17:00:00+00:00
+Christmasworld,messe,city,Frankfurt am Main,2019-01-25 08:00:00+00:00,2019-01-29 17:00:00+00:00
+Ambiente,messe,city,Frankfurt am Main,2019-02-08 08:00:00+00:00,2019-02-12 17:00:00+00:00
+BASTA 2019 in Frankfurt,messe,city,Frankfurt am Main,2019-02-25 08:00:00+00:00,2019-03-01 17:00:00+00:00
+Deutscher Schmerz- und Palliativtag 2019,messe,city,Frankfurt am Main,2019-03-07 08:00:00+00:00,2019-03-09 17:00:00+00:00
+ISH,messe,city,Frankfurt am Main,2019-03-11 08:00:00+00:00,2019-03-15 17:00:00+00:00
+Shisha Messe 2019 in Frankfurt,messe,city,Frankfurt am Main,2019-04-26 07:00:00+00:00,2019-04-28 16:00:00+00:00
+Techtextil 2019 in Frankfurt,messe,city,Frankfurt am Main,2019-05-14 07:00:00+00:00,2019-05-17 16:00:00+00:00
+IMEX 2019,messe,city,Frankfurt am Main,2019-05-21 07:00:00+00:00,2019-05-23 16:00:00+00:00
+VELOFrankfurt 2019,messe,city,Frankfurt am Main,2019-06-15 07:00:00+00:00,2019-06-16 16:00:00+00:00
+INservFM 2019 in Frankfurt,messe,city,Frankfurt am Main,2019-06-25 07:00:00+00:00,2019-06-26 16:00:00+00:00
+Tendence 2019 in Frankfurt,messe,city,Frankfurt am Main,2019-06-29 07:00:00+00:00,2019-07-02 16:00:00+00:00
+JuBi – Die JugendBildungsmesse in Frankfurt am Main,messe,city,Frankfurt am Main,2019-08-24 07:00:00+00:00,2019-08-24 16:00:00+00:00
+Frankfurter Buchmesse,messe,city,Frankfurt am Main,2019-10-16 07:00:00+00:00,2019-10-20 16:00:00+00:00
+Osterferien,school_holiday,state,Hessen,2020-04-06 00:00:00+00:00,2020-04-19 00:00:00+00:00
+Sommerferien,school_holiday,state,Hessen,2020-07-06 00:00:00+00:00,2020-08-15 00:00:00+00:00
+Herbstferien,school_holiday,state,Hessen,2020-10-05 00:00:00+00:00,2020-10-18 00:00:00+00:00
+Weihnachtsferien,school_holiday,state,Hessen,2020-12-21 00:00:00+00:00,2021-01-10 00:00:00+00:00
+Neujahr,state_holiday,state,Hessen,2020-01-01 00:00:00+00:00,2020-01-02 00:00:00+00:00
+Karfreitag,state_holiday,state,Hessen,2020-04-10 00:00:00+00:00,2020-04-11 00:00:00+00:00
+Ostermontag,state_holiday,state,Hessen,2020-04-13 00:00:00+00:00,2020-04-14 00:00:00+00:00
+Tag der Arbeit,state_holiday,state,Hessen,2020-05-01 00:00:00+00:00,2020-05-02 00:00:00+00:00
+Christi Himmelfahrt,state_holiday,state,Hessen,2020-05-21 00:00:00+00:00,2020-05-22 00:00:00+00:00
+Pfingstmontag,state_holiday,state,Hessen,2020-06-01 00:00:00+00:00,2020-06-02 00:00:00+00:00
+Fronleichnam,state_holiday,state,Hessen,2020-06-11 00:00:00+00:00,2020-06-12 00:00:00+00:00
+Tag der Deutschen Einheit,state_holiday,state,Hessen,2020-10-03 00:00:00+00:00,2020-10-04 00:00:00+00:00
+1. Weihnachtstag,state_holiday,state,Hessen,2020-12-25 00:00:00+00:00,2020-12-26 00:00:00+00:00
+2. Weihnachtstag,state_holiday,state,Hessen,2020-12-26 00:00:00+00:00,2020-12-27 00:00:00+00:00
+Neujahr,state_holiday,country,Deutschland,2020-01-01 00:00:00+00:00,2020-01-02 00:00:00+00:00
+Heilige Drei Könige,state_holiday,country,Deutschland,2020-01-06 00:00:00+00:00,2020-01-07 00:00:00+00:00
+Internationaler Frauentag,state_holiday,country,Deutschland,2020-03-08 00:00:00+00:00,2020-03-09 00:00:00+00:00
+Karfreitag,state_holiday,country,Deutschland,2020-04-10 00:00:00+00:00,2020-04-11 00:00:00+00:00
+Ostersonntag,state_holiday,country,Deutschland,2020-04-12 00:00:00+00:00,2020-04-13 00:00:00+00:00
+Ostermontag,state_holiday,country,Deutschland,2020-04-13 00:00:00+00:00,2020-04-14 00:00:00+00:00
+Tag der Arbeit,state_holiday,country,Deutschland,2020-05-01 00:00:00+00:00,2020-05-02 00:00:00+00:00
+Tag der Befreiung,state_holiday,country,Deutschland,2020-05-08 00:00:00+00:00,2020-05-09 00:00:00+00:00
+Christi Himmelfahrt,state_holiday,country,Deutschland,2020-05-21 00:00:00+00:00,2020-05-22 00:00:00+00:00
+Pfingstsonntag,state_holiday,country,Deutschland,2020-05-31 00:00:00+00:00,2020-06-01 00:00:00+00:00
+Pfingstmontag,state_holiday,country,Deutschland,2020-06-01 00:00:00+00:00,2020-06-02 00:00:00+00:00
+Fronleichnam,state_holiday,country,Deutschland,2020-06-11 00:00:00+00:00,2020-06-12 00:00:00+00:00
+Augsburger Friedensfest,state_holiday,country,Deutschland,2020-08-08 00:00:00+00:00,2020-08-09 00:00:00+00:00
+Mariä Himmelfahrt,state_holiday,country,Deutschland,2020-08-15 00:00:00+00:00,2020-08-16 00:00:00+00:00
+Tag der Deutschen Einheit,state_holiday,country,Deutschland,2020-10-03 00:00:00+00:00,2020-10-04 00:00:00+00:00
+Reformationstag,state_holiday,country,Deutschland,2020-10-31 00:00:00+00:00,2020-11-01 00:00:00+00:00
+Allerheiligen,state_holiday,country,Deutschland,2020-11-01 00:00:00+00:00,2020-11-02 00:00:00+00:00
+Buß- und Bettag,state_holiday,country,Deutschland,2020-11-18 00:00:00+00:00,2020-11-19 00:00:00+00:00
+1. Weihnachtstag,state_holiday,country,Deutschland,2020-12-25 00:00:00+00:00,2020-12-26 00:00:00+00:00
+2. Weihnachtstag,state_holiday,country,Deutschland,2020-12-26 00:00:00+00:00,2020-12-27 00:00:00+00:00
+gpec 2020,messe,city,Frankfurt am Main,2020-02-18 08:00:00+00:00,2020-02-20 17:00:00+00:00
+Shisha Messe 2020,messe,city,Frankfurt am Main,2020-04-17 07:00:00+00:00,2020-04-19 16:00:00+00:00
+Optatec 2020,messe,city,Frankfurt am Main,2020-05-12 07:00:00+00:00,2020-05-14 16:00:00+00:00
+VELOFrankfurt 2020,messe,city,Frankfurt am Main,2020-06-20 07:00:00+00:00,2020-06-21 16:00:00+00:00
+Texcare 2020,messe,city,Frankfurt am Main,2020-06-20 07:00:00+00:00,2020-06-24 16:00:00+00:00

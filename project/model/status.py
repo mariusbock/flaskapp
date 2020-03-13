@@ -1,7 +1,7 @@
 from project import db
 
-class Status:
 
+class Status:
     __tablename__ = "status"
     id = db.Column(db.String, primary_key=True)
     occupancy = db.Column(db.Float)

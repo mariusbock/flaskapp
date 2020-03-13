@@ -1,7 +1,7 @@
 from flask import Flask
+from flask_cors import CORS
 from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
 
 db = SQLAlchemy()
 api = Api()
@@ -26,8 +26,6 @@ def initialize_extensions(app):
     db.init_app(app)
     api.init_app(app)
 
-    from project import models
-
 
 def register_blueprints(app):
     # Since the application instance is now created, register each Blueprint
@@ -38,9 +36,9 @@ def register_blueprints(app):
 
 
 def init_celery(celery, app):
-    app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
-    app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
-    #os.environ.setdefault('FORKED_BY_MULTIPROCESSING', '1')
+    app.config['CELERY_BROKER_URL'] = 'redis://redis:6379/0'
+    app.config['CELERY_RESULT_BACKEND'] = 'redis://redis:6379/0'
+    # os.environ.setdefault('FORKED_BY_MULTIPROCESSING', '1')
     celery.conf.update(app.config)
     TaskBase = celery.Task
 

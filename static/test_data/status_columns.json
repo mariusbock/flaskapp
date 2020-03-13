@@ -1,11 +1,14 @@
-[{
-  "id": "1",
-  "occupancy": "0.5",
-  "vehicle_flow": "0.6",
-  "timestamp": "2.12.2019"
-},{
-  "id": "2",
-  "occupancy": "0.7",
-  "vehicle_flow": "0.2",
-  "timestamp": "1.12.2019"
-}]
+[
+  {
+    "id": "1",
+    "occupancy": "0.5",
+    "vehicle_flow": "0.6",
+    "timestamp": "2.12.2019"
+  },
+  {
+    "id": "2",
+    "occupancy": "0.7",
+    "vehicle_flow": "0.2",
+    "timestamp": "1.12.2019"
+  }
+]

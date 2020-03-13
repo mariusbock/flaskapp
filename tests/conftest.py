@@ -1,7 +1,7 @@
 import pytest
-import pandas as pd
+
 from project import create_app, db
-from project.models import TrainData
+from project.model.train_data import TrainData
 
 
 @pytest.fixture(scope='module')

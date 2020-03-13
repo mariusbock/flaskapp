@@ -1,7 +1,7 @@
 """
-This file (test_models.py) contains all unit tests for the models.py file
+This file (test_models.py) contains all unit tests for the saved_models.py file
 """
-from project.protocol import Protocol
+
 
 def test_new_traindata(new_traindata):
     """
@@ -16,5 +16,3 @@ def test_new_traindata(new_traindata):
     assert new_traindata.last_1_occupancy == 6.6667
     assert new_traindata.last_5_occupancy == 14.5
     assert new_traindata.occupancy == 15.5
-
-

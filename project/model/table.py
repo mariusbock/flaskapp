@@ -7,6 +7,6 @@ class Table:
         self.type = type
 
     def show(self):
-        print("Table : " + type + "contains the following fields: "+ "\n")
+        print("Table : " + type + "contains the following fields: " + "\n")
         for fields in object.fields:
             print(fields + ", ")

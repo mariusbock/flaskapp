@@ -1,14 +1,13 @@
-from sqlalchemy import MetaData, Table, Column, Integer, String
+from sqlalchemy import MetaData, Table, Column, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 from project import db
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-import pandas as pd
 
 Base = declarative_base()
 
 
-class Request(Base):
+class TrainRequest(Base):
     __tablename__ = "requests"
     request_id = db.Column(db.String, primary_key=True)
     client_id = db.Column(db.String)
@@ -25,15 +24,17 @@ class Request(Base):
         save_request_to_db(self)
 
     def serialize(self):
-        return {"request_id":self.request_id,
-                "client_id":self.client_id,
-                "request_status":self.request_status}
+        return {"request_id": self.request_id,
+                "client_id": self.client_id,
+                "request_status": self.request_status}
+
 
 def save_request_to_db(request):
     Session = sessionmaker(bind=db.engine)
     session = Session()
     session.add(request)
     session.commit()
+
 
 def get_request_by_id(request_id):
     if not db.engine.dialect.has_table(db.engine, "requests"):  # If table don't exist, Create.
@@ -46,10 +47,10 @@ def get_request_by_id(request_id):
               Column('raw_data', String),
               Column('meta_data', String),
               Column('request_status', String))
-              # Implement the creation
+        # Implement the creation
         metadata.create_all()
 
     Session = sessionmaker(bind=db.engine)
     session = Session()
-    result = session.query(Request).first()
+    result = session.query(TrainRequest).first()
     return result

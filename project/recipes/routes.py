@@ -1,10 +1,9 @@
-
 import requests
-from project.controller.table_controller import *
-from project.controller.request import Request, get_request_by_id
+from flask import url_for, render_template, request, jsonify, make_response
 from project.celery import celery_wrappers
+from project.controller.request import get_request_by_id
+from project.controller.table_controller import *
 from project.recipes import recipes_blueprint
-from flask import url_for
 
 
 @recipes_blueprint.route('/')
@@ -54,8 +53,8 @@ def processPing():
                            'code': 'SUCCESS',
                            'Access-Control-Allow-Origin': '*',
                            'Access-Control-Allow-Credentials': '*',
-                           'Access-Control-Allow-Headers':'*',
-                           'Access-Control-Allow-Methods':'*'}
+                           'Access-Control-Allow-Headers': '*',
+                           'Access-Control-Allow-Methods': '*'}
             print("PING REQUEST SUCCESFULL")
             return make_response(jsonify(ok_response), 200)
 
@@ -63,9 +62,9 @@ def processPing():
             bad_response = {'message': 'false',
                             'code': 'CONFLICT',
                             'Access-Control-Allow-Origin': '*',
-                           'Access-Control-Allow-Credentials': '*',
-                           'Access-Control-Allow-Headers':'*',
-                           'Access-Control-Allow-Methods':'*'}
+                            'Access-Control-Allow-Credentials': '*',
+                            'Access-Control-Allow-Headers': '*',
+                            'Access-Control-Allow-Methods': '*'}
             print("PING REQUEST UNSUCCESFULL")
             return make_response(jsonify(bad_response), 409)
 
@@ -73,46 +72,31 @@ def processPing():
         print(e)
 
 
-# def retrievePingMockData():
-#     """
-#     Function that calls and retrieves data from Java Server
-#     :return: returns response data as JSON
-#     """
-#     response = requests.get('http://127.0.0.1:8080/xtraffic-server/xtraffic-api/flaskresource/get-mock-data')
-#     print("Retrieved: ")
-#     print(response.json())
-#     return response.json()
-
-@recipes_blueprint.route('/prediction-request', methods=['POST'])
-def process_request():
-    print("PROCESS REQUEST FROM JAVA SERVER:\n")
+@recipes_blueprint.route('/train-request', methods=['POST'])
+def process_train_request():
+    print("PROCESS TRAIN REQUEST FROM JAVA SERVER:\n")
     request_json = request.get_json()
-    request_id = request_json.get("requestId")
-    client_id = request_json.get("clientId")
-    data = request_json.get("data")
-    meta_data = request_json.get("metadata")
+    celery_wrappers.process_train_request(request_json)
 
-    new_request = Request(request_id, client_id, data, meta_data)
-    return make_response(jsonify(new_request.serialize()), 200)
+    return make_response("Success", 200)
+    #return get_request_status(request_json.get("requestId"))
+
 
 @recipes_blueprint.route('/check-request-status/<request_id>', methods=['GET'])
 def get_request_status(request_id):
     request_entity = get_request_by_id(request_id)
-    mock_response = {}
-    mock_response['requestId'] = request_id
-    mock_response['clientId'] = "mock client id"
-    mock_response['status'] = "mock status"
+    mock_response = {'requestId': request_id,
+                     'clientId': "mock client id",
+                     'status': "mock status"}
 
-    response = {}
-    response['requestId'] = request_entity.request_id
-    response['clientId'] = request_entity.client_id
-    response['status'] = request_entity.request_status
+    response = {'requestId': request_entity.request_id,
+                'clientId': request_entity.client_id,
+                'status': request_entity.request_status}
 
     json_data = json.dumps(response)
 
-
-
     return make_response(json_data, 200)
+
 
 @recipes_blueprint.route('/test-celery', methods=['GET'])
 def test_celery():
@@ -126,8 +110,8 @@ def test_celery():
 def longtask():
     print("TEST CELERY COMPLEX")
     task = celery_wrappers.test_complex_bg_job.apply_async(thread=False)
-    return jsonify({'taskid':task.id}), 202, {'Location': url_for('recipes.taskstatus',
-                                                  task_id=task.id)}
+    return jsonify({'taskid': task.id}), 202, {'Location': url_for('recipes.taskstatus',
+                                                                   task_id=task.id)}
 
 
 @recipes_blueprint.route('/status/<task_id>')

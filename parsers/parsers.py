@@ -1,12 +1,24 @@
-import pandas as pd
 import xml.etree.ElementTree as et
-from pytz import timezone
 from datetime import timedelta
+
+import pandas as pd
+from geopy.extra.rate_limiter import RateLimiter
+from geopy.geocoders import Nominatim
+from pytz import timezone
 
 pd.set_option('display.expand_frame_repr', False)
 
+"""
+This file contains all parsers used to bring the data in the data schema format.
+"""
+
 
 def parseDynamicTraffic(filename):
+    """
+    Function that parses the dynamic traffic data from the MDM portal and transforms into TrafficOccupancy table
+    :param filename: path to dynamic data (XML)
+    :return: pandas dataframe containing TrafficOccupancy data
+    """
     xtree = et.parse(filename)
     root = xtree.getroot()
 
@@ -26,6 +38,12 @@ def parseDynamicTraffic(filename):
 
 
 def parseStaticTraffic(filename):
+    """
+    Function that parses the static traffic data from the MDM portal and transforms into Roads, Points and Road_Points
+    table
+    :param filename: path to static data (XML)
+    :return: three pandas dataframes for respective tables
+    """
     xtree = et.parse(filename)
     root = xtree.getroot()
 
@@ -54,8 +72,9 @@ def parseStaticTraffic(filename):
         start_longitude = start_point.find(
             '{http://datex2.eu/schema/2/2_0}pointCoordinates/{http://datex2.eu/schema/2/2_0}longitude').text
 
-        points = points.append({'road_id': road_id, 'point_id': start_id, 'latitude': start_latitude, 'longitude': start_longitude},
-                               ignore_index=True)
+        points = points.append(
+            {'road_id': road_id, 'point_id': start_id, 'latitude': start_latitude, 'longitude': start_longitude},
+            ignore_index=True)
         road_points = road_points.append({'road_id': road_id, 'point_id': start_id}, ignore_index=True)
 
         for loc_elem in location_elem.iter('{http://datex2.eu/schema/2/2_0}intermediatePointOnLinearElement'):
@@ -66,8 +85,9 @@ def parseStaticTraffic(filename):
             longitude = loc_elem.find(
                 '{http://datex2.eu/schema/2/2_0}referent/{http://datex2.eu/schema/2/2_0}pointCoordinates/{http://datex2.eu/schema/2/2_0}longitude').text
 
-            points = points.append({'road_id': road_id, 'point_id': point_id, 'latitude': latitude, 'longitude': longitude},
-                                   ignore_index=True)
+            points = points.append(
+                {'road_id': road_id, 'point_id': point_id, 'latitude': latitude, 'longitude': longitude},
+                ignore_index=True)
             road_points = road_points.append({'road_id': road_id, 'point_id': point_id}, ignore_index=True)
 
         end_id = end_point.find(
@@ -77,24 +97,23 @@ def parseStaticTraffic(filename):
         end_longitude = end_point.find(
             '{http://datex2.eu/schema/2/2_0}pointCoordinates/{http://datex2.eu/schema/2/2_0}longitude').text
 
-        points = points.append({'road_id': road_id, 'point_id': end_id, 'latitude': end_latitude, 'longitude': end_longitude},
-                               ignore_index=True)
+        points = points.append(
+            {'road_id': road_id, 'point_id': end_id, 'latitude': end_latitude, 'longitude': end_longitude},
+            ignore_index=True)
         road_points = road_points.append({'road_id': road_id, 'point_id': end_id}, ignore_index=True)
 
     return roads, road_points, points
 
 
-def parse_roaddata():
-    (roads, road_points, points) = parseStaticTraffic("../../static/raw_data/staticTraffic.xml")
-    road_status = parseDynamicTraffic("../../static/raw_data/dynamicTraffic.xml")
-
-    roads.to_json("../../static/parsed_data/roads.json", orient='records')
-    road_points.to_json("../../static/parsed_data/road_points.json", orient='records')
-    points.to_json("../../static/parsed_data/points.json", orient='records')
-    road_status.to_json("../../static/parsed_data/road_status.json", orient='records')
-
-
 def parse_dates(messe_path, holiday_s_path, holiday_c_path, school_holiday_path):
+    """
+    Parses event data (CSVs) to one dataframe (Events table)
+    :param messe_path: path to messe dates file (for now just in Frankfurt)
+    :param holiday_s_path: path to state holiday dates file (for now just Hessen)
+    :param holiday_c_path: path to nationwide holiday dates file
+    :param school_holiday_path: path to school holiday dates file (for now just Hessen)
+    :return:
+    """
     school_break_state = pd.read_csv(school_holiday_path, parse_dates=['Start Time', 'End Time'])
     holiday_state = pd.read_csv(holiday_s_path, parse_dates=['Start Time', 'End Time'])
     holiday_country = pd.read_csv(holiday_c_path, parse_dates=['Start Time', 'End Time'])
@@ -146,22 +165,50 @@ def parse_dates(messe_path, holiday_s_path, holiday_c_path, school_holiday_path)
     return result_table
 
 
+def get_coord_info(data):
+    """
+    Funtion that retrieves geo metadata from point data (long and lat coordinate).
+    :param data: pandas dataframe containing latitude & longitude column (e.g. Points)
+    :return: pandas dataframe with geo metadata columns appended
+    """
+    geolocator = Nominatim(timeout=10)
+    geocode = RateLimiter(geolocator.reverse, min_delay_seconds=1)
+    for index, row in data.iterrows():
+        coord_pair = str(row['latitude']) + ", " + str(row['longitude'])
+        location = geocode(coord_pair).raw
+        data.at[index, 'point_id'] = row['point_id']
+        data.at[index, 'road'] = location.get('address').get('road')
+        data.at[index, 'suburb'] = location.get('address').get('suburb')
+        data.at[index, 'city_district'] = location.get('address').get('city_district')
+        data.at[index, 'city'] = location.get('address').get('city')
+        data.at[index, 'state_district'] = location.get('address').get('state_district')
+        data.at[index, 'state'] = location.get('address').get('state')
+        data.at[index, 'postcode'] = location.get('address').get('postcode')
+        data.at[index, 'country'] = location.get('address').get('country')
+    return data
+
+
 if __name__ == '__main__':
-    '''
-    dates = parse_dates(messe_path="parser_test_data/MesseTermine-2019.csv",
-                        holiday_s_path="parser_test_data/gesetzliche_feiertage_hessen_2019.csv",
-                        holiday_c_path="parser_test_data/gesetzliche_feiertage_deutschland_2019.csv",
-                        school_holiday_path="parser_test_data/ferien_hessen_2019.csv")
-    dates = dates.append(parse_dates(messe_path="parser_test_data/MesseTermine-2020.csv",
-                                holiday_s_path="parser_test_data/gesetzliche_feiertage_hessen_2020.csv",
-                                holiday_c_path="parser_test_data/gesetzliche_feiertage_deutschland_2020.csv",
-                                school_holiday_path="parser_test_data/ferien_hessen_2020.csv"))
-    dates.to_csv("parsed_data/events.csv", index=None)
-    '''
+    # Parse event data and save to CSV
+    events = parse_dates(messe_path="raw_data/MesseTermine-2019.csv",
+                         holiday_s_path="raw_data/gesetzliche_feiertage_hessen_2019.csv",
+                         holiday_c_path="raw_data/gesetzliche_feiertage_deutschland_2019.csv",
+                         school_holiday_path="raw_data/ferien_hessen_2019.csv")
+    events = events.append(parse_dates(messe_path="raw_data/MesseTermine-2020.csv",
+                                       holiday_s_path="raw_data/gesetzliche_feiertage_hessen_2020.csv",
+                                       holiday_c_path="raw_data/gesetzliche_feiertage_deutschland_2020.csv",
+                                       school_holiday_path="raw_data/ferien_hessen_2020.csv"))
+    events.to_csv("parsed_data/events.csv", index=None)
 
+    # Parse static & dynamic traffic data and save to CSV
     roads, road_points, points = parseStaticTraffic("raw_data/static_road_data.xml")
+    traffic_occupancy = parseDynamicTraffic("raw_data/traffic_dynamic.xml")
 
-    roads.to_csv("parsed_data/roads.csv", index=None, sep=";", na_rep="NaN")
-    road_points.to_csv("parsed_data/road_points.csv", index=None, sep=";", na_rep="NaN")
-    points.to_csv("parsed_data/points.csv", index=None, sep=";", na_rep="NaN")
+    roads.to_csv("parsed_data/roads.csv", index=None, sep=";")
+    road_points.to_csv("parsed_data/road_points.csv", index=None, sep=";")
+    points.to_csv("parsed_data/points.csv", index=None, sep=";")
+    traffic_occupancy.to_csv("parsed_data/traffic_occupancy.csv", index=None, sep=";")
 
+    ## Uncomment this section if you want point_info data to be retrieved (Note: this will take some time!)
+    # points_info = get_coord_info(points)
+    # points_info.to_csv('points_info.csv', sep=";")

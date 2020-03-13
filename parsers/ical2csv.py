@@ -1,11 +1,16 @@
-import sys
-import os.path
-from icalendar import Calendar
 import csv
+import os.path
+import sys
 
+from icalendar import Calendar
+
+"""
+This file was used to parse the ics data to csv. Source: https://github.com/erikcox/ical2csv
+"""
 filename = sys.argv[1]
 file_extension = str(sys.argv[1])[-3:]
 headers = ('Summary', 'UID', 'Description', 'Location', 'Start Time', 'End Time', 'URL')
+
 
 class CalendarEvent:
     """Calendar event class"""
@@ -20,6 +25,7 @@ class CalendarEvent:
     def __init__(self, name):
         self.name = name
 
+
 events = []
 
 
@@ -32,7 +38,7 @@ def open_cal():
 
             for component in gcal.walk():
                 event = CalendarEvent("event")
-                if component.get('SUMMARY') == None: continue #skip blank items
+                if component.get('SUMMARY') == None: continue  # skip blank items
                 event.summary = component.get('SUMMARY')
                 event.uid = component.get('UID')
                 event.description = component.get('DESCRIPTION')
@@ -41,7 +47,6 @@ def open_cal():
                     event.start = component.get('dtstart').dt
                 if hasattr(component.get('dtend'), 'dt'):
                     event.end = component.get('dtend').dt
-
 
                 event.url = component.get('URL')
                 events.append(event)
@@ -63,7 +68,8 @@ def csv_write(icsfile):
             wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
             wr.writerow(headers)
             for event in events:
-                values = (event.summary, event.uid, event.description, event.location, event.start, event.end, event.url)
+                values = (
+                    event.summary, event.uid, event.description, event.location, event.start, event.end, event.url)
                 wr.writerow(values)
             print("Wrote to ", csvfile, "\n")
     except IOError:
@@ -81,6 +87,7 @@ def debug_event(class_name):
     print(class_name.end)
     print(class_name.url, "\n")
 
+
 open_cal()
 csv_write(filename)
-#debug_event(event)
+# debug_event(event)

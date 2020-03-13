@@ -1,8 +1,9 @@
-from project.predictions import predict_occupancy
-from project.models import TrainData
+from project.celery import celery_wrappers
 from project.controller.protocol_cotroller import *
 from project.controller.table_controller import *
-from project.celery import celery_wrappers
+from project.machine_learning.model_prediction import predict_occupancy
+from project.model.train_data import TrainData
+
 
 @recipes_blueprint.route('/predictOccupancy', methods=['POST'])
 def api_predict_occupancy():
@@ -27,6 +28,7 @@ def api_predict_occupancy():
     else:
         return "415 Unsupported Media Type"
 
+
 @recipes_blueprint.route('/saveToDB', methods=['POST'])
 def save_to_db():
     if request.headers['Content-Type'] == 'application/json':
@@ -39,6 +41,7 @@ def save_to_db():
         return "All train data saved to DB."
     else:
         return "415 Unsupported Media Type"
+
 
 @recipes_blueprint.route('/getDataFromDB', methods=['GET'])
 def get_data_from_db():
@@ -57,6 +60,7 @@ def get_data_from_db():
 
     return resp
 
+
 @recipes_blueprint.route('/echo', methods=['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 def api_echo():
     if request.method == 'GET':
@@ -74,15 +78,17 @@ def api_echo():
     elif request.method == 'DELETE':
         return "ECHO: DELETE"
 
+
 @recipes_blueprint.route('/grab-missing-data', methods=['POST'])
 def grab_missing_data():
     print("PROCESS REQUEST FROM JAVA SERVER:\n")
     protocolController = ProtocolController()
     return protocolController.grab_missing_data()
 
+
 @recipes_blueprint.route('/save-table', methods=['POST'])
 def save_table_to_db():
-    data = pd.DataFrame({"type":[request.json]})
+    data = pd.DataFrame({"type": [request.json]})
     tableController = TableController()
     if request.headers['Content-Type'] == 'application/json':
         tableController.save_to_db(data)
@@ -90,10 +96,12 @@ def save_table_to_db():
     else:
         return "415 Unsupported Media Type"
 
+
 @recipes_blueprint.route('/get-table', methods=['GET'])
 def get_table_from_db():
     tableController = TableController()
     return tableController.get_data_from_db()
+
 
 @recipes_blueprint.route('/insert-values', methods=['POST'])
 def insert_into_table():
@@ -104,6 +112,7 @@ def insert_into_table():
         return "Values inserted into the table."
     else:
         return "415 Unsupported Media Type"
+
 
 @recipes_blueprint.route('/test-celery', methods=['GET'])
 def test_celery():
