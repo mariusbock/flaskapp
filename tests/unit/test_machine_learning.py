@@ -1,10 +1,13 @@
 """
-This file (test_predictions.py) contains all unit tests for the model_prediction.py file
+This file (test_machine_learning.py) contains all unit tests for the model_prediction.py file
 """
 import os
 from pathlib import Path
-
 from project.machine_learning.model_prediction import *
+from project.machine_learning.model_training import *
+from project.machine_learning.preprocessing import *
+from project.machine_learning.feature_engineering import *
+
 
 
 def test_preprocessing():

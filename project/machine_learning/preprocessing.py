@@ -12,7 +12,7 @@ def start_of_year_time_minutes(dt):
 def label_encode(dataframe):
     # TODO need some sort of list of all IDs (maybe Encoding file) -> First need to clarify issues with Christian
     # roads = pd.read_json("static/parsed_data/roads.json", orient="records")
-    print(dataframe.dtypes)
+    print(dataframe.dtypes, flush=True)
     for i in dataframe.columns.values:
         if dataframe[i].dtype == object or "datetime" in str(dataframe[i].dtype):
             le = LabelEncoder()

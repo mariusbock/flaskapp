@@ -1,7 +1,6 @@
 import numpy as np
 from lightgbm import LGBMRegressor
 from sklearn.ensemble import RandomForestRegressor
-from sklearn.externals import joblib
 from sklearn.metrics import mean_squared_log_error
 
 
@@ -15,8 +14,8 @@ def train_time_series_model(data, algorithm, entity_columns, timestamp_column, t
     # test_request = valid[valid.timestamp == valid['timestamp'].max()].drop(["cars", "occupancy"], axis=1)
     # print(test_request)
     # test_request.to_json("test_request.json", orient="records")
-    print(train)
-    print(valid)
+    print(train, flush=True)
+    print(valid, flush=True)
     X_train = train.drop(target, axis=1)
     y_train = train[target]
     X_valid = valid.drop(target, axis=1)
@@ -34,10 +33,7 @@ def train_time_series_model(data, algorithm, entity_columns, timestamp_column, t
     prediction = np.expm1(model.predict(X_valid))
 
     error = rmsle(y_valid, prediction)
-    print('Error %.5f' % error)
-
-    # Save the model as a pickle in a file
-    # joblib.dump(model, filepath)
+    print('Error %.5f' % error, flush=True)
 
     return model
 

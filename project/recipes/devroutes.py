@@ -1,6 +1,5 @@
 from project.celery import celery_wrappers
-from project.controller.protocol_cotroller import *
-from project.controller.table_controller import *
+from project.local_db.table_controller import *
 from project.machine_learning.model_prediction import predict_occupancy
 from project.model.train_data import TrainData
 
@@ -121,8 +120,8 @@ def test_celery():
 # @recipes_blueprint.route('/grab-missing-data', methods=['POST'])
 # def grab_missing_data():
 #     print("PROCESS REQUEST FROM JAVA SERVER:\n")tes
-#     print(request.get_json())
+#     print(train_request.get_json())
 #
-#     response = request.get_json()
+#     response = train_request.get_json()
 #     protocol = Protocol(response)
 #     return protocol.send_response_to_server()

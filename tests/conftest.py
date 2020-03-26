@@ -1,20 +1,22 @@
 import pytest
 
-from project import create_app, db
-from project.model.train_data import TrainData
+from project import create_app, local_db
 
 
 @pytest.fixture(scope='module')
 def new_traindata():
-    trainrecord = TrainData(timestamp="2019-10-14 13:32:00+00:00", id="18371007[D40a]", last_occupancy=16.5,
-                            last_1_occupancy=6.6667, last_5_occupancy=14.5, occupancy=15.5)
+    trainrecord = {"timestamp": "2019-10-14 13:32:00+00:00",
+                   "id": "18371007[D40a]",
+                   "last_occupancy": 16.5, "last_1_occupancy": 6.6667, "last_5_occupancy": 14.5,
+                   "occupancy": 15.5}
+
     print(trainrecord)
     return trainrecord
 
 
 @pytest.fixture(scope='module')
 def test_client():
-    flask_app = create_app('flask_test.cfg')
+    flask_app = create_app('config.py')
 
     # Flask provides a way to test your application by exposing the Werkzeug test Client
     # and handling the context locals for you.
@@ -32,17 +34,17 @@ def test_client():
 @pytest.fixture(scope='module')
 def init_database():
     # Create the database and the database table
-    db.create_all()
+    local_db.create_all()
 
     # Insert user data
     trainrecord1 = TrainData('2019-09-14 13:32:00+00:00', 'TEST_ID', 1.13, 6.66667, 14.5, 15.5)
     trainrecord2 = TrainData('2019-09-12 13:32:00+00:00', 'ANOTHER_TEST_ID', 1634656.3, 6.66667, 14.5, 15.5)
-    db.session.add(trainrecord1)
-    db.session.add(trainrecord2)
+    local_db.session.add(trainrecord1)
+    local_db.session.add(trainrecord2)
 
     # Commit the changes for the users
-    db.session.commit()
+    local_db.session.commit()
 
-    yield db  # this is where the testing happens!
+    yield local_db  # this is where the testing happens!
 
-    db.drop_all()
+    local_db.drop_all()

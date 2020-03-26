@@ -1,3 +1,5 @@
+psycopg2-binary
+sqlalchemy
 numpy
 lightgbm
 Flask_RESTful

@@ -8,15 +8,9 @@ pd.set_option('display.expand_frame_repr', False)
 pd.set_option('display.max_rows', None)
 np.set_printoptions(threshold=sys.maxsize)
 
-"""
-code inspiration: https://machinelearningmastery.com/how-to-develop-machine-learning-models-for-multivariate-multi-step-air-pollution-time-series-forecasting/
-
-"""
-
 
 def predict_occupancy(data):
-    # TODO: need preprocessing function for new incoming data to make it so that it fits the ML format. Either here or in backend. Probably here.
-    # TODO: need better label encoding so that it is consistent here as well
+    # TODO: need better label encoding so that it is consistent
 
     # Load the model from the file
     model = joblib.load('/saved_models/occupancy_model.pkl')

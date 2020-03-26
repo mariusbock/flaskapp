@@ -1,12 +1,16 @@
 import json
-import time
-
+import os
 import pandas as pd
+import requests
+import time
+from sklearn.externals import joblib
 from flatten_json import flatten
 
 from project.celery import celery
 from project.machine_learning.model_training import train_time_series_model
 from project.machine_learning.preprocessing import fill_missing_values, label_encode
+from config import Constants
+from project.training_db.training_db_cotroller import save_trained_model_to_db
 
 pd.set_option('display.expand_frame_repr', False)
 
@@ -55,93 +59,127 @@ def test_complex_bg_job(self):
     return {'current': 100, 'status': 'Task completed!', 'result': 42}
 
 
-@celery.task(bind=True)
-def process_train_request(self, request):
+@celery.task(bind=True, track_started=True)
+def process_train_request(self, train_request):
     """
-    Wrapper that handles a train request by server by going through all stages of training process using information
-    from request.
-    :param self:
-    :param request: train request send by client that contains all information for model training
+    Wrapper that handles a train train_request by server by going through all stages of training process using information
+    from train_request.
+    :param train_request: train train_request send by client that contains all information for model training
+    :param self: celery object
     """
     current_step = 0
-    total_steps = 4  # the number of suboperations in a task, used for displaying a progress in percent -> more steps = change this int!
-
+    # number of suboperations in a task, used for displaying a progress in percent -> more steps = change this int!
+    total_steps = 5
+    ##### TRAINING STARTED #####
+    train_request = notify_java_server(train_request, new_status="TRAINING JOB STARTED",
+                                       progress=(current_step / total_steps) * 100)
+    self.update_state(task_id=train_request['requestId'],
+                      state="TRAINING JOB STARTED",
+                      meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
+                            'progress': (current_step / total_steps) * 100})
     """
+    notify_java_server(train_request, new_status="SEARCHING FOR REQUEST")
     current_step += 1
     self.update_state(state="SEARCHING FOR REQUEST",
-                      meta={'request_id': request['request_id'], 'client_id': request.client_id,
+                      meta={'request_id': train_request['request_id'], 'client_id': train_request.client_id,
                             'progress': (current_step / total_steps) * 100})
-    request = search_if_exists_already(request)
-    notify_java_server(request, newStatus="SEARCHING FOR REQUEST")
+    train_request = search_if_exists_already(train_request)
 
+    notify_java_server(train_request, new_status="PERSISTING THE DATA")
     current_step += 1
     self.update_state(state="PERSISTING THE DATA",
-                      meta={'request_id': request.request_id, 'client_id': request.client_id,
+                      meta={'request_id': train_request.request_id, 'client_id': train_request.client_id,
                             'progress': (current_step / total_steps) * 100})
-    request = persist_data(request)
-    notify_java_server(request, newStatus="PERSISTING THE DATA")
+    train_request = persist_data(train_request)
     """
-
-    current_step += 1
-    self.update_state(state="PREPROCESSING THE DATA",
-                      meta={'request_id': request['requestId'], 'client_id': request['clientId'],
+    ##### PREPROCESSING #####
+    train_request = notify_java_server(train_request, new_status="PREPROCESSING THE DATA",
+                                       progress=(current_step / total_steps) * 100)
+    self.update_state(task_id=train_request['requestId'],
+                      state="PREPROCESSING THE DATA",
+                      meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
-    request = preprocess_data(request)
-    notify_java_server(request, newStatus="PREPROCESSING THE DATA")
-
+    train_request = preprocess_data(train_request)
     current_step += 1
-    """self.update_state(state="FEATURE ENGINEERING THE DATA",
-                      meta={'request_id': request['requestId'], 'client_id': request['clientId'],
-                            'progress': (current_step / total_steps) * 100})"""
-    request = feature_engineer_data(request)
-    notify_java_server(request, newStatus="FEATURE ENGINEERING THE DATA")
 
-    current_step += 1
-    """self.update_state(state="ENCODING THE DATA",
-                      meta={'request_id': request['requestId'], 'client_id': request['clientId'],
-                            'progress': (current_step / total_steps) * 100})"""
-    request = encode_data(request)
-    notify_java_server(request, newStatus="ENCODING THE DATA")
-
-    current_step += 1
-    """self.update_state(state="TRAINING THE MODEL",
-                      meta={'request_id': request['requestId'], 'client_id': request['clientId'],
-                            'progress': (current_step / total_steps) * 100})"""
-    request = train_model(request)
-    notify_java_server(request, newStatus="TRAINING THE MODEL")
-
-    """
-    current_step += 1
-    self.update_state(state="PERSISTING THE RESULT",
-                      meta={'request_id': request.request_id, 'client_id': request.client_id,
+    ##### FEATURE ENGINEERING #####
+    train_request = notify_java_server(train_request, new_status="FEATURE ENGINEERING THE DATA",
+                                       progress=(current_step / total_steps) * 100)
+    self.update_state(task_id=train_request['requestId'],
+                      state="FEATURE ENGINEERING THE DATA",
+                      meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
-    request = persist_result(request)
-    notify_java_server(request, newStatus="PERSISTING THE RESULT")
-    """
+    train_request = feature_engineer_data(train_request)
+    current_step += 1
 
-def notify_java_server(request, newStatus):
+    ##### ENCODING DATA #####
+    train_request = notify_java_server(train_request, new_status="ENCODING THE DATA",
+                                       progress=(current_step / total_steps) * 100)
+    self.update_state(task_id=train_request['requestId'],
+                      state="ENCODING THE DATA",
+                      meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
+                            'progress': (current_step / total_steps) * 100})
+    train_request = encode_data(train_request)
+    current_step += 1
+
+    ##### TRAINING MODEL #####
+    train_request = notify_java_server(train_request, new_status="TRAINING THE MODEL",
+                                       progress=(current_step / total_steps) * 100)
+    self.update_state(task_id=train_request['requestId'],
+                      state="TRAINING THE MODEL",
+                      meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
+                            'progress': (current_step / total_steps) * 100})
+    train_request = train_model(train_request)
+    current_step += 1
+
+    ##### SAVING MODEL #####
+    train_request = notify_java_server(train_request, new_status="SAVING MODEL",
+                                       progress=(current_step / total_steps) * 100)
+    self.update_state(task_id=train_request['requestId'],
+                      state="SAVING MODEL",
+                      meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
+                            'progress': (current_step / total_steps) * 100})
+    save_model(train_request)
+    current_step += 1
+
+    train_request = notify_java_server(train_request, new_status="TRAINING JOB FINISHED",
+                                       progress=(current_step / total_steps) * 100)
+    self.update_state(task_id=train_request['requestId'],
+                      state="TRAINING JOB FINISHED",
+                      meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
+                            'progress': (current_step / total_steps) * 100})
+
+    del train_request
+
+
+def notify_java_server(train_request, new_status, progress):
     """
-    Function that calls an endpoint from java server that updates the cached status of the request.
-    :param request: request who's status wants to be updated
-    :param newStatus: new status of the request
+    Function that calls an endpoint from java server that updates the cached status of the train_request.
+    :param train_request: train_request who's status wants to be updated
+    :param new_status: new status of the train_request
     :return:
     """
-    print(newStatus)
-    pass
+    print(new_status, flush=True)
+    train_request['state'] = new_status
+    status_update = {'clientId': train_request['clientId'], 'requestId': train_request['requestId'],
+                     'status': new_status, 'progress': progress}
+    requests.post(Constants.BACKEND_UPDATE_REQUEST_STATUS, json=status_update)
+    return train_request
 
 
 # Mock Functions that describe the workflow
 # TODO implement functions
-def search_if_exists_already(request):
+def search_if_exists_already(train_request):
     pass
 
 
-def persist_data(request):
+def persist_data(train_request):
     pass
 
 
-def preprocess_data(request):
-    flattened_json = pd.DataFrame(flatten(record) for record in request["data"]['TrafficOccupancy'])
+def preprocess_data(train_request):
+    flattened_json = pd.DataFrame(flatten(record) for record in json.loads(train_request["data"])["TrafficOccupancy"])
+    print(flattened_json, flush=True)
     imputed_dataframe = fill_missing_values(dataframe=flattened_json,
                                             entity_id_columns=["ROAD_ID"],
                                             timestamp_id_columns=["TIMESTAMP"],
@@ -149,43 +187,57 @@ def preprocess_data(request):
                                             categorical_fill=[]
                                             )
     output_json = imputed_dataframe.to_json(index=False, orient='table')
-    request["data"] = output_json
-    return request
+    train_request["data"] = output_json
+    return train_request
 
 
-def feature_engineer_data(request):
-    return request
+def feature_engineer_data(train_request):
+    return train_request
 
 
-def encode_data(request):
-    unencoded_data = pd.read_json(request["data"], orient='table')
-    request['data'] = label_encode(unencoded_data).to_json(index=False, orient='table')
-    return request
+def encode_data(train_request):
+    unencoded_data = pd.read_json(train_request["data"], orient='table')
+    train_request['data'] = label_encode(unencoded_data).to_json(index=False, orient='table')
+    return train_request
 
 
-def train_model(request):
-    full_data = pd.read_json(request['data'], orient='table')
-    request['data'] = train_time_series_model(data=full_data,
-                                              algorithm="LGBM",
-                                              entity_columns=["ROAD_ID"],
-                                              timestamp_column=["TIMESTAMP"],
-                                              target=["occupancy"],
-                                              filepath="../saved_models/test.pkl"
-                                              )
-    return request
+def train_model(train_request):
+    full_data = pd.read_json(train_request['data'], orient='table')
+    train_request['data'] = train_time_series_model(data=full_data,
+                                                    algorithm="LGBM",
+                                                    entity_columns=["ROAD_ID"],
+                                                    timestamp_column=["TIMESTAMP"],
+                                                    target=["occupancy"],
+                                                    filepath="../saved_models/test.pkl"
+                                                    )
+    return train_request
 
 
-def predict_occupancy(request):
+def save_model(train_request):
+    if not os.path.exists("saved_models/" + train_request["clientId"]):
+        os.makedirs("saved_models/" + train_request["clientId"])
+    current_time = time.strftime("%Y-%m-%d_%H%M%S")
+    joblib.dump(train_request["data"], "saved_models/" + train_request["clientId"] + "/" +
+                train_request["clientId"] + "_" + current_time + ".pkl")
+
+    meta_info_job = {'filename': train_request["clientId"] + "_" + current_time + ".pkl",
+                     'downloadlink': Constants.FLASK_ADDRESS + "/download-model/" + train_request["clientId"] + "_" + current_time + ".pkl",
+                     'timestamp': current_time,
+                     'clientid': train_request['clientId'],
+                     'requestid': train_request['requestId'],
+                     # 'metadata': train_request['metadata'],
+                     }
+
+    save_trained_model_to_db(meta_info_job)
+
+    if os.path.exists('saved_models/meta_info.json'):
+        with open('saved_models/meta_info.json') as f:
+            data = json.load(f)
+        data.append(meta_info_job)
+        with open('saved_models/meta_info.json', 'w') as f:
+            json.dump(data, f)
+    else:
+        with open('saved_models/meta_info.json', 'w') as f:
+            json.dump([meta_info_job], f)
+
     pass
-
-
-def persist_result(request):
-    pass
-
-
-"""if __name__ == '__main__':
-    with open("/Users/mariusbock/git/flaskapp/static/test_data/test_flask_request.json") as f:
-        request = json.load(f)
-    request = preprocess_data(request)
-    request = encode_data(request)
-    request = train_model(request)"""
