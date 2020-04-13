@@ -4,7 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_log_error
 
 
-def train_time_series_model(data, algorithm, entity_columns, timestamp_column, target, filepath):
+def train_time_series_model(data, algorithm, timestamp_column, target):
     ordered_data = data.sort_values(timestamp_column)
 
     # creating the train and validation set

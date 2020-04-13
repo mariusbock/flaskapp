@@ -77,13 +77,14 @@ def processPing():
 @recipes_blueprint.route('/download-model/<filename>', methods=['GET'])
 def download_model(filename):
     client_id = filename.split("_")[0]
-    return send_file(os.path.join(os.getcwd(),'saved_models/' + client_id + "/" + filename), as_attachment=True)
+    return send_file(os.path.join('/flask-app/project/saved_models/' + client_id + "/" + filename), as_attachment=True)
 
 
 @recipes_blueprint.route('/train-request', methods=['POST'])
 def process_train_request():
     print("PROCESS TRAIN REQUEST FROM JAVA SERVER:\n")
     request_json = request.get_json()
+    print(request_json)
     celery_wrappers.process_train_request(request_json)
 
     return make_response("Model Successfully Trained", 200)

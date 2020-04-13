@@ -40,20 +40,25 @@ def fill_missing_values(dataframe, entity_id_columns, timestamp_id_columns, nume
     """
     entity_columns = []
     for entity_column in entity_id_columns:
-        entity_columns.append(dataframe.filter(regex=entity_column).columns.values[0])
+        entity_columns.extend(dataframe.filter(regex=entity_column).columns.values)
+
     timestamp_columns = []
     for timestamp_column in timestamp_id_columns:
-        timestamp_columns.append(dataframe.filter(regex=timestamp_column).columns.values[0])
+        timestamp_columns.extend(dataframe.filter(regex=timestamp_column).columns.values)
+
     numerical_columns = []
     numerical_fill_methods = []
     for numerical_column in numerical_fill:
-        numerical_columns.append(dataframe.filter(regex=numerical_column[0]).columns.values[0])
-        numerical_fill_methods.append(numerical_column[1])
+        numerical_columns.extend(dataframe.filter(regex=numerical_column[0]).columns.values)
+        for _ in range(len(dataframe.filter(regex=numerical_column[0]).columns.values)):
+            numerical_fill_methods.append(numerical_column[1])
+
     categorical_columns = []
     categorical_fill_methods = []
     for categorical_column in categorical_fill:
-        categorical_columns.append(dataframe.filter(regex=categorical_column[0]).columns.values[0])
-        categorical_fill_methods.append(categorical_column[1])
+        categorical_columns.extend(dataframe.filter(regex=categorical_column[0]).columns.values)
+        for _ in range(len(dataframe.filter(regex=categorical_column[0]).columns.values)):
+            categorical_fill_methods.append(categorical_column[1])
 
     entities = dataframe[entity_columns].drop_duplicates()
     timestamps = dataframe[timestamp_columns].drop_duplicates()

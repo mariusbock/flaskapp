@@ -1,16 +1,21 @@
 import json
 import os
+import time
+
 import pandas as pd
 import requests
-import time
+from datetime import datetime
+
+from pandasql import sqldf
 from sklearn.externals import joblib
 from flatten_json import flatten
 
 from project.celery import celery
 from project.machine_learning.model_training import train_time_series_model
 from project.machine_learning.preprocessing import fill_missing_values, label_encode
+from project.machine_learning.feature_engineering import create_your_own_feature
 from config import Constants
-from project.training_db.training_db_cotroller import save_trained_model_to_db
+from project.training_db.training_db_cotroller import save_trained_model_to_db, save_created_feature_to_db
 
 pd.set_option('display.expand_frame_repr', False)
 
@@ -25,8 +30,8 @@ def test_bg_job():
     Sample Background task used for testing.
     :return: Status message
     """
-    print("THIS STRING WAS PRINTED FROM A BACKGROUND JOB")
-    return "Simple Background Job test Successful. Look on the server log to see if a message was printed"
+    print('THIS STRING WAS PRINTED FROM A BACKGROUND JOB')
+    return 'Simple Background Job test Successful. Look on the server log to see if a message was printed'
 
 
 @celery.task(bind=True, track_started=True)
@@ -35,22 +40,21 @@ def test_complex_bg_job(self):
     Sample complex background task with multiple stages.
     :return: Status message
     """
-    print("INITIATED BG JOB...\n")
+    print('INITIATED BG JOB...\n')
     status_int = 0
-    status = "INITIALIZED"
     for i in range(10):
-        print("NEW ITERATION...\n")
-        if (status_int < 2):
-            status = "INITIALIZED"
+        print('NEW ITERATION...\n')
+        if status_int < 2:
+            status = 'INITIALIZED'
 
-        elif (status_int >= 2 or status_int < 6):
-            status = "PREPROCESSING"
+        elif status_int >= 2 or status_int < 6:
+            status = 'PREPROCESSING'
 
-        elif (status_int >= 6 or status_int <= 9):
-            status = "COMPUTATING"
+        elif status_int >= 6 or status_int <= 9:
+            status = 'COMPUTATING'
 
         else:
-            status = "FINISHED"
+            status = 'FINISHED'
 
         self.update_state(state=status, meta={'current': status_int, 'status': status_int})
         time.sleep(5)
@@ -71,10 +75,10 @@ def process_train_request(self, train_request):
     # number of suboperations in a task, used for displaying a progress in percent -> more steps = change this int!
     total_steps = 5
     ##### TRAINING STARTED #####
-    train_request = notify_java_server(train_request, new_status="TRAINING JOB STARTED",
+    train_request = notify_java_server(train_request, new_status='TRAINING JOB STARTED',
                                        progress=(current_step / total_steps) * 100)
     self.update_state(task_id=train_request['requestId'],
-                      state="TRAINING JOB STARTED",
+                      state='TRAINING JOB STARTED',
                       meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
     """
@@ -93,59 +97,59 @@ def process_train_request(self, train_request):
     train_request = persist_data(train_request)
     """
     ##### PREPROCESSING #####
-    train_request = notify_java_server(train_request, new_status="PREPROCESSING THE DATA",
+    train_request = notify_java_server(train_request, new_status='PREPROCESSING THE DATA',
                                        progress=(current_step / total_steps) * 100)
     self.update_state(task_id=train_request['requestId'],
-                      state="PREPROCESSING THE DATA",
+                      state='PREPROCESSING THE DATA',
                       meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
     train_request = preprocess_data(train_request)
     current_step += 1
 
     ##### FEATURE ENGINEERING #####
-    train_request = notify_java_server(train_request, new_status="FEATURE ENGINEERING THE DATA",
+    train_request = notify_java_server(train_request, new_status='FEATURE ENGINEERING THE DATA',
                                        progress=(current_step / total_steps) * 100)
     self.update_state(task_id=train_request['requestId'],
-                      state="FEATURE ENGINEERING THE DATA",
+                      state='FEATURE ENGINEERING THE DATA',
                       meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
     train_request = feature_engineer_data(train_request)
     current_step += 1
 
     ##### ENCODING DATA #####
-    train_request = notify_java_server(train_request, new_status="ENCODING THE DATA",
+    train_request = notify_java_server(train_request, new_status='ENCODING THE DATA',
                                        progress=(current_step / total_steps) * 100)
     self.update_state(task_id=train_request['requestId'],
-                      state="ENCODING THE DATA",
+                      state='ENCODING THE DATA',
                       meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
     train_request = encode_data(train_request)
     current_step += 1
 
     ##### TRAINING MODEL #####
-    train_request = notify_java_server(train_request, new_status="TRAINING THE MODEL",
+    train_request = notify_java_server(train_request, new_status='TRAINING THE MODEL',
                                        progress=(current_step / total_steps) * 100)
     self.update_state(task_id=train_request['requestId'],
-                      state="TRAINING THE MODEL",
+                      state='TRAINING THE MODEL',
                       meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
     train_request = train_model(train_request)
     current_step += 1
 
     ##### SAVING MODEL #####
-    train_request = notify_java_server(train_request, new_status="SAVING MODEL",
+    train_request = notify_java_server(train_request, new_status='SAVING MODEL',
                                        progress=(current_step / total_steps) * 100)
     self.update_state(task_id=train_request['requestId'],
-                      state="SAVING MODEL",
+                      state='SAVING MODEL',
                       meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
     save_model(train_request)
     current_step += 1
 
-    train_request = notify_java_server(train_request, new_status="TRAINING JOB FINISHED",
+    train_request = notify_java_server(train_request, new_status='TRAINING JOB FINISHED',
                                        progress=(current_step / total_steps) * 100)
     self.update_state(task_id=train_request['requestId'],
-                      state="TRAINING JOB FINISHED",
+                      state='TRAINING JOB FINISHED',
                       meta={'request_id': train_request['requestId'], 'client_id': train_request['clientId'],
                             'progress': (current_step / total_steps) * 100})
 
@@ -178,20 +182,45 @@ def persist_data(train_request):
 
 
 def preprocess_data(train_request):
-    flattened_json = pd.DataFrame(flatten(record) for record in json.loads(train_request["data"])["TrafficOccupancy"])
+    flattened_json = pd.DataFrame(flatten(record) for record in json.loads(train_request['data'])['TrafficOccupancy'])
     print(flattened_json, flush=True)
     imputed_dataframe = fill_missing_values(dataframe=flattened_json,
-                                            entity_id_columns=["ROAD_ID"],
-                                            timestamp_id_columns=["TIMESTAMP"],
+                                            entity_id_columns=['ROAD_ID'],
+                                            timestamp_id_columns=['TIMESTAMP'],
                                             numerical_fill=[('occupancy', 'interpolate')],
                                             categorical_fill=[]
                                             )
     output_json = imputed_dataframe.to_json(index=False, orient='table')
-    train_request["data"] = output_json
+    train_request['data'] = output_json
     return train_request
 
 
 def feature_engineer_data(train_request):
+    training_info = train_request['trainingInfo']
+    training_data = pd.read_json(train_request['data'], orient='table')
+    engineered_features = pd.DataFrame()
+
+    for created_feature in training_info['createdFeatures']:
+        current_time = datetime.utcnow().strftime('%Y-%m-%d_%H:%M:%S.%f')[:-3]
+        created_feature_record = {
+            'id': created_feature['featureName'] + '_' + train_request['clientId'] + '_' + current_time,
+            'name': created_feature['featureName'],
+            'description': created_feature['featureDescription'],
+            'timestamp': current_time,
+            'clientid': train_request['clientId'],
+            'requestid': train_request['requestId'],
+            'sqlstatement': created_feature['sqlStatement']
+            }
+
+        if not create_your_own_feature(created_feature['sqlStatement'], training_data).empty:
+            if engineered_features.empty:
+                engineered_features = create_your_own_feature(created_feature['sqlStatement'], training_data)
+            else:
+                engineered_features = pd.concat(engineered_features, create_your_own_feature(created_feature['sqlStatement'], training_data))
+            save_created_feature_to_db(created_feature_record)
+
+    print('ENGINEERED FEATURES:', flush=True)
+    print(engineered_features, flush=True)
     return train_request
 
 
@@ -204,40 +233,42 @@ def encode_data(train_request):
 def train_model(train_request):
     full_data = pd.read_json(train_request['data'], orient='table')
     train_request['data'] = train_time_series_model(data=full_data,
-                                                    algorithm="LGBM",
-                                                    entity_columns=["ROAD_ID"],
-                                                    timestamp_column=["TIMESTAMP"],
-                                                    target=["occupancy"],
-                                                    filepath="../saved_models/test.pkl"
+                                                    algorithm='LGBM',
+                                                    timestamp_column=['TIMESTAMP'],
+                                                    target=['occupancy'],
                                                     )
     return train_request
 
 
 def save_model(train_request):
-    if not os.path.exists("saved_models/" + train_request["clientId"]):
-        os.makedirs("saved_models/" + train_request["clientId"])
-    current_time = time.strftime("%Y-%m-%d_%H%M%S")
-    joblib.dump(train_request["data"], "saved_models/" + train_request["clientId"] + "/" +
-                train_request["clientId"] + "_" + current_time + ".pkl")
+    training_info = train_request['trainingInfo']
 
-    meta_info_job = {'filename': train_request["clientId"] + "_" + current_time + ".pkl",
-                     'downloadlink': Constants.FLASK_ADDRESS + "/download-model/" + train_request["clientId"] + "_" + current_time + ".pkl",
-                     'timestamp': current_time,
-                     'clientid': train_request['clientId'],
-                     'requestid': train_request['requestId'],
-                     # 'metadata': train_request['metadata'],
-                     }
+    if not os.path.exists('/flask-app/project/saved_models/' + train_request['clientId']):
+        os.makedirs('/flask-app/project/saved_models/' + train_request['clientId'])
+    current_time = datetime.utcnow().strftime('%Y-%m-%d_%H:%M:%S.%f')[:-3]
+    joblib.dump(train_request['data'], '/flask-app/project/saved_models/' + train_request['clientId'] + '/' +
+                train_request['clientId'] + '_' + current_time + '.pkl')
 
-    save_trained_model_to_db(meta_info_job)
+    trained_model_record = {'id': train_request['clientId'] + "_" + current_time,
+                            'name': training_info['modelMeta']['modelName'],
+                            'description': training_info['modelMeta']['modelDescription'],
+                            'timestamp': current_time,
+                            'clientid': train_request['clientId'],
+                            'requestid': train_request['requestId'],
+                            'downloadlink': Constants.FLASK_ADDRESS + '/download-model/' + train_request[
+                                'clientId'] + "_" + current_time + '.pkl',
+                            }
 
-    if os.path.exists('saved_models/meta_info.json'):
-        with open('saved_models/meta_info.json') as f:
+    save_trained_model_to_db(trained_model_record)
+
+    if os.path.exists('/flask-app/project/saved_models/meta_info.json'):
+        with open('/flask-app/project/saved_models/meta_info.json') as f:
             data = json.load(f)
-        data.append(meta_info_job)
-        with open('saved_models/meta_info.json', 'w') as f:
+        data.append(trained_model_record)
+        with open('/flask-app/project/saved_models/meta_info.json', 'w') as f:
             json.dump(data, f)
     else:
-        with open('saved_models/meta_info.json', 'w') as f:
-            json.dump([meta_info_job], f)
+        with open('/flask-app/project/saved_models/meta_info.json', 'w') as f:
+            json.dump([trained_model_record], f)
 
     pass
