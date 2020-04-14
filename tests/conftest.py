@@ -5,6 +5,7 @@ from project.local_db.models import TrainData
 
 """
 File that contains all fixtures used for testing the application. They can be used in all tests.
+To test application open terminal and type pytest
 """
 
 
