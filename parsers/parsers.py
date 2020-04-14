@@ -9,21 +9,24 @@ from pytz import timezone
 pd.set_option('display.expand_frame_repr', False)
 
 """
-This file contains all parsers used to bring the data in the data schema format.
+This file contains all parsers used to bring the data in the data schema format. NOTE: this file is to be handled 
+separately from the project. The needed packages are not listed in the requirements file.
 """
 
 
-def parseDynamicTraffic(filename):
+def parse_dynamic_traffic(filename):
     """
     Function that parses the dynamic traffic data from the MDM portal and transforms into TrafficOccupancy table
     :param filename: path to dynamic data (XML)
     :return: pandas dataframe containing TrafficOccupancy data
     """
+    # used etree to navigate XML
     xtree = et.parse(filename)
     root = xtree.getroot()
 
     result = pd.DataFrame(columns=['road_id', 'time', 'occupancy', 'vehicle_flow'])
 
+    # find attributes in xml and save to dataframe
     for elem in root.iter('{http://datex2.eu/schema/2/2_0}siteMeasurements'):
         road_id = elem.find('{http://datex2.eu/schema/2/2_0}measurementSiteReference').attrib['id']
         time = elem.find('{http://datex2.eu/schema/2/2_0}measurementTimeDefault').text
@@ -37,13 +40,14 @@ def parseDynamicTraffic(filename):
     return result
 
 
-def parseStaticTraffic(filename):
+def parse_static_traffic(filename):
     """
     Function that parses the static traffic data from the MDM portal and transforms into Roads, Points and Road_Points
     table
     :param filename: path to static data (XML)
     :return: three pandas dataframes for respective tables
     """
+    # used etree to navigate XML
     xtree = et.parse(filename)
     root = xtree.getroot()
 
@@ -51,6 +55,7 @@ def parseStaticTraffic(filename):
     points = pd.DataFrame(columns=['road_id', 'point_id', 'longitude', 'latitude'])
     road_points = pd.DataFrame(columns=['point_id', 'road_id'])
 
+    # find attributes in xml and save to dataframes
     for elem in root.iter('{http://datex2.eu/schema/2/2_0}measurementSiteRecord'):
         road_id = elem.find('{http://datex2.eu/schema/2/2_0}measurementSiteIdentification').text
         location_elem = elem.find('{http://datex2.eu/schema/2/2_0}measurementSiteLocation')
@@ -114,6 +119,7 @@ def parse_dates(messe_path, holiday_s_path, holiday_c_path, school_holiday_path)
     :param school_holiday_path: path to school holiday dates file (for now just Hessen)
     :return:
     """
+    # create dataframe of events from separate CSV files
     school_break_state = pd.read_csv(school_holiday_path, parse_dates=['Start Time', 'End Time'])
     holiday_state = pd.read_csv(holiday_s_path, parse_dates=['Start Time', 'End Time'])
     holiday_country = pd.read_csv(holiday_c_path, parse_dates=['Start Time', 'End Time'])
@@ -171,6 +177,7 @@ def get_coord_info(data):
     :param data: pandas dataframe containing latitude & longitude column (e.g. Points)
     :return: pandas dataframe with geo metadata columns appended
     """
+    # use geolocater to retrieve geo-information (used a RateLimiter to avoid being blocked by API)
     geolocator = Nominatim(timeout=10)
     geocode = RateLimiter(geolocator.reverse, min_delay_seconds=1)
     for index, row in data.iterrows():
@@ -189,6 +196,10 @@ def get_coord_info(data):
 
 
 if __name__ == '__main__':
+    """
+    Here is the workflow how the above functions were used to create CSV in parsed_data folder.
+    NOTE: the geoinformation retrieval takes a lot of time and is therefore commented out.
+    """
     # Parse event data and save to CSV
     events = parse_dates(messe_path="raw_data/MesseTermine-2019.csv",
                          holiday_s_path="raw_data/gesetzliche_feiertage_hessen_2019.csv",
@@ -201,8 +212,8 @@ if __name__ == '__main__':
     events.to_csv("parsed_data/events.csv", index=None)
 
     # Parse static & dynamic traffic data and save to CSV
-    roads, road_points, points = parseStaticTraffic("raw_data/static_road_data.xml")
-    traffic_occupancy = parseDynamicTraffic("raw_data/traffic_dynamic.xml")
+    roads, road_points, points = parse_static_traffic("raw_data/static_road_data.xml")
+    traffic_occupancy = parse_dynamic_traffic("raw_data/traffic_dynamic.xml")
 
     roads.to_csv("parsed_data/roads.csv", index=None, sep=";")
     road_points.to_csv("parsed_data/road_points.csv", index=None, sep=";")

@@ -1,8 +1,14 @@
 from project import local_db
 
-local_db.Model
+"""
+Contains all models for local database
+"""
+
 
 class TrainedModel(local_db.Model):
+    """
+    Model for saved model record
+    """
     __tablename__ = 'savedmodels'
     filename = local_db.Column(local_db.String, primary_key=True)
     timestamp = local_db.Column(local_db.String)
@@ -19,6 +25,9 @@ class TrainedModel(local_db.Model):
 
 
 class TrainRequest(local_db.Model):
+    """
+    Model for training request record
+    """
     __tablename__ = "requests"
     request_id = local_db.Column(local_db.String, primary_key=True)
     client_id = local_db.Column(local_db.String)
@@ -40,6 +49,9 @@ class TrainRequest(local_db.Model):
 
 
 class TrainData(local_db.Model):
+    """
+    Model for training data record
+    """
     __tablename__ = "traindata"
     id = local_db.Column(local_db.String, primary_key=True)
     occupancy = local_db.Column(local_db.Float)

@@ -5,8 +5,10 @@ import sys
 from icalendar import Calendar
 
 """
-This file was used to parse the ics data to csv. Source: https://github.com/erikcox/ical2csv
+This file was used to parse the ics data to csv. Source: https://github.com/erikcox/ical2csv. NOTE: this file is to be 
+handled separately from the project. The needed packages are not listed in the requirements file.
 """
+
 filename = sys.argv[1]
 file_extension = str(sys.argv[1])[-3:]
 headers = ('Summary', 'UID', 'Description', 'Location', 'Start Time', 'End Time', 'URL')

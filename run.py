@@ -3,7 +3,7 @@ from project.celery import celery
 from config import TestConfig
 
 # Call the Application Factory function to construct a Flask application instance
-# using the standard configuration defined in /instance/flask.cfg
+# using the standard or test configuration defined in /config.py
 
 app = create_app(config=TestConfig, celery=celery)
 
