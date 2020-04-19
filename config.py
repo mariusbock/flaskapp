@@ -8,16 +8,17 @@ class Constants:
     """ 
     CONSTANTS
     """
-    # NOTE FOR DEPLOYMENT: Change String to address that Flask is deployed to
-    FLASK_ADDRESS = "http://localhost:2000"
+    # NOTE FOR DEPLOYMENT: Change String to localhost if you plan on deploying locally
+    FLASK_ADDRESS = "http://134.155.108.171:2000"
 
     BACKEND_ADDRESS = "http://xAnalyticBackend:8080"
-    XDATA_ADDRESS = "http://134.155.108.171:4000"
+    # NOTE FOR DEPLOYMENT: Change to address of xData if it is deployed somewhere else
+    XDATA_ADDRESS = "http://xDataEndpoint:4000"
     REDIS_SERVER = "redis://xAnalyticRedis:6379/0"
 
     # Change following strings only if you use a different xData Deployment than stated in GitHub.
-    # NOTE FOR DEPLOYMENT: Needs to be address of where xData is deployed
-    POSTGRES_DB_ADDRESS = "134.155.108.171:5432"
+    # NOTE FOR DEPLOYMENT: Change to address where postGres database is deployed to.
+    POSTGRES_DB_ADDRESS = "postGis:5432"
     POSTGRES_USER = "postgres"
     POSTGRES_PW = "root"
     POSTGRES_TRAINING_DB = "Training_Database"
