@@ -54,9 +54,7 @@ def create_your_own_feature(sql_statement, training_data):
         elif not column == "training_data":
             column_pairs.append(list(('trafficoccupancy', column)))
 
-    # lowercase all column names of training dataframe; iterate over column pairs
     # create list of matches per column pair
-    training_data.columns = map(str.lower, training_data.columns)
     matched_columns = []
     for column_pair in column_pairs:
         # if equals query type (trafficoccupancy) regex only for column name (since name won't contain table in training
@@ -86,6 +84,4 @@ def create_your_own_feature(sql_statement, training_data):
             result_df['feature_' + str(i)] = columnData
             i += 1
 
-    print("CREATED FEAUTRE(S):", flush=True)
-    print(result_df, flush=True)
     return result_df

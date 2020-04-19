@@ -8,6 +8,10 @@ from project.recipes import recipes_blueprint
 
 @recipes_blueprint.route('/echo', methods=['GET', 'POST', 'PATCH', 'PUT', 'DELETE'])
 def api_echo():
+    """
+    Echo function to test different methods with Flask server
+    :return: echo response
+    """
     if request.method == 'GET':
         return "ECHO: GET\n"
 
@@ -26,6 +30,10 @@ def api_echo():
 
 @recipes_blueprint.route('/test-celery', methods=['GET'])
 def test_celery():
+    """
+    Route to test celery functionality. Starts a sample job that goes through different stages.
+    :return: response
+    """
     celery_wrappers.test_bg_job()
 
 
@@ -56,21 +64,13 @@ def process_ping():
 
         if received_data.get('teamname') == retrieved_data.get('teamname'):
             ok_response = {'message': 'true',
-                           'code': 'SUCCESS',
-                           'Access-Control-Allow-Origin': '*',
-                           'Access-Control-Allow-Credentials': '*',
-                           'Access-Control-Allow-Headers': '*',
-                           'Access-Control-Allow-Methods': '*'}
+                           'code': 'SUCCESS'}
             print("PING REQUEST SUCCESSFUL")
             return make_response(jsonify(ok_response), 200)
 
         else:
             bad_response = {'message': 'false',
-                            'code': 'CONFLICT',
-                            'Access-Control-Allow-Origin': '*',
-                            'Access-Control-Allow-Credentials': '*',
-                            'Access-Control-Allow-Headers': '*',
-                            'Access-Control-Allow-Methods': '*'}
+                            'code': 'CONFLICT'}
             print("PING REQUEST UNSUCCESSFUL")
             return make_response(jsonify(bad_response), 409)
 

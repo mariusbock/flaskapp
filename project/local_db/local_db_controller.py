@@ -5,7 +5,9 @@ from sqlalchemy.orm import sessionmaker
 from project.local_db.models import *
 
 """
-File that contains all functions used for interacting with local database
+File that contains all functions used for interacting with local database. Currently the local database is not
+functioning because of an error during deployment. Needs to be fixed in the future.
+Also might need to switch to non-relational database (see final project report).
 """
 
 Session = sessionmaker(bind=local_db.engine)
@@ -15,6 +17,7 @@ def save_train_request_to_db(request):
     """
     Function to save train request to database
     :param request: request to be saved to DB
+    :return: response
     """
     session = Session()
     session.add(request)
@@ -66,6 +69,7 @@ def delete_old_entries_from_table(fields):
     """
     Function to delete old entries from database
     :param fields: fields to be deleted
+    :return: response
     """
     try:
         # TODO write function that deletes certain fields
@@ -77,6 +81,7 @@ def delete_old_entries_from_table(fields):
 def check_missing_data():
     """
     Function to check whether there is missing data in the DB
+    :return: response
     """
     try:
         # TODO write function that checks for missing data
@@ -88,7 +93,7 @@ def check_missing_data():
 def send_response_to_server():
     """
     Function that checks if there is missing data if so then database is refreshed
-    :return:
+    :return: response
     """
     result = check_missing_data()
     if result:

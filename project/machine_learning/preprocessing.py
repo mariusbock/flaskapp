@@ -7,6 +7,11 @@ File that contains all functions to be used for preprocessing
 
 
 def label_encode(dataframe):
+    """
+    Function that takes a dataframe and label encodes all non-numeric columns
+    :param dataframe: dataframe to be encoded
+    :return: encoded dataframe
+    """
     # TODO needs to be reworked to have consistent encoding
     # roads = pd.read_json("static/parsed_data/roads.json", orient="records")
     print(dataframe.dtypes, flush=True)

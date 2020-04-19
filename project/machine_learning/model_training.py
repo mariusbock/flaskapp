@@ -10,7 +10,7 @@ File that contains all functions used to train models
 
 def train_time_series_model(data, algorithm, timestamp_column, target):
     """
-    Function used to train a time series model
+    Function used to train a time series model. Can be more extended with more parameter options.
     :param data: data to be used for training
     :param algorithm: machine learing algorithm to be used for training
     :param timestamp_column: timestamp column of the time series data
@@ -46,4 +46,10 @@ def train_time_series_model(data, algorithm, timestamp_column, target):
 
 
 def rmsle(ytrue, ypred):
+    """
+    Function to calculate Root Mean Squared Logarithmic Error (RMSLE)
+    :param ytrue: true label
+    :param ypred: predicted label
+    :return: RMSLE
+    """
     return np.sqrt(mean_squared_log_error(ytrue, ypred))

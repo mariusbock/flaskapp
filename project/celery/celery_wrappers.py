@@ -73,7 +73,10 @@ def process_train_request(self, train_request):
     current_step = 0
     # number of suboperations in a task, used for displaying a progress in percent -> more steps = change this int!
     total_steps = 5
-
+    # for each stage:
+    # 1. do required computations
+    # 2. notify java server of change
+    # 3. then update celery state
     ##### TRAINING STARTED #####
     train_request = notify_java_server(train_request, new_status='TRAINING JOB STARTED',
                                        progress=(current_step / total_steps) * 100)
@@ -166,11 +169,12 @@ def preprocess_data(train_request):
     """
     # TODO have preprocessing information extracted from train request
     flattened_json = pd.DataFrame(flatten(record) for record in json.loads(train_request['data'])['TrafficOccupancy'])
-    print(flattened_json, flush=True)
+    # lowercase all column names
+    flattened_json.columns = map(str.lower, flattened_json.columns)
     # Currently only does filling of missing values
     imputed_dataframe = fill_missing_values(dataframe=flattened_json,
-                                            entity_id_columns=['ROAD_ID'],
-                                            timestamp_id_columns=['TIMESTAMP'],
+                                            entity_id_columns=['road_id'],
+                                            timestamp_id_columns=['timestamp'],
                                             numerical_fill=[('occupancy', 'interpolate')],
                                             categorical_fill=[]
                                             )
@@ -182,7 +186,7 @@ def preprocess_data(train_request):
 def feature_engineer_data(train_request):
     # read training info object that contains all meta infos about training process
     training_info = train_request['trainingInfo']
-    training_data = pd.read_json(train_request['data'], orient='table')
+    training_data = pd.read_json(train_request['data'], orient='table', convert_dates=False)
     engineered_features = pd.DataFrame()
 
     for created_feature in training_info['createdFeatures']:
@@ -205,15 +209,20 @@ def feature_engineer_data(train_request):
                 engineered_features = create_your_own_feature(created_feature['sqlStatement'], training_data)
             # if not append to result dataframe
             else:
-                engineered_features = pd.concat(engineered_features,
-                                                create_your_own_feature(created_feature['sqlStatement'], training_data))
+                engineered_features = pd.concat([engineered_features,
+                                                 create_your_own_feature(created_feature['sqlStatement'],
+                                                                         training_data)], axis=1)
             # save database record to training database
             save_created_feature_to_db(created_feature_record)
 
     print('ENGINEERED FEATURES:', flush=True)
     print(engineered_features, flush=True)
     # append engineered features to training dataframe
-    train_request['data'] = pd.concat([training_data, engineered_features]).to_json(index=False, orient='table')
+    i = 1
+    for (columnName, columnData) in engineered_features.iteritems():
+        training_data['created_feature_' + str(i)] = columnData.values
+        i += 1
+    train_request['data'] = training_data.to_json(index=False, orient='table')
     return train_request
 
 
@@ -238,7 +247,7 @@ def train_model(train_request):
     full_data = pd.read_json(train_request['data'], orient='table')
     train_request['data'] = train_time_series_model(data=full_data,
                                                     algorithm='LGBM',
-                                                    timestamp_column=['TIMESTAMP'],
+                                                    timestamp_column=['timestamp'],
                                                     target=['occupancy'],
                                                     )
     return train_request
@@ -275,15 +284,24 @@ def save_model(train_request):
     # save trained model record to training database
     save_trained_model_to_db(trained_model_record)
 
-    # save meta infos locally, that would breack relational schema (extended information
+    trained_model_meta_record = {'id': train_request['clientId'] + "_" + current_time,
+                                 'name': training_info['modelMeta']['modelName'],
+                                 'description': training_info['modelMeta']['modelDescription'],
+                                 'timestamp': current_time,
+                                 'clientId': train_request['clientId'],
+                                 'requestId': train_request['requestId'],
+                                 'trainingInfo': training_info,
+                                 }
+
+    # save meta infos locally, that would breack relational schema (extended information)
     if os.path.exists('/flask-app/project/saved_models/meta_info.json'):
         with open('/flask-app/project/saved_models/meta_info.json') as f:
             data = json.load(f)
-        data.append(trained_model_record)
+        data.append(trained_model_meta_record)
         with open('/flask-app/project/saved_models/meta_info.json', 'w') as f:
             json.dump(data, f)
     else:
         with open('/flask-app/project/saved_models/meta_info.json', 'w') as f:
-            json.dump([trained_model_record], f)
+            json.dump([trained_model_meta_record], f)
 
     pass

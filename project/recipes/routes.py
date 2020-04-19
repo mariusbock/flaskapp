@@ -77,16 +77,17 @@ def get_request_status(request_id):
     return make_response(json_data, 200)
 
 
-@recipes_blueprint.route('/get-all-trained-models', methods=['GET'])
-def get_all_trained_models():
+@recipes_blueprint.route('/get-all-trained-model-meta', methods=['GET'])
+def get_all_trained_model_meta():
     """
     Route to receive a list of all trained models saved on Flask.
     :return: JSON of all saved models
     """
     # Check if meta_info.json file exists, if not return empty JSON
-    if os.path.exists('saved_models/meta_info.json'):
-        with open('saved_models/meta_info.json') as f:
+    if os.path.exists('/flask-app/project/saved_models/meta_info.json'):
+        with open('/flask-app/project/saved_models/meta_info.json') as f:
             response = json.load(f)
+        print(response, flush=True)
     else:
         response = {}
 
